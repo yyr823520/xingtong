@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.ConsignMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Consign">
+    <id column="consignid" jdbcType="VARCHAR" property="consignid" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+    <result column="wid" jdbcType="INTEGER" property="wid" />
+    <result column="receivenoteid" jdbcType="INTEGER" property="receivenoteid" />
+    <result column="originalprice" jdbcType="DECIMAL" property="originalprice" />
+    <result column="measurement" jdbcType="VARCHAR" property="measurement" />
+    <result column="totalmoney" jdbcType="DECIMAL" property="totalmoney" />
+    <result column="freightcharge" jdbcType="DECIMAL" property="freightcharge" />
+    <result column="receivingfee" jdbcType="DECIMAL" property="receivingfee" />
+    <result column="deliverycharge" jdbcType="DECIMAL" property="deliverycharge" />
+    <result column="insuredvalue" jdbcType="DECIMAL" property="insuredvalue" />
+    <result column="valuationfee" jdbcType="DECIMAL" property="valuationfee" />
+    <result column="totalcost" jdbcType="DECIMAL" property="totalcost" />
+    <result column="dictionaryid" jdbcType="INTEGER" property="dictionaryid" />
+    <result column="owetopay" jdbcType="DECIMAL" property="owetopay" />
+    <result column="spotpayment" jdbcType="DECIMAL" property="spotpayment" />
+    <result column="tosubmit" jdbcType="DECIMAL" property="tosubmit" />
+    <result column="receiptfor" jdbcType="DECIMAL" property="receiptfor" />
+    <result column="monthlypay" jdbcType="DECIMAL" property="monthlypay" />
+    <result column="operatingcosts" jdbcType="DECIMAL" property="operatingcosts" />
+    <result column="otherdescription" jdbcType="VARCHAR" property="otherdescription" />
+    <result column="billingtime" jdbcType="TIMESTAMP" property="billingtime" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="orderstatus" jdbcType="VARCHAR" property="orderstatus" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string2" jdbcType="VARCHAR" property="string2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    consignid, destination, wid, receivenoteid, originalprice, measurement, totalmoney, 
+    freightcharge, receivingfee, deliverycharge, insuredvalue, valuationfee, totalcost, 
+    dictionaryid, owetopay, spotpayment, tosubmit, receiptfor, monthlypay, operatingcosts, 
+    otherdescription, billingtime, operator, orderstatus, int0, string0, string2
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.ConsignExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from consign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from consign
+    where consignid = #{consignid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from consign
+    where consignid = #{consignid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.ConsignExample">
+    delete from consign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Consign">
+    insert into consign (consignid, destination, wid, 
+      receivenoteid, originalprice, measurement, 
+      totalmoney, freightcharge, receivingfee, 
+      deliverycharge, insuredvalue, valuationfee, 
+      totalcost, dictionaryid, owetopay, 
+      spotpayment, tosubmit, receiptfor, 
+      monthlypay, operatingcosts, otherdescription, 
+      billingtime, operator, orderstatus, 
+      int0, string0, string2
+      )
+    values (#{consignid,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, #{wid,jdbcType=INTEGER}, 
+      #{receivenoteid,jdbcType=INTEGER}, #{originalprice,jdbcType=DECIMAL}, #{measurement,jdbcType=VARCHAR}, 
+      #{totalmoney,jdbcType=DECIMAL}, #{freightcharge,jdbcType=DECIMAL}, #{receivingfee,jdbcType=DECIMAL}, 
+      #{deliverycharge,jdbcType=DECIMAL}, #{insuredvalue,jdbcType=DECIMAL}, #{valuationfee,jdbcType=DECIMAL}, 
+      #{totalcost,jdbcType=DECIMAL}, #{dictionaryid,jdbcType=INTEGER}, #{owetopay,jdbcType=DECIMAL}, 
+      #{spotpayment,jdbcType=DECIMAL}, #{tosubmit,jdbcType=DECIMAL}, #{receiptfor,jdbcType=DECIMAL}, 
+      #{monthlypay,jdbcType=DECIMAL}, #{operatingcosts,jdbcType=DECIMAL}, #{otherdescription,jdbcType=VARCHAR}, 
+      #{billingtime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, #{orderstatus,jdbcType=VARCHAR}, 
+      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Consign">
+    insert into consign
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="consignid != null">
+        consignid,
+      </if>
+      <if test="destination != null">
+        destination,
+      </if>
+      <if test="wid != null">
+        wid,
+      </if>
+      <if test="receivenoteid != null">
+        receivenoteid,
+      </if>
+      <if test="originalprice != null">
+        originalprice,
+      </if>
+      <if test="measurement != null">
+        measurement,
+      </if>
+      <if test="totalmoney != null">
+        totalmoney,
+      </if>
+      <if test="freightcharge != null">
+        freightcharge,
+      </if>
+      <if test="receivingfee != null">
+        receivingfee,
+      </if>
+      <if test="deliverycharge != null">
+        deliverycharge,
+      </if>
+      <if test="insuredvalue != null">
+        insuredvalue,
+      </if>
+      <if test="valuationfee != null">
+        valuationfee,
+      </if>
+      <if test="totalcost != null">
+        totalcost,
+      </if>
+      <if test="dictionaryid != null">
+        dictionaryid,
+      </if>
+      <if test="owetopay != null">
+        owetopay,
+      </if>
+      <if test="spotpayment != null">
+        spotpayment,
+      </if>
+      <if test="tosubmit != null">
+        tosubmit,
+      </if>
+      <if test="receiptfor != null">
+        receiptfor,
+      </if>
+      <if test="monthlypay != null">
+        monthlypay,
+      </if>
+      <if test="operatingcosts != null">
+        operatingcosts,
+      </if>
+      <if test="otherdescription != null">
+        otherdescription,
+      </if>
+      <if test="billingtime != null">
+        billingtime,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="orderstatus != null">
+        orderstatus,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string2 != null">
+        string2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="consignid != null">
+        #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="receivenoteid != null">
+        #{receivenoteid,jdbcType=INTEGER},
+      </if>
+      <if test="originalprice != null">
+        #{originalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="measurement != null">
+        #{measurement,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmoney != null">
+        #{totalmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="freightcharge != null">
+        #{freightcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="receivingfee != null">
+        #{receivingfee,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverycharge != null">
+        #{deliverycharge,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredvalue != null">
+        #{insuredvalue,jdbcType=DECIMAL},
+      </if>
+      <if test="valuationfee != null">
+        #{valuationfee,jdbcType=DECIMAL},
+      </if>
+      <if test="totalcost != null">
+        #{totalcost,jdbcType=DECIMAL},
+      </if>
+      <if test="dictionaryid != null">
+        #{dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="owetopay != null">
+        #{owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="spotpayment != null">
+        #{spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="tosubmit != null">
+        #{tosubmit,jdbcType=DECIMAL},
+      </if>
+      <if test="receiptfor != null">
+        #{receiptfor,jdbcType=DECIMAL},
+      </if>
+      <if test="monthlypay != null">
+        #{monthlypay,jdbcType=DECIMAL},
+      </if>
+      <if test="operatingcosts != null">
+        #{operatingcosts,jdbcType=DECIMAL},
+      </if>
+      <if test="otherdescription != null">
+        #{otherdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="billingtime != null">
+        #{billingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstatus != null">
+        #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string2 != null">
+        #{string2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.ConsignExample" resultType="java.lang.Integer">
+    select count(*) from consign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update consign
+    <set>
+      <if test="record.consignid != null">
+        consignid = #{record.consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.destination != null">
+        destination = #{record.destination,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wid != null">
+        wid = #{record.wid,jdbcType=INTEGER},
+      </if>
+      <if test="record.receivenoteid != null">
+        receivenoteid = #{record.receivenoteid,jdbcType=INTEGER},
+      </if>
+      <if test="record.originalprice != null">
+        originalprice = #{record.originalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.measurement != null">
+        measurement = #{record.measurement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalmoney != null">
+        totalmoney = #{record.totalmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.freightcharge != null">
+        freightcharge = #{record.freightcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receivingfee != null">
+        receivingfee = #{record.receivingfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deliverycharge != null">
+        deliverycharge = #{record.deliverycharge,jdbcType=DECIMAL},
+      </if>
+      <if test="record.insuredvalue != null">
+        insuredvalue = #{record.insuredvalue,jdbcType=DECIMAL},
+      </if>
+      <if test="record.valuationfee != null">
+        valuationfee = #{record.valuationfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.totalcost != null">
+        totalcost = #{record.totalcost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dictionaryid != null">
+        dictionaryid = #{record.dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="record.owetopay != null">
+        owetopay = #{record.owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.spotpayment != null">
+        spotpayment = #{record.spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tosubmit != null">
+        tosubmit = #{record.tosubmit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receiptfor != null">
+        receiptfor = #{record.receiptfor,jdbcType=DECIMAL},
+      </if>
+      <if test="record.monthlypay != null">
+        monthlypay = #{record.monthlypay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.operatingcosts != null">
+        operatingcosts = #{record.operatingcosts,jdbcType=DECIMAL},
+      </if>
+      <if test="record.otherdescription != null">
+        otherdescription = #{record.otherdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billingtime != null">
+        billingtime = #{record.billingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.operator != null">
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderstatus != null">
+        orderstatus = #{record.orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string2 != null">
+        string2 = #{record.string2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update consign
+    set consignid = #{record.consignid,jdbcType=VARCHAR},
+      destination = #{record.destination,jdbcType=VARCHAR},
+      wid = #{record.wid,jdbcType=INTEGER},
+      receivenoteid = #{record.receivenoteid,jdbcType=INTEGER},
+      originalprice = #{record.originalprice,jdbcType=DECIMAL},
+      measurement = #{record.measurement,jdbcType=VARCHAR},
+      totalmoney = #{record.totalmoney,jdbcType=DECIMAL},
+      freightcharge = #{record.freightcharge,jdbcType=DECIMAL},
+      receivingfee = #{record.receivingfee,jdbcType=DECIMAL},
+      deliverycharge = #{record.deliverycharge,jdbcType=DECIMAL},
+      insuredvalue = #{record.insuredvalue,jdbcType=DECIMAL},
+      valuationfee = #{record.valuationfee,jdbcType=DECIMAL},
+      totalcost = #{record.totalcost,jdbcType=DECIMAL},
+      dictionaryid = #{record.dictionaryid,jdbcType=INTEGER},
+      owetopay = #{record.owetopay,jdbcType=DECIMAL},
+      spotpayment = #{record.spotpayment,jdbcType=DECIMAL},
+      tosubmit = #{record.tosubmit,jdbcType=DECIMAL},
+      receiptfor = #{record.receiptfor,jdbcType=DECIMAL},
+      monthlypay = #{record.monthlypay,jdbcType=DECIMAL},
+      operatingcosts = #{record.operatingcosts,jdbcType=DECIMAL},
+      otherdescription = #{record.otherdescription,jdbcType=VARCHAR},
+      billingtime = #{record.billingtime,jdbcType=TIMESTAMP},
+      operator = #{record.operator,jdbcType=VARCHAR},
+      orderstatus = #{record.orderstatus,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string2 = #{record.string2,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Consign">
+    update consign
+    <set>
+      <if test="destination != null">
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        wid = #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="receivenoteid != null">
+        receivenoteid = #{receivenoteid,jdbcType=INTEGER},
+      </if>
+      <if test="originalprice != null">
+        originalprice = #{originalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="measurement != null">
+        measurement = #{measurement,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmoney != null">
+        totalmoney = #{totalmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="freightcharge != null">
+        freightcharge = #{freightcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="receivingfee != null">
+        receivingfee = #{receivingfee,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverycharge != null">
+        deliverycharge = #{deliverycharge,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredvalue != null">
+        insuredvalue = #{insuredvalue,jdbcType=DECIMAL},
+      </if>
+      <if test="valuationfee != null">
+        valuationfee = #{valuationfee,jdbcType=DECIMAL},
+      </if>
+      <if test="totalcost != null">
+        totalcost = #{totalcost,jdbcType=DECIMAL},
+      </if>
+      <if test="dictionaryid != null">
+        dictionaryid = #{dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="owetopay != null">
+        owetopay = #{owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="spotpayment != null">
+        spotpayment = #{spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="tosubmit != null">
+        tosubmit = #{tosubmit,jdbcType=DECIMAL},
+      </if>
+      <if test="receiptfor != null">
+        receiptfor = #{receiptfor,jdbcType=DECIMAL},
+      </if>
+      <if test="monthlypay != null">
+        monthlypay = #{monthlypay,jdbcType=DECIMAL},
+      </if>
+      <if test="operatingcosts != null">
+        operatingcosts = #{operatingcosts,jdbcType=DECIMAL},
+      </if>
+      <if test="otherdescription != null">
+        otherdescription = #{otherdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="billingtime != null">
+        billingtime = #{billingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstatus != null">
+        orderstatus = #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string2 != null">
+        string2 = #{string2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where consignid = #{consignid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Consign">
+    update consign
+    set destination = #{destination,jdbcType=VARCHAR},
+      wid = #{wid,jdbcType=INTEGER},
+      receivenoteid = #{receivenoteid,jdbcType=INTEGER},
+      originalprice = #{originalprice,jdbcType=DECIMAL},
+      measurement = #{measurement,jdbcType=VARCHAR},
+      totalmoney = #{totalmoney,jdbcType=DECIMAL},
+      freightcharge = #{freightcharge,jdbcType=DECIMAL},
+      receivingfee = #{receivingfee,jdbcType=DECIMAL},
+      deliverycharge = #{deliverycharge,jdbcType=DECIMAL},
+      insuredvalue = #{insuredvalue,jdbcType=DECIMAL},
+      valuationfee = #{valuationfee,jdbcType=DECIMAL},
+      totalcost = #{totalcost,jdbcType=DECIMAL},
+      dictionaryid = #{dictionaryid,jdbcType=INTEGER},
+      owetopay = #{owetopay,jdbcType=DECIMAL},
+      spotpayment = #{spotpayment,jdbcType=DECIMAL},
+      tosubmit = #{tosubmit,jdbcType=DECIMAL},
+      receiptfor = #{receiptfor,jdbcType=DECIMAL},
+      monthlypay = #{monthlypay,jdbcType=DECIMAL},
+      operatingcosts = #{operatingcosts,jdbcType=DECIMAL},
+      otherdescription = #{otherdescription,jdbcType=VARCHAR},
+      billingtime = #{billingtime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      orderstatus = #{orderstatus,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string2 = #{string2,jdbcType=VARCHAR}
+    where consignid = #{consignid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Consign">
+    <id column="consignid" jdbcType="VARCHAR" property="consignid" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+    <result column="wid" jdbcType="INTEGER" property="wid" />
+    <result column="receivenoteid" jdbcType="INTEGER" property="receivenoteid" />
+    <result column="originalprice" jdbcType="DECIMAL" property="originalprice" />
+    <result column="measurement" jdbcType="VARCHAR" property="measurement" />
+    <result column="totalmoney" jdbcType="DECIMAL" property="totalmoney" />
+    <result column="freightcharge" jdbcType="DECIMAL" property="freightcharge" />
+    <result column="receivingfee" jdbcType="DECIMAL" property="receivingfee" />
+    <result column="deliverycharge" jdbcType="DECIMAL" property="deliverycharge" />
+    <result column="insuredvalue" jdbcType="DECIMAL" property="insuredvalue" />
+    <result column="valuationfee" jdbcType="DECIMAL" property="valuationfee" />
+    <result column="totalcost" jdbcType="DECIMAL" property="totalcost" />
+    <result column="dictionaryid" jdbcType="INTEGER" property="dictionaryid" />
+    <result column="owetopay" jdbcType="DECIMAL" property="owetopay" />
+    <result column="spotpayment" jdbcType="DECIMAL" property="spotpayment" />
+    <result column="tosubmit" jdbcType="DECIMAL" property="tosubmit" />
+    <result column="receiptfor" jdbcType="DECIMAL" property="receiptfor" />
+    <result column="monthlypay" jdbcType="DECIMAL" property="monthlypay" />
+    <result column="operatingcosts" jdbcType="DECIMAL" property="operatingcosts" />
+    <result column="otherdescription" jdbcType="VARCHAR" property="otherdescription" />
+    <result column="billingtime" jdbcType="TIMESTAMP" property="billingtime" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="orderstatus" jdbcType="VARCHAR" property="orderstatus" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string2" jdbcType="VARCHAR" property="string2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    consignid, destination, wid, receivenoteid, originalprice, measurement, totalmoney, 
+    freightcharge, receivingfee, deliverycharge, insuredvalue, valuationfee, totalcost, 
+    dictionaryid, owetopay, spotpayment, tosubmit, receiptfor, monthlypay, operatingcosts, 
+    otherdescription, billingtime, operator, orderstatus, int0, string0, string2
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.ConsignExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from consign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from consign
+    where consignid = #{consignid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from consign
+    where consignid = #{consignid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.ConsignExample">
+    delete from consign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Consign">
+    insert into consign (consignid, destination, wid, 
+      receivenoteid, originalprice, measurement, 
+      totalmoney, freightcharge, receivingfee, 
+      deliverycharge, insuredvalue, valuationfee, 
+      totalcost, dictionaryid, owetopay, 
+      spotpayment, tosubmit, receiptfor, 
+      monthlypay, operatingcosts, otherdescription, 
+      billingtime, operator, orderstatus, 
+      int0, string0, string2
+      )
+    values (#{consignid,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, #{wid,jdbcType=INTEGER}, 
+      #{receivenoteid,jdbcType=INTEGER}, #{originalprice,jdbcType=DECIMAL}, #{measurement,jdbcType=VARCHAR}, 
+      #{totalmoney,jdbcType=DECIMAL}, #{freightcharge,jdbcType=DECIMAL}, #{receivingfee,jdbcType=DECIMAL}, 
+      #{deliverycharge,jdbcType=DECIMAL}, #{insuredvalue,jdbcType=DECIMAL}, #{valuationfee,jdbcType=DECIMAL}, 
+      #{totalcost,jdbcType=DECIMAL}, #{dictionaryid,jdbcType=INTEGER}, #{owetopay,jdbcType=DECIMAL}, 
+      #{spotpayment,jdbcType=DECIMAL}, #{tosubmit,jdbcType=DECIMAL}, #{receiptfor,jdbcType=DECIMAL}, 
+      #{monthlypay,jdbcType=DECIMAL}, #{operatingcosts,jdbcType=DECIMAL}, #{otherdescription,jdbcType=VARCHAR}, 
+      #{billingtime,jdbcType=TIMESTAMP}, #{operator,jdbcType=VARCHAR}, #{orderstatus,jdbcType=VARCHAR}, 
+      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Consign">
+    insert into consign
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="consignid != null">
+        consignid,
+      </if>
+      <if test="destination != null">
+        destination,
+      </if>
+      <if test="wid != null">
+        wid,
+      </if>
+      <if test="receivenoteid != null">
+        receivenoteid,
+      </if>
+      <if test="originalprice != null">
+        originalprice,
+      </if>
+      <if test="measurement != null">
+        measurement,
+      </if>
+      <if test="totalmoney != null">
+        totalmoney,
+      </if>
+      <if test="freightcharge != null">
+        freightcharge,
+      </if>
+      <if test="receivingfee != null">
+        receivingfee,
+      </if>
+      <if test="deliverycharge != null">
+        deliverycharge,
+      </if>
+      <if test="insuredvalue != null">
+        insuredvalue,
+      </if>
+      <if test="valuationfee != null">
+        valuationfee,
+      </if>
+      <if test="totalcost != null">
+        totalcost,
+      </if>
+      <if test="dictionaryid != null">
+        dictionaryid,
+      </if>
+      <if test="owetopay != null">
+        owetopay,
+      </if>
+      <if test="spotpayment != null">
+        spotpayment,
+      </if>
+      <if test="tosubmit != null">
+        tosubmit,
+      </if>
+      <if test="receiptfor != null">
+        receiptfor,
+      </if>
+      <if test="monthlypay != null">
+        monthlypay,
+      </if>
+      <if test="operatingcosts != null">
+        operatingcosts,
+      </if>
+      <if test="otherdescription != null">
+        otherdescription,
+      </if>
+      <if test="billingtime != null">
+        billingtime,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="orderstatus != null">
+        orderstatus,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string2 != null">
+        string2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="consignid != null">
+        #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="receivenoteid != null">
+        #{receivenoteid,jdbcType=INTEGER},
+      </if>
+      <if test="originalprice != null">
+        #{originalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="measurement != null">
+        #{measurement,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmoney != null">
+        #{totalmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="freightcharge != null">
+        #{freightcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="receivingfee != null">
+        #{receivingfee,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverycharge != null">
+        #{deliverycharge,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredvalue != null">
+        #{insuredvalue,jdbcType=DECIMAL},
+      </if>
+      <if test="valuationfee != null">
+        #{valuationfee,jdbcType=DECIMAL},
+      </if>
+      <if test="totalcost != null">
+        #{totalcost,jdbcType=DECIMAL},
+      </if>
+      <if test="dictionaryid != null">
+        #{dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="owetopay != null">
+        #{owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="spotpayment != null">
+        #{spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="tosubmit != null">
+        #{tosubmit,jdbcType=DECIMAL},
+      </if>
+      <if test="receiptfor != null">
+        #{receiptfor,jdbcType=DECIMAL},
+      </if>
+      <if test="monthlypay != null">
+        #{monthlypay,jdbcType=DECIMAL},
+      </if>
+      <if test="operatingcosts != null">
+        #{operatingcosts,jdbcType=DECIMAL},
+      </if>
+      <if test="otherdescription != null">
+        #{otherdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="billingtime != null">
+        #{billingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstatus != null">
+        #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string2 != null">
+        #{string2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.ConsignExample" resultType="java.lang.Integer">
+    select count(*) from consign
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update consign
+    <set>
+      <if test="record.consignid != null">
+        consignid = #{record.consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.destination != null">
+        destination = #{record.destination,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wid != null">
+        wid = #{record.wid,jdbcType=INTEGER},
+      </if>
+      <if test="record.receivenoteid != null">
+        receivenoteid = #{record.receivenoteid,jdbcType=INTEGER},
+      </if>
+      <if test="record.originalprice != null">
+        originalprice = #{record.originalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.measurement != null">
+        measurement = #{record.measurement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalmoney != null">
+        totalmoney = #{record.totalmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.freightcharge != null">
+        freightcharge = #{record.freightcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receivingfee != null">
+        receivingfee = #{record.receivingfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deliverycharge != null">
+        deliverycharge = #{record.deliverycharge,jdbcType=DECIMAL},
+      </if>
+      <if test="record.insuredvalue != null">
+        insuredvalue = #{record.insuredvalue,jdbcType=DECIMAL},
+      </if>
+      <if test="record.valuationfee != null">
+        valuationfee = #{record.valuationfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.totalcost != null">
+        totalcost = #{record.totalcost,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dictionaryid != null">
+        dictionaryid = #{record.dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="record.owetopay != null">
+        owetopay = #{record.owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.spotpayment != null">
+        spotpayment = #{record.spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tosubmit != null">
+        tosubmit = #{record.tosubmit,jdbcType=DECIMAL},
+      </if>
+      <if test="record.receiptfor != null">
+        receiptfor = #{record.receiptfor,jdbcType=DECIMAL},
+      </if>
+      <if test="record.monthlypay != null">
+        monthlypay = #{record.monthlypay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.operatingcosts != null">
+        operatingcosts = #{record.operatingcosts,jdbcType=DECIMAL},
+      </if>
+      <if test="record.otherdescription != null">
+        otherdescription = #{record.otherdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billingtime != null">
+        billingtime = #{record.billingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.operator != null">
+        operator = #{record.operator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderstatus != null">
+        orderstatus = #{record.orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string2 != null">
+        string2 = #{record.string2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update consign
+    set consignid = #{record.consignid,jdbcType=VARCHAR},
+      destination = #{record.destination,jdbcType=VARCHAR},
+      wid = #{record.wid,jdbcType=INTEGER},
+      receivenoteid = #{record.receivenoteid,jdbcType=INTEGER},
+      originalprice = #{record.originalprice,jdbcType=DECIMAL},
+      measurement = #{record.measurement,jdbcType=VARCHAR},
+      totalmoney = #{record.totalmoney,jdbcType=DECIMAL},
+      freightcharge = #{record.freightcharge,jdbcType=DECIMAL},
+      receivingfee = #{record.receivingfee,jdbcType=DECIMAL},
+      deliverycharge = #{record.deliverycharge,jdbcType=DECIMAL},
+      insuredvalue = #{record.insuredvalue,jdbcType=DECIMAL},
+      valuationfee = #{record.valuationfee,jdbcType=DECIMAL},
+      totalcost = #{record.totalcost,jdbcType=DECIMAL},
+      dictionaryid = #{record.dictionaryid,jdbcType=INTEGER},
+      owetopay = #{record.owetopay,jdbcType=DECIMAL},
+      spotpayment = #{record.spotpayment,jdbcType=DECIMAL},
+      tosubmit = #{record.tosubmit,jdbcType=DECIMAL},
+      receiptfor = #{record.receiptfor,jdbcType=DECIMAL},
+      monthlypay = #{record.monthlypay,jdbcType=DECIMAL},
+      operatingcosts = #{record.operatingcosts,jdbcType=DECIMAL},
+      otherdescription = #{record.otherdescription,jdbcType=VARCHAR},
+      billingtime = #{record.billingtime,jdbcType=TIMESTAMP},
+      operator = #{record.operator,jdbcType=VARCHAR},
+      orderstatus = #{record.orderstatus,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string2 = #{record.string2,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Consign">
+    update consign
+    <set>
+      <if test="destination != null">
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        wid = #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="receivenoteid != null">
+        receivenoteid = #{receivenoteid,jdbcType=INTEGER},
+      </if>
+      <if test="originalprice != null">
+        originalprice = #{originalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="measurement != null">
+        measurement = #{measurement,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmoney != null">
+        totalmoney = #{totalmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="freightcharge != null">
+        freightcharge = #{freightcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="receivingfee != null">
+        receivingfee = #{receivingfee,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverycharge != null">
+        deliverycharge = #{deliverycharge,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredvalue != null">
+        insuredvalue = #{insuredvalue,jdbcType=DECIMAL},
+      </if>
+      <if test="valuationfee != null">
+        valuationfee = #{valuationfee,jdbcType=DECIMAL},
+      </if>
+      <if test="totalcost != null">
+        totalcost = #{totalcost,jdbcType=DECIMAL},
+      </if>
+      <if test="dictionaryid != null">
+        dictionaryid = #{dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="owetopay != null">
+        owetopay = #{owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="spotpayment != null">
+        spotpayment = #{spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="tosubmit != null">
+        tosubmit = #{tosubmit,jdbcType=DECIMAL},
+      </if>
+      <if test="receiptfor != null">
+        receiptfor = #{receiptfor,jdbcType=DECIMAL},
+      </if>
+      <if test="monthlypay != null">
+        monthlypay = #{monthlypay,jdbcType=DECIMAL},
+      </if>
+      <if test="operatingcosts != null">
+        operatingcosts = #{operatingcosts,jdbcType=DECIMAL},
+      </if>
+      <if test="otherdescription != null">
+        otherdescription = #{otherdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="billingtime != null">
+        billingtime = #{billingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstatus != null">
+        orderstatus = #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string2 != null">
+        string2 = #{string2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where consignid = #{consignid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Consign">
+    update consign
+    set destination = #{destination,jdbcType=VARCHAR},
+      wid = #{wid,jdbcType=INTEGER},
+      receivenoteid = #{receivenoteid,jdbcType=INTEGER},
+      originalprice = #{originalprice,jdbcType=DECIMAL},
+      measurement = #{measurement,jdbcType=VARCHAR},
+      totalmoney = #{totalmoney,jdbcType=DECIMAL},
+      freightcharge = #{freightcharge,jdbcType=DECIMAL},
+      receivingfee = #{receivingfee,jdbcType=DECIMAL},
+      deliverycharge = #{deliverycharge,jdbcType=DECIMAL},
+      insuredvalue = #{insuredvalue,jdbcType=DECIMAL},
+      valuationfee = #{valuationfee,jdbcType=DECIMAL},
+      totalcost = #{totalcost,jdbcType=DECIMAL},
+      dictionaryid = #{dictionaryid,jdbcType=INTEGER},
+      owetopay = #{owetopay,jdbcType=DECIMAL},
+      spotpayment = #{spotpayment,jdbcType=DECIMAL},
+      tosubmit = #{tosubmit,jdbcType=DECIMAL},
+      receiptfor = #{receiptfor,jdbcType=DECIMAL},
+      monthlypay = #{monthlypay,jdbcType=DECIMAL},
+      operatingcosts = #{operatingcosts,jdbcType=DECIMAL},
+      otherdescription = #{otherdescription,jdbcType=VARCHAR},
+      billingtime = #{billingtime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      orderstatus = #{orderstatus,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string2 = #{string2,jdbcType=VARCHAR}
+    where consignid = #{consignid,jdbcType=VARCHAR}
+  </update>
+</mapper>

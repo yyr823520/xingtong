@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.DriverMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Driver">
+    <id column="drvid" jdbcType="INTEGER" property="drvid" />
+    <result column="drvname" jdbcType="VARCHAR" property="drvname" />
+    <result column="drvsex" jdbcType="CHAR" property="drvsex" />
+    <result column="drvcardnumber" jdbcType="CHAR" property="drvcardnumber" />
+    <result column="drivingtype" jdbcType="VARCHAR" property="drivingtype" />
+    <result column="drivingyears" jdbcType="INTEGER" property="drivingyears" />
+    <result column="drvphone" jdbcType="CHAR" property="drvphone" />
+    <result column="drvisenable" jdbcType="CHAR" property="drvisenable" />
+    <result column="drvaddress" jdbcType="VARCHAR" property="drvaddress" />
+    <result column="drvremark" jdbcType="VARCHAR" property="drvremark" />
+    <result column="vid" jdbcType="INTEGER" property="vid" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    drvid, drvname, drvsex, drvcardnumber, drivingtype, drivingyears, drvphone, drvisenable, 
+    drvaddress, drvremark, vid, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.DriverExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from driver
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from driver
+    where drvid = #{drvid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from driver
+    where drvid = #{drvid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.DriverExample">
+    delete from driver
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Driver">
+    insert into driver (drvid, drvname, drvsex, 
+      drvcardnumber, drivingtype, drivingyears, 
+      drvphone, drvisenable, drvaddress, 
+      drvremark, vid, int0, 
+      string0, string1)
+    values (#{drvid,jdbcType=INTEGER}, #{drvname,jdbcType=VARCHAR}, #{drvsex,jdbcType=CHAR}, 
+      #{drvcardnumber,jdbcType=CHAR}, #{drivingtype,jdbcType=VARCHAR}, #{drivingyears,jdbcType=INTEGER}, 
+      #{drvphone,jdbcType=CHAR}, #{drvisenable,jdbcType=CHAR}, #{drvaddress,jdbcType=VARCHAR}, 
+      #{drvremark,jdbcType=VARCHAR}, #{vid,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Driver">
+    insert into driver
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="drvid != null">
+        drvid,
+      </if>
+      <if test="drvname != null">
+        drvname,
+      </if>
+      <if test="drvsex != null">
+        drvsex,
+      </if>
+      <if test="drvcardnumber != null">
+        drvcardnumber,
+      </if>
+      <if test="drivingtype != null">
+        drivingtype,
+      </if>
+      <if test="drivingyears != null">
+        drivingyears,
+      </if>
+      <if test="drvphone != null">
+        drvphone,
+      </if>
+      <if test="drvisenable != null">
+        drvisenable,
+      </if>
+      <if test="drvaddress != null">
+        drvaddress,
+      </if>
+      <if test="drvremark != null">
+        drvremark,
+      </if>
+      <if test="vid != null">
+        vid,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="drvid != null">
+        #{drvid,jdbcType=INTEGER},
+      </if>
+      <if test="drvname != null">
+        #{drvname,jdbcType=VARCHAR},
+      </if>
+      <if test="drvsex != null">
+        #{drvsex,jdbcType=CHAR},
+      </if>
+      <if test="drvcardnumber != null">
+        #{drvcardnumber,jdbcType=CHAR},
+      </if>
+      <if test="drivingtype != null">
+        #{drivingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingyears != null">
+        #{drivingyears,jdbcType=INTEGER},
+      </if>
+      <if test="drvphone != null">
+        #{drvphone,jdbcType=CHAR},
+      </if>
+      <if test="drvisenable != null">
+        #{drvisenable,jdbcType=CHAR},
+      </if>
+      <if test="drvaddress != null">
+        #{drvaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="drvremark != null">
+        #{drvremark,jdbcType=VARCHAR},
+      </if>
+      <if test="vid != null">
+        #{vid,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.DriverExample" resultType="java.lang.Integer">
+    select count(*) from driver
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update driver
+    <set>
+      <if test="record.drvid != null">
+        drvid = #{record.drvid,jdbcType=INTEGER},
+      </if>
+      <if test="record.drvname != null">
+        drvname = #{record.drvname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drvsex != null">
+        drvsex = #{record.drvsex,jdbcType=CHAR},
+      </if>
+      <if test="record.drvcardnumber != null">
+        drvcardnumber = #{record.drvcardnumber,jdbcType=CHAR},
+      </if>
+      <if test="record.drivingtype != null">
+        drivingtype = #{record.drivingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drivingyears != null">
+        drivingyears = #{record.drivingyears,jdbcType=INTEGER},
+      </if>
+      <if test="record.drvphone != null">
+        drvphone = #{record.drvphone,jdbcType=CHAR},
+      </if>
+      <if test="record.drvisenable != null">
+        drvisenable = #{record.drvisenable,jdbcType=CHAR},
+      </if>
+      <if test="record.drvaddress != null">
+        drvaddress = #{record.drvaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drvremark != null">
+        drvremark = #{record.drvremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vid != null">
+        vid = #{record.vid,jdbcType=INTEGER},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update driver
+    set drvid = #{record.drvid,jdbcType=INTEGER},
+      drvname = #{record.drvname,jdbcType=VARCHAR},
+      drvsex = #{record.drvsex,jdbcType=CHAR},
+      drvcardnumber = #{record.drvcardnumber,jdbcType=CHAR},
+      drivingtype = #{record.drivingtype,jdbcType=VARCHAR},
+      drivingyears = #{record.drivingyears,jdbcType=INTEGER},
+      drvphone = #{record.drvphone,jdbcType=CHAR},
+      drvisenable = #{record.drvisenable,jdbcType=CHAR},
+      drvaddress = #{record.drvaddress,jdbcType=VARCHAR},
+      drvremark = #{record.drvremark,jdbcType=VARCHAR},
+      vid = #{record.vid,jdbcType=INTEGER},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Driver">
+    update driver
+    <set>
+      <if test="drvname != null">
+        drvname = #{drvname,jdbcType=VARCHAR},
+      </if>
+      <if test="drvsex != null">
+        drvsex = #{drvsex,jdbcType=CHAR},
+      </if>
+      <if test="drvcardnumber != null">
+        drvcardnumber = #{drvcardnumber,jdbcType=CHAR},
+      </if>
+      <if test="drivingtype != null">
+        drivingtype = #{drivingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingyears != null">
+        drivingyears = #{drivingyears,jdbcType=INTEGER},
+      </if>
+      <if test="drvphone != null">
+        drvphone = #{drvphone,jdbcType=CHAR},
+      </if>
+      <if test="drvisenable != null">
+        drvisenable = #{drvisenable,jdbcType=CHAR},
+      </if>
+      <if test="drvaddress != null">
+        drvaddress = #{drvaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="drvremark != null">
+        drvremark = #{drvremark,jdbcType=VARCHAR},
+      </if>
+      <if test="vid != null">
+        vid = #{vid,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where drvid = #{drvid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Driver">
+    update driver
+    set drvname = #{drvname,jdbcType=VARCHAR},
+      drvsex = #{drvsex,jdbcType=CHAR},
+      drvcardnumber = #{drvcardnumber,jdbcType=CHAR},
+      drivingtype = #{drivingtype,jdbcType=VARCHAR},
+      drivingyears = #{drivingyears,jdbcType=INTEGER},
+      drvphone = #{drvphone,jdbcType=CHAR},
+      drvisenable = #{drvisenable,jdbcType=CHAR},
+      drvaddress = #{drvaddress,jdbcType=VARCHAR},
+      drvremark = #{drvremark,jdbcType=VARCHAR},
+      vid = #{vid,jdbcType=INTEGER},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where drvid = #{drvid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Driver">
+    <id column="drvid" jdbcType="INTEGER" property="drvid" />
+    <result column="drvname" jdbcType="VARCHAR" property="drvname" />
+    <result column="drvsex" jdbcType="CHAR" property="drvsex" />
+    <result column="drvcardnumber" jdbcType="CHAR" property="drvcardnumber" />
+    <result column="drivingtype" jdbcType="VARCHAR" property="drivingtype" />
+    <result column="drivingyears" jdbcType="INTEGER" property="drivingyears" />
+    <result column="drvphone" jdbcType="CHAR" property="drvphone" />
+    <result column="drvisenable" jdbcType="CHAR" property="drvisenable" />
+    <result column="drvaddress" jdbcType="VARCHAR" property="drvaddress" />
+    <result column="drvremark" jdbcType="VARCHAR" property="drvremark" />
+    <result column="vid" jdbcType="INTEGER" property="vid" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    drvid, drvname, drvsex, drvcardnumber, drivingtype, drivingyears, drvphone, drvisenable, 
+    drvaddress, drvremark, vid, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.DriverExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from driver
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from driver
+    where drvid = #{drvid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from driver
+    where drvid = #{drvid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.DriverExample">
+    delete from driver
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Driver">
+    insert into driver (drvid, drvname, drvsex, 
+      drvcardnumber, drivingtype, drivingyears, 
+      drvphone, drvisenable, drvaddress, 
+      drvremark, vid, int0, 
+      string0, string1)
+    values (#{drvid,jdbcType=INTEGER}, #{drvname,jdbcType=VARCHAR}, #{drvsex,jdbcType=CHAR}, 
+      #{drvcardnumber,jdbcType=CHAR}, #{drivingtype,jdbcType=VARCHAR}, #{drivingyears,jdbcType=INTEGER}, 
+      #{drvphone,jdbcType=CHAR}, #{drvisenable,jdbcType=CHAR}, #{drvaddress,jdbcType=VARCHAR}, 
+      #{drvremark,jdbcType=VARCHAR}, #{vid,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Driver">
+    insert into driver
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="drvid != null">
+        drvid,
+      </if>
+      <if test="drvname != null">
+        drvname,
+      </if>
+      <if test="drvsex != null">
+        drvsex,
+      </if>
+      <if test="drvcardnumber != null">
+        drvcardnumber,
+      </if>
+      <if test="drivingtype != null">
+        drivingtype,
+      </if>
+      <if test="drivingyears != null">
+        drivingyears,
+      </if>
+      <if test="drvphone != null">
+        drvphone,
+      </if>
+      <if test="drvisenable != null">
+        drvisenable,
+      </if>
+      <if test="drvaddress != null">
+        drvaddress,
+      </if>
+      <if test="drvremark != null">
+        drvremark,
+      </if>
+      <if test="vid != null">
+        vid,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="drvid != null">
+        #{drvid,jdbcType=INTEGER},
+      </if>
+      <if test="drvname != null">
+        #{drvname,jdbcType=VARCHAR},
+      </if>
+      <if test="drvsex != null">
+        #{drvsex,jdbcType=CHAR},
+      </if>
+      <if test="drvcardnumber != null">
+        #{drvcardnumber,jdbcType=CHAR},
+      </if>
+      <if test="drivingtype != null">
+        #{drivingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingyears != null">
+        #{drivingyears,jdbcType=INTEGER},
+      </if>
+      <if test="drvphone != null">
+        #{drvphone,jdbcType=CHAR},
+      </if>
+      <if test="drvisenable != null">
+        #{drvisenable,jdbcType=CHAR},
+      </if>
+      <if test="drvaddress != null">
+        #{drvaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="drvremark != null">
+        #{drvremark,jdbcType=VARCHAR},
+      </if>
+      <if test="vid != null">
+        #{vid,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.DriverExample" resultType="java.lang.Integer">
+    select count(*) from driver
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update driver
+    <set>
+      <if test="record.drvid != null">
+        drvid = #{record.drvid,jdbcType=INTEGER},
+      </if>
+      <if test="record.drvname != null">
+        drvname = #{record.drvname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drvsex != null">
+        drvsex = #{record.drvsex,jdbcType=CHAR},
+      </if>
+      <if test="record.drvcardnumber != null">
+        drvcardnumber = #{record.drvcardnumber,jdbcType=CHAR},
+      </if>
+      <if test="record.drivingtype != null">
+        drivingtype = #{record.drivingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drivingyears != null">
+        drivingyears = #{record.drivingyears,jdbcType=INTEGER},
+      </if>
+      <if test="record.drvphone != null">
+        drvphone = #{record.drvphone,jdbcType=CHAR},
+      </if>
+      <if test="record.drvisenable != null">
+        drvisenable = #{record.drvisenable,jdbcType=CHAR},
+      </if>
+      <if test="record.drvaddress != null">
+        drvaddress = #{record.drvaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drvremark != null">
+        drvremark = #{record.drvremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vid != null">
+        vid = #{record.vid,jdbcType=INTEGER},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update driver
+    set drvid = #{record.drvid,jdbcType=INTEGER},
+      drvname = #{record.drvname,jdbcType=VARCHAR},
+      drvsex = #{record.drvsex,jdbcType=CHAR},
+      drvcardnumber = #{record.drvcardnumber,jdbcType=CHAR},
+      drivingtype = #{record.drivingtype,jdbcType=VARCHAR},
+      drivingyears = #{record.drivingyears,jdbcType=INTEGER},
+      drvphone = #{record.drvphone,jdbcType=CHAR},
+      drvisenable = #{record.drvisenable,jdbcType=CHAR},
+      drvaddress = #{record.drvaddress,jdbcType=VARCHAR},
+      drvremark = #{record.drvremark,jdbcType=VARCHAR},
+      vid = #{record.vid,jdbcType=INTEGER},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Driver">
+    update driver
+    <set>
+      <if test="drvname != null">
+        drvname = #{drvname,jdbcType=VARCHAR},
+      </if>
+      <if test="drvsex != null">
+        drvsex = #{drvsex,jdbcType=CHAR},
+      </if>
+      <if test="drvcardnumber != null">
+        drvcardnumber = #{drvcardnumber,jdbcType=CHAR},
+      </if>
+      <if test="drivingtype != null">
+        drivingtype = #{drivingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingyears != null">
+        drivingyears = #{drivingyears,jdbcType=INTEGER},
+      </if>
+      <if test="drvphone != null">
+        drvphone = #{drvphone,jdbcType=CHAR},
+      </if>
+      <if test="drvisenable != null">
+        drvisenable = #{drvisenable,jdbcType=CHAR},
+      </if>
+      <if test="drvaddress != null">
+        drvaddress = #{drvaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="drvremark != null">
+        drvremark = #{drvremark,jdbcType=VARCHAR},
+      </if>
+      <if test="vid != null">
+        vid = #{vid,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where drvid = #{drvid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Driver">
+    update driver
+    set drvname = #{drvname,jdbcType=VARCHAR},
+      drvsex = #{drvsex,jdbcType=CHAR},
+      drvcardnumber = #{drvcardnumber,jdbcType=CHAR},
+      drivingtype = #{drivingtype,jdbcType=VARCHAR},
+      drivingyears = #{drivingyears,jdbcType=INTEGER},
+      drvphone = #{drvphone,jdbcType=CHAR},
+      drvisenable = #{drvisenable,jdbcType=CHAR},
+      drvaddress = #{drvaddress,jdbcType=VARCHAR},
+      drvremark = #{drvremark,jdbcType=VARCHAR},
+      vid = #{vid,jdbcType=INTEGER},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where drvid = #{drvid,jdbcType=INTEGER}
+  </update>
+</mapper>

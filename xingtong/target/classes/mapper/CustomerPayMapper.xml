@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.CustomerPayMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.CustomerPay">
+    <id column="customerpayid" jdbcType="INTEGER" property="customerpayid" />
+    <result column="consignid" jdbcType="VARCHAR" property="consignid" />
+    <result column="pay" jdbcType="VARCHAR" property="pay" />
+    <result column="personpay" jdbcType="TIMESTAMP" property="personpay" />
+    <result column="employeeid" jdbcType="INTEGER" property="employeeid" />
+    <result column="cpremark" jdbcType="VARCHAR" property="cpremark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    customerpayid, consignid, pay, personpay, employeeid, cpremark
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.CustomerPayExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customerpay
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customerpay
+    where customerpayid = #{customerpayid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customerpay
+    where customerpayid = #{customerpayid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.CustomerPayExample">
+    delete from customerpay
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.CustomerPay">
+    insert into customerpay (customerpayid, consignid, pay, 
+      personpay, employeeid, cpremark
+      )
+    values (#{customerpayid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, #{pay,jdbcType=VARCHAR}, 
+      #{personpay,jdbcType=TIMESTAMP}, #{employeeid,jdbcType=INTEGER}, #{cpremark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.CustomerPay">
+    insert into customerpay
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerpayid != null">
+        customerpayid,
+      </if>
+      <if test="consignid != null">
+        consignid,
+      </if>
+      <if test="pay != null">
+        pay,
+      </if>
+      <if test="personpay != null">
+        personpay,
+      </if>
+      <if test="employeeid != null">
+        employeeid,
+      </if>
+      <if test="cpremark != null">
+        cpremark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerpayid != null">
+        #{customerpayid,jdbcType=INTEGER},
+      </if>
+      <if test="consignid != null">
+        #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        #{pay,jdbcType=VARCHAR},
+      </if>
+      <if test="personpay != null">
+        #{personpay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeid != null">
+        #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="cpremark != null">
+        #{cpremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.CustomerPayExample" resultType="java.lang.Integer">
+    select count(*) from customerpay
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update customerpay
+    <set>
+      <if test="record.customerpayid != null">
+        customerpayid = #{record.customerpayid,jdbcType=INTEGER},
+      </if>
+      <if test="record.consignid != null">
+        consignid = #{record.consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pay != null">
+        pay = #{record.pay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personpay != null">
+        personpay = #{record.personpay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.employeeid != null">
+        employeeid = #{record.employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cpremark != null">
+        cpremark = #{record.cpremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update customerpay
+    set customerpayid = #{record.customerpayid,jdbcType=INTEGER},
+      consignid = #{record.consignid,jdbcType=VARCHAR},
+      pay = #{record.pay,jdbcType=VARCHAR},
+      personpay = #{record.personpay,jdbcType=TIMESTAMP},
+      employeeid = #{record.employeeid,jdbcType=INTEGER},
+      cpremark = #{record.cpremark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.CustomerPay">
+    update customerpay
+    <set>
+      <if test="consignid != null">
+        consignid = #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        pay = #{pay,jdbcType=VARCHAR},
+      </if>
+      <if test="personpay != null">
+        personpay = #{personpay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeid != null">
+        employeeid = #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="cpremark != null">
+        cpremark = #{cpremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where customerpayid = #{customerpayid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.CustomerPay">
+    update customerpay
+    set consignid = #{consignid,jdbcType=VARCHAR},
+      pay = #{pay,jdbcType=VARCHAR},
+      personpay = #{personpay,jdbcType=TIMESTAMP},
+      employeeid = #{employeeid,jdbcType=INTEGER},
+      cpremark = #{cpremark,jdbcType=VARCHAR}
+    where customerpayid = #{customerpayid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.CustomerPay">
+    <id column="customerpayid" jdbcType="INTEGER" property="customerpayid" />
+    <result column="consignid" jdbcType="VARCHAR" property="consignid" />
+    <result column="pay" jdbcType="VARCHAR" property="pay" />
+    <result column="personpay" jdbcType="TIMESTAMP" property="personpay" />
+    <result column="employeeid" jdbcType="INTEGER" property="employeeid" />
+    <result column="cpremark" jdbcType="VARCHAR" property="cpremark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    customerpayid, consignid, pay, personpay, employeeid, cpremark
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.CustomerPayExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customerpay
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customerpay
+    where customerpayid = #{customerpayid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customerpay
+    where customerpayid = #{customerpayid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.CustomerPayExample">
+    delete from customerpay
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.CustomerPay">
+    insert into customerpay (customerpayid, consignid, pay, 
+      personpay, employeeid, cpremark
+      )
+    values (#{customerpayid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, #{pay,jdbcType=VARCHAR}, 
+      #{personpay,jdbcType=TIMESTAMP}, #{employeeid,jdbcType=INTEGER}, #{cpremark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.CustomerPay">
+    insert into customerpay
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerpayid != null">
+        customerpayid,
+      </if>
+      <if test="consignid != null">
+        consignid,
+      </if>
+      <if test="pay != null">
+        pay,
+      </if>
+      <if test="personpay != null">
+        personpay,
+      </if>
+      <if test="employeeid != null">
+        employeeid,
+      </if>
+      <if test="cpremark != null">
+        cpremark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerpayid != null">
+        #{customerpayid,jdbcType=INTEGER},
+      </if>
+      <if test="consignid != null">
+        #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        #{pay,jdbcType=VARCHAR},
+      </if>
+      <if test="personpay != null">
+        #{personpay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeid != null">
+        #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="cpremark != null">
+        #{cpremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.CustomerPayExample" resultType="java.lang.Integer">
+    select count(*) from customerpay
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update customerpay
+    <set>
+      <if test="record.customerpayid != null">
+        customerpayid = #{record.customerpayid,jdbcType=INTEGER},
+      </if>
+      <if test="record.consignid != null">
+        consignid = #{record.consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pay != null">
+        pay = #{record.pay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personpay != null">
+        personpay = #{record.personpay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.employeeid != null">
+        employeeid = #{record.employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cpremark != null">
+        cpremark = #{record.cpremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update customerpay
+    set customerpayid = #{record.customerpayid,jdbcType=INTEGER},
+      consignid = #{record.consignid,jdbcType=VARCHAR},
+      pay = #{record.pay,jdbcType=VARCHAR},
+      personpay = #{record.personpay,jdbcType=TIMESTAMP},
+      employeeid = #{record.employeeid,jdbcType=INTEGER},
+      cpremark = #{record.cpremark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.CustomerPay">
+    update customerpay
+    <set>
+      <if test="consignid != null">
+        consignid = #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        pay = #{pay,jdbcType=VARCHAR},
+      </if>
+      <if test="personpay != null">
+        personpay = #{personpay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeid != null">
+        employeeid = #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="cpremark != null">
+        cpremark = #{cpremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where customerpayid = #{customerpayid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.CustomerPay">
+    update customerpay
+    set consignid = #{consignid,jdbcType=VARCHAR},
+      pay = #{pay,jdbcType=VARCHAR},
+      personpay = #{personpay,jdbcType=TIMESTAMP},
+      employeeid = #{employeeid,jdbcType=INTEGER},
+      cpremark = #{cpremark,jdbcType=VARCHAR}
+    where customerpayid = #{customerpayid,jdbcType=INTEGER}
+  </update>
+</mapper>

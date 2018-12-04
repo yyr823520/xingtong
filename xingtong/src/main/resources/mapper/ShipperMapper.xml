@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.ShipperMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Shipper">
+    <id column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="sname" jdbcType="VARCHAR" property="sname" />
+    <result column="companyname" jdbcType="VARCHAR" property="companyname" />
+    <result column="stelephone" jdbcType="CHAR" property="stelephone" />
+    <result column="sfax" jdbcType="VARCHAR" property="sfax" />
+    <result column="sphone" jdbcType="CHAR" property="sphone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="qqormsn" jdbcType="VARCHAR" property="qqormsn" />
+    <result column="earlyaccount" jdbcType="DECIMAL" property="earlyaccount" />
+    <result column="saddress" jdbcType="VARCHAR" property="saddress" />
+    <result column="sremark" jdbcType="VARCHAR" property="sremark" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    sid, sname, companyname, stelephone, sfax, sphone, email, qqormsn, earlyaccount, 
+    saddress, sremark, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.ShipperExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shipper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shipper
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shipper
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.ShipperExample">
+    delete from shipper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Shipper">
+    insert into shipper (sid, sname, companyname, 
+      stelephone, sfax, sphone, 
+      email, qqormsn, earlyaccount, 
+      saddress, sremark, int0, 
+      string0, string1)
+    values (#{sid,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
+      #{stelephone,jdbcType=CHAR}, #{sfax,jdbcType=VARCHAR}, #{sphone,jdbcType=CHAR}, 
+      #{email,jdbcType=VARCHAR}, #{qqormsn,jdbcType=VARCHAR}, #{earlyaccount,jdbcType=DECIMAL}, 
+      #{saddress,jdbcType=VARCHAR}, #{sremark,jdbcType=VARCHAR}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Shipper">
+    insert into shipper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="sname != null">
+        sname,
+      </if>
+      <if test="companyname != null">
+        companyname,
+      </if>
+      <if test="stelephone != null">
+        stelephone,
+      </if>
+      <if test="sfax != null">
+        sfax,
+      </if>
+      <if test="sphone != null">
+        sphone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="qqormsn != null">
+        qqormsn,
+      </if>
+      <if test="earlyaccount != null">
+        earlyaccount,
+      </if>
+      <if test="saddress != null">
+        saddress,
+      </if>
+      <if test="sremark != null">
+        sremark,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="sname != null">
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="stelephone != null">
+        #{stelephone,jdbcType=CHAR},
+      </if>
+      <if test="sfax != null">
+        #{sfax,jdbcType=VARCHAR},
+      </if>
+      <if test="sphone != null">
+        #{sphone,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qqormsn != null">
+        #{qqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyaccount != null">
+        #{earlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="saddress != null">
+        #{saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sremark != null">
+        #{sremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.ShipperExample" resultType="java.lang.Integer">
+    select count(*) from shipper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update shipper
+    <set>
+      <if test="record.sid != null">
+        sid = #{record.sid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sname != null">
+        sname = #{record.sname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyname != null">
+        companyname = #{record.companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stelephone != null">
+        stelephone = #{record.stelephone,jdbcType=CHAR},
+      </if>
+      <if test="record.sfax != null">
+        sfax = #{record.sfax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sphone != null">
+        sphone = #{record.sphone,jdbcType=CHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qqormsn != null">
+        qqormsn = #{record.qqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.earlyaccount != null">
+        earlyaccount = #{record.earlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.saddress != null">
+        saddress = #{record.saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sremark != null">
+        sremark = #{record.sremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update shipper
+    set sid = #{record.sid,jdbcType=INTEGER},
+      sname = #{record.sname,jdbcType=VARCHAR},
+      companyname = #{record.companyname,jdbcType=VARCHAR},
+      stelephone = #{record.stelephone,jdbcType=CHAR},
+      sfax = #{record.sfax,jdbcType=VARCHAR},
+      sphone = #{record.sphone,jdbcType=CHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      qqormsn = #{record.qqormsn,jdbcType=VARCHAR},
+      earlyaccount = #{record.earlyaccount,jdbcType=DECIMAL},
+      saddress = #{record.saddress,jdbcType=VARCHAR},
+      sremark = #{record.sremark,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Shipper">
+    update shipper
+    <set>
+      <if test="sname != null">
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        companyname = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="stelephone != null">
+        stelephone = #{stelephone,jdbcType=CHAR},
+      </if>
+      <if test="sfax != null">
+        sfax = #{sfax,jdbcType=VARCHAR},
+      </if>
+      <if test="sphone != null">
+        sphone = #{sphone,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qqormsn != null">
+        qqormsn = #{qqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyaccount != null">
+        earlyaccount = #{earlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="saddress != null">
+        saddress = #{saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sremark != null">
+        sremark = #{sremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Shipper">
+    update shipper
+    set sname = #{sname,jdbcType=VARCHAR},
+      companyname = #{companyname,jdbcType=VARCHAR},
+      stelephone = #{stelephone,jdbcType=CHAR},
+      sfax = #{sfax,jdbcType=VARCHAR},
+      sphone = #{sphone,jdbcType=CHAR},
+      email = #{email,jdbcType=VARCHAR},
+      qqormsn = #{qqormsn,jdbcType=VARCHAR},
+      earlyaccount = #{earlyaccount,jdbcType=DECIMAL},
+      saddress = #{saddress,jdbcType=VARCHAR},
+      sremark = #{sremark,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Shipper">
+    <id column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="sname" jdbcType="VARCHAR" property="sname" />
+    <result column="companyname" jdbcType="VARCHAR" property="companyname" />
+    <result column="stelephone" jdbcType="CHAR" property="stelephone" />
+    <result column="sfax" jdbcType="VARCHAR" property="sfax" />
+    <result column="sphone" jdbcType="CHAR" property="sphone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="qqormsn" jdbcType="VARCHAR" property="qqormsn" />
+    <result column="earlyaccount" jdbcType="DECIMAL" property="earlyaccount" />
+    <result column="saddress" jdbcType="VARCHAR" property="saddress" />
+    <result column="sremark" jdbcType="VARCHAR" property="sremark" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    sid, sname, companyname, stelephone, sfax, sphone, email, qqormsn, earlyaccount, 
+    saddress, sremark, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.ShipperExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shipper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shipper
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shipper
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.ShipperExample">
+    delete from shipper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Shipper">
+    insert into shipper (sid, sname, companyname, 
+      stelephone, sfax, sphone, 
+      email, qqormsn, earlyaccount, 
+      saddress, sremark, int0, 
+      string0, string1)
+    values (#{sid,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
+      #{stelephone,jdbcType=CHAR}, #{sfax,jdbcType=VARCHAR}, #{sphone,jdbcType=CHAR}, 
+      #{email,jdbcType=VARCHAR}, #{qqormsn,jdbcType=VARCHAR}, #{earlyaccount,jdbcType=DECIMAL}, 
+      #{saddress,jdbcType=VARCHAR}, #{sremark,jdbcType=VARCHAR}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Shipper">
+    insert into shipper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="sname != null">
+        sname,
+      </if>
+      <if test="companyname != null">
+        companyname,
+      </if>
+      <if test="stelephone != null">
+        stelephone,
+      </if>
+      <if test="sfax != null">
+        sfax,
+      </if>
+      <if test="sphone != null">
+        sphone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="qqormsn != null">
+        qqormsn,
+      </if>
+      <if test="earlyaccount != null">
+        earlyaccount,
+      </if>
+      <if test="saddress != null">
+        saddress,
+      </if>
+      <if test="sremark != null">
+        sremark,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="sname != null">
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="stelephone != null">
+        #{stelephone,jdbcType=CHAR},
+      </if>
+      <if test="sfax != null">
+        #{sfax,jdbcType=VARCHAR},
+      </if>
+      <if test="sphone != null">
+        #{sphone,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qqormsn != null">
+        #{qqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyaccount != null">
+        #{earlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="saddress != null">
+        #{saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sremark != null">
+        #{sremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.ShipperExample" resultType="java.lang.Integer">
+    select count(*) from shipper
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update shipper
+    <set>
+      <if test="record.sid != null">
+        sid = #{record.sid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sname != null">
+        sname = #{record.sname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyname != null">
+        companyname = #{record.companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stelephone != null">
+        stelephone = #{record.stelephone,jdbcType=CHAR},
+      </if>
+      <if test="record.sfax != null">
+        sfax = #{record.sfax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sphone != null">
+        sphone = #{record.sphone,jdbcType=CHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qqormsn != null">
+        qqormsn = #{record.qqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.earlyaccount != null">
+        earlyaccount = #{record.earlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.saddress != null">
+        saddress = #{record.saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sremark != null">
+        sremark = #{record.sremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update shipper
+    set sid = #{record.sid,jdbcType=INTEGER},
+      sname = #{record.sname,jdbcType=VARCHAR},
+      companyname = #{record.companyname,jdbcType=VARCHAR},
+      stelephone = #{record.stelephone,jdbcType=CHAR},
+      sfax = #{record.sfax,jdbcType=VARCHAR},
+      sphone = #{record.sphone,jdbcType=CHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      qqormsn = #{record.qqormsn,jdbcType=VARCHAR},
+      earlyaccount = #{record.earlyaccount,jdbcType=DECIMAL},
+      saddress = #{record.saddress,jdbcType=VARCHAR},
+      sremark = #{record.sremark,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Shipper">
+    update shipper
+    <set>
+      <if test="sname != null">
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        companyname = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="stelephone != null">
+        stelephone = #{stelephone,jdbcType=CHAR},
+      </if>
+      <if test="sfax != null">
+        sfax = #{sfax,jdbcType=VARCHAR},
+      </if>
+      <if test="sphone != null">
+        sphone = #{sphone,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qqormsn != null">
+        qqormsn = #{qqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyaccount != null">
+        earlyaccount = #{earlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="saddress != null">
+        saddress = #{saddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sremark != null">
+        sremark = #{sremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Shipper">
+    update shipper
+    set sname = #{sname,jdbcType=VARCHAR},
+      companyname = #{companyname,jdbcType=VARCHAR},
+      stelephone = #{stelephone,jdbcType=CHAR},
+      sfax = #{sfax,jdbcType=VARCHAR},
+      sphone = #{sphone,jdbcType=CHAR},
+      email = #{email,jdbcType=VARCHAR},
+      qqormsn = #{qqormsn,jdbcType=VARCHAR},
+      earlyaccount = #{earlyaccount,jdbcType=DECIMAL},
+      saddress = #{saddress,jdbcType=VARCHAR},
+      sremark = #{sremark,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+</mapper>

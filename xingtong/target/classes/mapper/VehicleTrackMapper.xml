@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.VehicleTrackMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.VehicleTrack">
+    <id column="vehicletrackid" jdbcType="INTEGER" property="vehicletrackid" />
+    <result column="vehicleid" jdbcType="INTEGER" property="vehicleid" />
+    <result column="consignid" jdbcType="VARCHAR" property="consignid" />
+    <result column="currentposition" jdbcType="VARCHAR" property="currentposition" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    vehicletrackid, vehicleid, consignid, currentposition
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.VehicleTrackExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from vehicletrack
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from vehicletrack
+    where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from vehicletrack
+    where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.VehicleTrackExample">
+    delete from vehicletrack
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.VehicleTrack">
+    insert into vehicletrack (vehicletrackid, vehicleid, consignid, 
+      currentposition)
+    values (#{vehicletrackid,jdbcType=INTEGER}, #{vehicleid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, 
+      #{currentposition,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.VehicleTrack">
+    insert into vehicletrack
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="vehicletrackid != null">
+        vehicletrackid,
+      </if>
+      <if test="vehicleid != null">
+        vehicleid,
+      </if>
+      <if test="consignid != null">
+        consignid,
+      </if>
+      <if test="currentposition != null">
+        currentposition,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="vehicletrackid != null">
+        #{vehicletrackid,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleid != null">
+        #{vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="consignid != null">
+        #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="currentposition != null">
+        #{currentposition,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.VehicleTrackExample" resultType="java.lang.Integer">
+    select count(*) from vehicletrack
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update vehicletrack
+    <set>
+      <if test="record.vehicletrackid != null">
+        vehicletrackid = #{record.vehicletrackid,jdbcType=INTEGER},
+      </if>
+      <if test="record.vehicleid != null">
+        vehicleid = #{record.vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.consignid != null">
+        consignid = #{record.consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentposition != null">
+        currentposition = #{record.currentposition,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update vehicletrack
+    set vehicletrackid = #{record.vehicletrackid,jdbcType=INTEGER},
+      vehicleid = #{record.vehicleid,jdbcType=INTEGER},
+      consignid = #{record.consignid,jdbcType=VARCHAR},
+      currentposition = #{record.currentposition,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.VehicleTrack">
+    update vehicletrack
+    <set>
+      <if test="vehicleid != null">
+        vehicleid = #{vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="consignid != null">
+        consignid = #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="currentposition != null">
+        currentposition = #{currentposition,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.VehicleTrack">
+    update vehicletrack
+    set vehicleid = #{vehicleid,jdbcType=INTEGER},
+      consignid = #{consignid,jdbcType=VARCHAR},
+      currentposition = #{currentposition,jdbcType=VARCHAR}
+    where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.VehicleTrack">
+    <id column="vehicletrackid" jdbcType="INTEGER" property="vehicletrackid" />
+    <result column="vehicleid" jdbcType="INTEGER" property="vehicleid" />
+    <result column="consignid" jdbcType="VARCHAR" property="consignid" />
+    <result column="currentposition" jdbcType="VARCHAR" property="currentposition" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    vehicletrackid, vehicleid, consignid, currentposition
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.VehicleTrackExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from vehicletrack
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from vehicletrack
+    where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from vehicletrack
+    where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.VehicleTrackExample">
+    delete from vehicletrack
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.VehicleTrack">
+    insert into vehicletrack (vehicletrackid, vehicleid, consignid, 
+      currentposition)
+    values (#{vehicletrackid,jdbcType=INTEGER}, #{vehicleid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, 
+      #{currentposition,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.VehicleTrack">
+    insert into vehicletrack
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="vehicletrackid != null">
+        vehicletrackid,
+      </if>
+      <if test="vehicleid != null">
+        vehicleid,
+      </if>
+      <if test="consignid != null">
+        consignid,
+      </if>
+      <if test="currentposition != null">
+        currentposition,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="vehicletrackid != null">
+        #{vehicletrackid,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleid != null">
+        #{vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="consignid != null">
+        #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="currentposition != null">
+        #{currentposition,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.VehicleTrackExample" resultType="java.lang.Integer">
+    select count(*) from vehicletrack
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update vehicletrack
+    <set>
+      <if test="record.vehicletrackid != null">
+        vehicletrackid = #{record.vehicletrackid,jdbcType=INTEGER},
+      </if>
+      <if test="record.vehicleid != null">
+        vehicleid = #{record.vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.consignid != null">
+        consignid = #{record.consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentposition != null">
+        currentposition = #{record.currentposition,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update vehicletrack
+    set vehicletrackid = #{record.vehicletrackid,jdbcType=INTEGER},
+      vehicleid = #{record.vehicleid,jdbcType=INTEGER},
+      consignid = #{record.consignid,jdbcType=VARCHAR},
+      currentposition = #{record.currentposition,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.VehicleTrack">
+    update vehicletrack
+    <set>
+      <if test="vehicleid != null">
+        vehicleid = #{vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="consignid != null">
+        consignid = #{consignid,jdbcType=VARCHAR},
+      </if>
+      <if test="currentposition != null">
+        currentposition = #{currentposition,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.VehicleTrack">
+    update vehicletrack
+    set vehicleid = #{vehicleid,jdbcType=INTEGER},
+      consignid = #{consignid,jdbcType=VARCHAR},
+      currentposition = #{currentposition,jdbcType=VARCHAR}
+    where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
+  </update>
+</mapper>

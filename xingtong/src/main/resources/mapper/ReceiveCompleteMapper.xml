@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.ReceiveCompleteMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.ReceiveComplete">
+    <id column="rcompleteid" jdbcType="VARCHAR" property="rcompleteid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="completetime" jdbcType="DATE" property="completetime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    rcompleteid, status, completetime
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.ReceiveCompleteExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from receivecomplete
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from receivecomplete
+    where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from receivecomplete
+    where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.ReceiveCompleteExample">
+    delete from receivecomplete
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.ReceiveComplete">
+    insert into receivecomplete (rcompleteid, status, completetime
+      )
+    values (#{rcompleteid,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{completetime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.ReceiveComplete">
+    insert into receivecomplete
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rcompleteid != null">
+        rcompleteid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="completetime != null">
+        completetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rcompleteid != null">
+        #{rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="completetime != null">
+        #{completetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.ReceiveCompleteExample" resultType="java.lang.Integer">
+    select count(*) from receivecomplete
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update receivecomplete
+    <set>
+      <if test="record.rcompleteid != null">
+        rcompleteid = #{record.rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.completetime != null">
+        completetime = #{record.completetime,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update receivecomplete
+    set rcompleteid = #{record.rcompleteid,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      completetime = #{record.completetime,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ReceiveComplete">
+    update receivecomplete
+    <set>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="completetime != null">
+        completetime = #{completetime,jdbcType=DATE},
+      </if>
+    </set>
+    where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ReceiveComplete">
+    update receivecomplete
+    set status = #{status,jdbcType=INTEGER},
+      completetime = #{completetime,jdbcType=DATE}
+    where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.ReceiveComplete">
+    <id column="rcompleteid" jdbcType="VARCHAR" property="rcompleteid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="completetime" jdbcType="DATE" property="completetime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    rcompleteid, status, completetime
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.ReceiveCompleteExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from receivecomplete
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from receivecomplete
+    where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from receivecomplete
+    where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.ReceiveCompleteExample">
+    delete from receivecomplete
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.ReceiveComplete">
+    insert into receivecomplete (rcompleteid, status, completetime
+      )
+    values (#{rcompleteid,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{completetime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.ReceiveComplete">
+    insert into receivecomplete
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rcompleteid != null">
+        rcompleteid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="completetime != null">
+        completetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rcompleteid != null">
+        #{rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="completetime != null">
+        #{completetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.ReceiveCompleteExample" resultType="java.lang.Integer">
+    select count(*) from receivecomplete
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update receivecomplete
+    <set>
+      <if test="record.rcompleteid != null">
+        rcompleteid = #{record.rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.completetime != null">
+        completetime = #{record.completetime,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update receivecomplete
+    set rcompleteid = #{record.rcompleteid,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      completetime = #{record.completetime,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ReceiveComplete">
+    update receivecomplete
+    <set>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="completetime != null">
+        completetime = #{completetime,jdbcType=DATE},
+      </if>
+    </set>
+    where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ReceiveComplete">
+    update receivecomplete
+    set status = #{status,jdbcType=INTEGER},
+      completetime = #{completetime,jdbcType=DATE}
+    where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.ArrivalConfirmMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.ArrivalConfirm">
+    <id column="acid" jdbcType="INTEGER" property="acid" />
+    <result column="loadid" jdbcType="INTEGER" property="loadid" />
+    <result column="arrivaltime" jdbcType="TIMESTAMP" property="arrivaltime" />
+    <result column="arrivalstatus" jdbcType="INTEGER" property="arrivalstatus" />
+    <result column="msgstatus" jdbcType="INTEGER" property="msgstatus" />
+    <result column="msgcontent" jdbcType="VARCHAR" property="msgcontent" />
+    <result column="telstatus" jdbcType="INTEGER" property="telstatus" />
+    <result column="pickstatus" jdbcType="INTEGER" property="pickstatus" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    acid, loadid, arrivaltime, arrivalstatus, msgstatus, msgcontent, telstatus, pickstatus, 
+    int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.ArrivalConfirmExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from arrivalconfirm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from arrivalconfirm
+    where acid = #{acid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from arrivalconfirm
+    where acid = #{acid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.ArrivalConfirmExample">
+    delete from arrivalconfirm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.ArrivalConfirm">
+    insert into arrivalconfirm (acid, loadid, arrivaltime, 
+      arrivalstatus, msgstatus, msgcontent, 
+      telstatus, pickstatus, int0, 
+      string0, string1)
+    values (#{acid,jdbcType=INTEGER}, #{loadid,jdbcType=INTEGER}, #{arrivaltime,jdbcType=TIMESTAMP}, 
+      #{arrivalstatus,jdbcType=INTEGER}, #{msgstatus,jdbcType=INTEGER}, #{msgcontent,jdbcType=VARCHAR}, 
+      #{telstatus,jdbcType=INTEGER}, #{pickstatus,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.ArrivalConfirm">
+    insert into arrivalconfirm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="acid != null">
+        acid,
+      </if>
+      <if test="loadid != null">
+        loadid,
+      </if>
+      <if test="arrivaltime != null">
+        arrivaltime,
+      </if>
+      <if test="arrivalstatus != null">
+        arrivalstatus,
+      </if>
+      <if test="msgstatus != null">
+        msgstatus,
+      </if>
+      <if test="msgcontent != null">
+        msgcontent,
+      </if>
+      <if test="telstatus != null">
+        telstatus,
+      </if>
+      <if test="pickstatus != null">
+        pickstatus,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="acid != null">
+        #{acid,jdbcType=INTEGER},
+      </if>
+      <if test="loadid != null">
+        #{loadid,jdbcType=INTEGER},
+      </if>
+      <if test="arrivaltime != null">
+        #{arrivaltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arrivalstatus != null">
+        #{arrivalstatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgstatus != null">
+        #{msgstatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgcontent != null">
+        #{msgcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="telstatus != null">
+        #{telstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pickstatus != null">
+        #{pickstatus,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.ArrivalConfirmExample" resultType="java.lang.Integer">
+    select count(*) from arrivalconfirm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update arrivalconfirm
+    <set>
+      <if test="record.acid != null">
+        acid = #{record.acid,jdbcType=INTEGER},
+      </if>
+      <if test="record.loadid != null">
+        loadid = #{record.loadid,jdbcType=INTEGER},
+      </if>
+      <if test="record.arrivaltime != null">
+        arrivaltime = #{record.arrivaltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.arrivalstatus != null">
+        arrivalstatus = #{record.arrivalstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.msgstatus != null">
+        msgstatus = #{record.msgstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.msgcontent != null">
+        msgcontent = #{record.msgcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telstatus != null">
+        telstatus = #{record.telstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.pickstatus != null">
+        pickstatus = #{record.pickstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update arrivalconfirm
+    set acid = #{record.acid,jdbcType=INTEGER},
+      loadid = #{record.loadid,jdbcType=INTEGER},
+      arrivaltime = #{record.arrivaltime,jdbcType=TIMESTAMP},
+      arrivalstatus = #{record.arrivalstatus,jdbcType=INTEGER},
+      msgstatus = #{record.msgstatus,jdbcType=INTEGER},
+      msgcontent = #{record.msgcontent,jdbcType=VARCHAR},
+      telstatus = #{record.telstatus,jdbcType=INTEGER},
+      pickstatus = #{record.pickstatus,jdbcType=INTEGER},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ArrivalConfirm">
+    update arrivalconfirm
+    <set>
+      <if test="loadid != null">
+        loadid = #{loadid,jdbcType=INTEGER},
+      </if>
+      <if test="arrivaltime != null">
+        arrivaltime = #{arrivaltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arrivalstatus != null">
+        arrivalstatus = #{arrivalstatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgstatus != null">
+        msgstatus = #{msgstatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgcontent != null">
+        msgcontent = #{msgcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="telstatus != null">
+        telstatus = #{telstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pickstatus != null">
+        pickstatus = #{pickstatus,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where acid = #{acid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ArrivalConfirm">
+    update arrivalconfirm
+    set loadid = #{loadid,jdbcType=INTEGER},
+      arrivaltime = #{arrivaltime,jdbcType=TIMESTAMP},
+      arrivalstatus = #{arrivalstatus,jdbcType=INTEGER},
+      msgstatus = #{msgstatus,jdbcType=INTEGER},
+      msgcontent = #{msgcontent,jdbcType=VARCHAR},
+      telstatus = #{telstatus,jdbcType=INTEGER},
+      pickstatus = #{pickstatus,jdbcType=INTEGER},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where acid = #{acid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.ArrivalConfirm">
+    <id column="acid" jdbcType="INTEGER" property="acid" />
+    <result column="loadid" jdbcType="INTEGER" property="loadid" />
+    <result column="arrivaltime" jdbcType="TIMESTAMP" property="arrivaltime" />
+    <result column="arrivalstatus" jdbcType="INTEGER" property="arrivalstatus" />
+    <result column="msgstatus" jdbcType="INTEGER" property="msgstatus" />
+    <result column="msgcontent" jdbcType="VARCHAR" property="msgcontent" />
+    <result column="telstatus" jdbcType="INTEGER" property="telstatus" />
+    <result column="pickstatus" jdbcType="INTEGER" property="pickstatus" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    acid, loadid, arrivaltime, arrivalstatus, msgstatus, msgcontent, telstatus, pickstatus, 
+    int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.ArrivalConfirmExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from arrivalconfirm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from arrivalconfirm
+    where acid = #{acid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from arrivalconfirm
+    where acid = #{acid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.ArrivalConfirmExample">
+    delete from arrivalconfirm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.ArrivalConfirm">
+    insert into arrivalconfirm (acid, loadid, arrivaltime, 
+      arrivalstatus, msgstatus, msgcontent, 
+      telstatus, pickstatus, int0, 
+      string0, string1)
+    values (#{acid,jdbcType=INTEGER}, #{loadid,jdbcType=INTEGER}, #{arrivaltime,jdbcType=TIMESTAMP}, 
+      #{arrivalstatus,jdbcType=INTEGER}, #{msgstatus,jdbcType=INTEGER}, #{msgcontent,jdbcType=VARCHAR}, 
+      #{telstatus,jdbcType=INTEGER}, #{pickstatus,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.ArrivalConfirm">
+    insert into arrivalconfirm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="acid != null">
+        acid,
+      </if>
+      <if test="loadid != null">
+        loadid,
+      </if>
+      <if test="arrivaltime != null">
+        arrivaltime,
+      </if>
+      <if test="arrivalstatus != null">
+        arrivalstatus,
+      </if>
+      <if test="msgstatus != null">
+        msgstatus,
+      </if>
+      <if test="msgcontent != null">
+        msgcontent,
+      </if>
+      <if test="telstatus != null">
+        telstatus,
+      </if>
+      <if test="pickstatus != null">
+        pickstatus,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="acid != null">
+        #{acid,jdbcType=INTEGER},
+      </if>
+      <if test="loadid != null">
+        #{loadid,jdbcType=INTEGER},
+      </if>
+      <if test="arrivaltime != null">
+        #{arrivaltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arrivalstatus != null">
+        #{arrivalstatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgstatus != null">
+        #{msgstatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgcontent != null">
+        #{msgcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="telstatus != null">
+        #{telstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pickstatus != null">
+        #{pickstatus,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.ArrivalConfirmExample" resultType="java.lang.Integer">
+    select count(*) from arrivalconfirm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update arrivalconfirm
+    <set>
+      <if test="record.acid != null">
+        acid = #{record.acid,jdbcType=INTEGER},
+      </if>
+      <if test="record.loadid != null">
+        loadid = #{record.loadid,jdbcType=INTEGER},
+      </if>
+      <if test="record.arrivaltime != null">
+        arrivaltime = #{record.arrivaltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.arrivalstatus != null">
+        arrivalstatus = #{record.arrivalstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.msgstatus != null">
+        msgstatus = #{record.msgstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.msgcontent != null">
+        msgcontent = #{record.msgcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telstatus != null">
+        telstatus = #{record.telstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.pickstatus != null">
+        pickstatus = #{record.pickstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update arrivalconfirm
+    set acid = #{record.acid,jdbcType=INTEGER},
+      loadid = #{record.loadid,jdbcType=INTEGER},
+      arrivaltime = #{record.arrivaltime,jdbcType=TIMESTAMP},
+      arrivalstatus = #{record.arrivalstatus,jdbcType=INTEGER},
+      msgstatus = #{record.msgstatus,jdbcType=INTEGER},
+      msgcontent = #{record.msgcontent,jdbcType=VARCHAR},
+      telstatus = #{record.telstatus,jdbcType=INTEGER},
+      pickstatus = #{record.pickstatus,jdbcType=INTEGER},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ArrivalConfirm">
+    update arrivalconfirm
+    <set>
+      <if test="loadid != null">
+        loadid = #{loadid,jdbcType=INTEGER},
+      </if>
+      <if test="arrivaltime != null">
+        arrivaltime = #{arrivaltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arrivalstatus != null">
+        arrivalstatus = #{arrivalstatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgstatus != null">
+        msgstatus = #{msgstatus,jdbcType=INTEGER},
+      </if>
+      <if test="msgcontent != null">
+        msgcontent = #{msgcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="telstatus != null">
+        telstatus = #{telstatus,jdbcType=INTEGER},
+      </if>
+      <if test="pickstatus != null">
+        pickstatus = #{pickstatus,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where acid = #{acid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ArrivalConfirm">
+    update arrivalconfirm
+    set loadid = #{loadid,jdbcType=INTEGER},
+      arrivaltime = #{arrivaltime,jdbcType=TIMESTAMP},
+      arrivalstatus = #{arrivalstatus,jdbcType=INTEGER},
+      msgstatus = #{msgstatus,jdbcType=INTEGER},
+      msgcontent = #{msgcontent,jdbcType=VARCHAR},
+      telstatus = #{telstatus,jdbcType=INTEGER},
+      pickstatus = #{pickstatus,jdbcType=INTEGER},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where acid = #{acid,jdbcType=INTEGER}
+  </update>
+</mapper>

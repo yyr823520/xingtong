@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.RefuelRegisterMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.RefuelRegister">
+    <id column="reid" jdbcType="INTEGER" property="reid" />
+    <result column="driverid" jdbcType="INTEGER" property="driverid" />
+    <result column="refueltime" jdbcType="DATE" property="refueltime" />
+    <result column="vehiclenumber" jdbcType="VARCHAR" property="vehiclenumber" />
+    <result column="drviername" jdbcType="VARCHAR" property="drviername" />
+    <result column="dictionaryid" jdbcType="INTEGER" property="dictionaryid" />
+    <result column="petrolstation" jdbcType="VARCHAR" property="petrolstation" />
+    <result column="unitprice" jdbcType="DECIMAL" property="unitprice" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="ckeckstatus" jdbcType="VARCHAR" property="ckeckstatus" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    reid, driverid, refueltime, vehiclenumber, drviername, dictionaryid, petrolstation, 
+    unitprice, quantity, money, remark, ckeckstatus, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.RefuelRegisterExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from refuelregister
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from refuelregister
+    where reid = #{reid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from refuelregister
+    where reid = #{reid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.RefuelRegisterExample">
+    delete from refuelregister
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.RefuelRegister">
+    insert into refuelregister (reid, driverid, refueltime, 
+      vehiclenumber, drviername, dictionaryid, 
+      petrolstation, unitprice, quantity, 
+      money, remark, ckeckstatus, 
+      int0, string0, string1
+      )
+    values (#{reid,jdbcType=INTEGER}, #{driverid,jdbcType=INTEGER}, #{refueltime,jdbcType=DATE}, 
+      #{vehiclenumber,jdbcType=VARCHAR}, #{drviername,jdbcType=VARCHAR}, #{dictionaryid,jdbcType=INTEGER}, 
+      #{petrolstation,jdbcType=VARCHAR}, #{unitprice,jdbcType=DECIMAL}, #{quantity,jdbcType=INTEGER}, 
+      #{money,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{ckeckstatus,jdbcType=VARCHAR}, 
+      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.RefuelRegister">
+    insert into refuelregister
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reid != null">
+        reid,
+      </if>
+      <if test="driverid != null">
+        driverid,
+      </if>
+      <if test="refueltime != null">
+        refueltime,
+      </if>
+      <if test="vehiclenumber != null">
+        vehiclenumber,
+      </if>
+      <if test="drviername != null">
+        drviername,
+      </if>
+      <if test="dictionaryid != null">
+        dictionaryid,
+      </if>
+      <if test="petrolstation != null">
+        petrolstation,
+      </if>
+      <if test="unitprice != null">
+        unitprice,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="ckeckstatus != null">
+        ckeckstatus,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reid != null">
+        #{reid,jdbcType=INTEGER},
+      </if>
+      <if test="driverid != null">
+        #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="refueltime != null">
+        #{refueltime,jdbcType=DATE},
+      </if>
+      <if test="vehiclenumber != null">
+        #{vehiclenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="drviername != null">
+        #{drviername,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryid != null">
+        #{dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="petrolstation != null">
+        #{petrolstation,jdbcType=VARCHAR},
+      </if>
+      <if test="unitprice != null">
+        #{unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ckeckstatus != null">
+        #{ckeckstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.RefuelRegisterExample" resultType="java.lang.Integer">
+    select count(*) from refuelregister
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update refuelregister
+    <set>
+      <if test="record.reid != null">
+        reid = #{record.reid,jdbcType=INTEGER},
+      </if>
+      <if test="record.driverid != null">
+        driverid = #{record.driverid,jdbcType=INTEGER},
+      </if>
+      <if test="record.refueltime != null">
+        refueltime = #{record.refueltime,jdbcType=DATE},
+      </if>
+      <if test="record.vehiclenumber != null">
+        vehiclenumber = #{record.vehiclenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drviername != null">
+        drviername = #{record.drviername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dictionaryid != null">
+        dictionaryid = #{record.dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="record.petrolstation != null">
+        petrolstation = #{record.petrolstation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unitprice != null">
+        unitprice = #{record.unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.quantity != null">
+        quantity = #{record.quantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.money != null">
+        money = #{record.money,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ckeckstatus != null">
+        ckeckstatus = #{record.ckeckstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update refuelregister
+    set reid = #{record.reid,jdbcType=INTEGER},
+      driverid = #{record.driverid,jdbcType=INTEGER},
+      refueltime = #{record.refueltime,jdbcType=DATE},
+      vehiclenumber = #{record.vehiclenumber,jdbcType=VARCHAR},
+      drviername = #{record.drviername,jdbcType=VARCHAR},
+      dictionaryid = #{record.dictionaryid,jdbcType=INTEGER},
+      petrolstation = #{record.petrolstation,jdbcType=VARCHAR},
+      unitprice = #{record.unitprice,jdbcType=DECIMAL},
+      quantity = #{record.quantity,jdbcType=INTEGER},
+      money = #{record.money,jdbcType=DECIMAL},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      ckeckstatus = #{record.ckeckstatus,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.RefuelRegister">
+    update refuelregister
+    <set>
+      <if test="driverid != null">
+        driverid = #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="refueltime != null">
+        refueltime = #{refueltime,jdbcType=DATE},
+      </if>
+      <if test="vehiclenumber != null">
+        vehiclenumber = #{vehiclenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="drviername != null">
+        drviername = #{drviername,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryid != null">
+        dictionaryid = #{dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="petrolstation != null">
+        petrolstation = #{petrolstation,jdbcType=VARCHAR},
+      </if>
+      <if test="unitprice != null">
+        unitprice = #{unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ckeckstatus != null">
+        ckeckstatus = #{ckeckstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reid = #{reid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.RefuelRegister">
+    update refuelregister
+    set driverid = #{driverid,jdbcType=INTEGER},
+      refueltime = #{refueltime,jdbcType=DATE},
+      vehiclenumber = #{vehiclenumber,jdbcType=VARCHAR},
+      drviername = #{drviername,jdbcType=VARCHAR},
+      dictionaryid = #{dictionaryid,jdbcType=INTEGER},
+      petrolstation = #{petrolstation,jdbcType=VARCHAR},
+      unitprice = #{unitprice,jdbcType=DECIMAL},
+      quantity = #{quantity,jdbcType=INTEGER},
+      money = #{money,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      ckeckstatus = #{ckeckstatus,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where reid = #{reid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.RefuelRegister">
+    <id column="reid" jdbcType="INTEGER" property="reid" />
+    <result column="driverid" jdbcType="INTEGER" property="driverid" />
+    <result column="refueltime" jdbcType="DATE" property="refueltime" />
+    <result column="vehiclenumber" jdbcType="VARCHAR" property="vehiclenumber" />
+    <result column="drviername" jdbcType="VARCHAR" property="drviername" />
+    <result column="dictionaryid" jdbcType="INTEGER" property="dictionaryid" />
+    <result column="petrolstation" jdbcType="VARCHAR" property="petrolstation" />
+    <result column="unitprice" jdbcType="DECIMAL" property="unitprice" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="ckeckstatus" jdbcType="VARCHAR" property="ckeckstatus" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    reid, driverid, refueltime, vehiclenumber, drviername, dictionaryid, petrolstation, 
+    unitprice, quantity, money, remark, ckeckstatus, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.RefuelRegisterExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from refuelregister
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from refuelregister
+    where reid = #{reid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from refuelregister
+    where reid = #{reid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.RefuelRegisterExample">
+    delete from refuelregister
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.RefuelRegister">
+    insert into refuelregister (reid, driverid, refueltime, 
+      vehiclenumber, drviername, dictionaryid, 
+      petrolstation, unitprice, quantity, 
+      money, remark, ckeckstatus, 
+      int0, string0, string1
+      )
+    values (#{reid,jdbcType=INTEGER}, #{driverid,jdbcType=INTEGER}, #{refueltime,jdbcType=DATE}, 
+      #{vehiclenumber,jdbcType=VARCHAR}, #{drviername,jdbcType=VARCHAR}, #{dictionaryid,jdbcType=INTEGER}, 
+      #{petrolstation,jdbcType=VARCHAR}, #{unitprice,jdbcType=DECIMAL}, #{quantity,jdbcType=INTEGER}, 
+      #{money,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{ckeckstatus,jdbcType=VARCHAR}, 
+      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.RefuelRegister">
+    insert into refuelregister
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reid != null">
+        reid,
+      </if>
+      <if test="driverid != null">
+        driverid,
+      </if>
+      <if test="refueltime != null">
+        refueltime,
+      </if>
+      <if test="vehiclenumber != null">
+        vehiclenumber,
+      </if>
+      <if test="drviername != null">
+        drviername,
+      </if>
+      <if test="dictionaryid != null">
+        dictionaryid,
+      </if>
+      <if test="petrolstation != null">
+        petrolstation,
+      </if>
+      <if test="unitprice != null">
+        unitprice,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="ckeckstatus != null">
+        ckeckstatus,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reid != null">
+        #{reid,jdbcType=INTEGER},
+      </if>
+      <if test="driverid != null">
+        #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="refueltime != null">
+        #{refueltime,jdbcType=DATE},
+      </if>
+      <if test="vehiclenumber != null">
+        #{vehiclenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="drviername != null">
+        #{drviername,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryid != null">
+        #{dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="petrolstation != null">
+        #{petrolstation,jdbcType=VARCHAR},
+      </if>
+      <if test="unitprice != null">
+        #{unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ckeckstatus != null">
+        #{ckeckstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.RefuelRegisterExample" resultType="java.lang.Integer">
+    select count(*) from refuelregister
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update refuelregister
+    <set>
+      <if test="record.reid != null">
+        reid = #{record.reid,jdbcType=INTEGER},
+      </if>
+      <if test="record.driverid != null">
+        driverid = #{record.driverid,jdbcType=INTEGER},
+      </if>
+      <if test="record.refueltime != null">
+        refueltime = #{record.refueltime,jdbcType=DATE},
+      </if>
+      <if test="record.vehiclenumber != null">
+        vehiclenumber = #{record.vehiclenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drviername != null">
+        drviername = #{record.drviername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dictionaryid != null">
+        dictionaryid = #{record.dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="record.petrolstation != null">
+        petrolstation = #{record.petrolstation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unitprice != null">
+        unitprice = #{record.unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.quantity != null">
+        quantity = #{record.quantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.money != null">
+        money = #{record.money,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ckeckstatus != null">
+        ckeckstatus = #{record.ckeckstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update refuelregister
+    set reid = #{record.reid,jdbcType=INTEGER},
+      driverid = #{record.driverid,jdbcType=INTEGER},
+      refueltime = #{record.refueltime,jdbcType=DATE},
+      vehiclenumber = #{record.vehiclenumber,jdbcType=VARCHAR},
+      drviername = #{record.drviername,jdbcType=VARCHAR},
+      dictionaryid = #{record.dictionaryid,jdbcType=INTEGER},
+      petrolstation = #{record.petrolstation,jdbcType=VARCHAR},
+      unitprice = #{record.unitprice,jdbcType=DECIMAL},
+      quantity = #{record.quantity,jdbcType=INTEGER},
+      money = #{record.money,jdbcType=DECIMAL},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      ckeckstatus = #{record.ckeckstatus,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.RefuelRegister">
+    update refuelregister
+    <set>
+      <if test="driverid != null">
+        driverid = #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="refueltime != null">
+        refueltime = #{refueltime,jdbcType=DATE},
+      </if>
+      <if test="vehiclenumber != null">
+        vehiclenumber = #{vehiclenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="drviername != null">
+        drviername = #{drviername,jdbcType=VARCHAR},
+      </if>
+      <if test="dictionaryid != null">
+        dictionaryid = #{dictionaryid,jdbcType=INTEGER},
+      </if>
+      <if test="petrolstation != null">
+        petrolstation = #{petrolstation,jdbcType=VARCHAR},
+      </if>
+      <if test="unitprice != null">
+        unitprice = #{unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ckeckstatus != null">
+        ckeckstatus = #{ckeckstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reid = #{reid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.RefuelRegister">
+    update refuelregister
+    set driverid = #{driverid,jdbcType=INTEGER},
+      refueltime = #{refueltime,jdbcType=DATE},
+      vehiclenumber = #{vehiclenumber,jdbcType=VARCHAR},
+      drviername = #{drviername,jdbcType=VARCHAR},
+      dictionaryid = #{dictionaryid,jdbcType=INTEGER},
+      petrolstation = #{petrolstation,jdbcType=VARCHAR},
+      unitprice = #{unitprice,jdbcType=DECIMAL},
+      quantity = #{quantity,jdbcType=INTEGER},
+      money = #{money,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      ckeckstatus = #{ckeckstatus,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where reid = #{reid,jdbcType=INTEGER}
+  </update>
+</mapper>

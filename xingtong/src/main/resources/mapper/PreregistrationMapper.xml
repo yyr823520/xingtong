@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.PreregistrationMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Preregistration">
+    <id column="preid" jdbcType="VARCHAR" property="preid" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+    <result column="pretime" jdbcType="TIMESTAMP" property="pretime" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="conid" jdbcType="INTEGER" property="conid" />
+    <result column="receivestatus" jdbcType="INTEGER" property="receivestatus" />
+    <result column="receivetime" jdbcType="DATE" property="receivetime" />
+    <result column="sendstatus" jdbcType="INTEGER" property="sendstatus" />
+    <result column="sendtime" jdbcType="DATE" property="sendtime" />
+    <result column="preaddress" jdbcType="VARCHAR" property="preaddress" />
+    <result column="preremark" jdbcType="VARCHAR" property="preremark" />
+    <result column="transporttype" jdbcType="INTEGER" property="transporttype" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    preid, destination, pretime, pid, sid, conid, receivestatus, receivetime, sendstatus, 
+    sendtime, preaddress, preremark, transporttype, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.PreregistrationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from preregistration
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from preregistration
+    where preid = #{preid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from preregistration
+    where preid = #{preid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.PreregistrationExample">
+    delete from preregistration
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Preregistration">
+    insert into preregistration (preid, destination, pretime, 
+      pid, sid, conid, receivestatus, 
+      receivetime, sendstatus, sendtime, 
+      preaddress, preremark, transporttype, 
+      int0, string0, string1
+      )
+    values (#{preid,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, #{pretime,jdbcType=TIMESTAMP}, 
+      #{pid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{conid,jdbcType=INTEGER}, #{receivestatus,jdbcType=INTEGER}, 
+      #{receivetime,jdbcType=DATE}, #{sendstatus,jdbcType=INTEGER}, #{sendtime,jdbcType=DATE}, 
+      #{preaddress,jdbcType=VARCHAR}, #{preremark,jdbcType=VARCHAR}, #{transporttype,jdbcType=INTEGER}, 
+      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Preregistration">
+    insert into preregistration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="preid != null">
+        preid,
+      </if>
+      <if test="destination != null">
+        destination,
+      </if>
+      <if test="pretime != null">
+        pretime,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="conid != null">
+        conid,
+      </if>
+      <if test="receivestatus != null">
+        receivestatus,
+      </if>
+      <if test="receivetime != null">
+        receivetime,
+      </if>
+      <if test="sendstatus != null">
+        sendstatus,
+      </if>
+      <if test="sendtime != null">
+        sendtime,
+      </if>
+      <if test="preaddress != null">
+        preaddress,
+      </if>
+      <if test="preremark != null">
+        preremark,
+      </if>
+      <if test="transporttype != null">
+        transporttype,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="preid != null">
+        #{preid,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="pretime != null">
+        #{pretime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="conid != null">
+        #{conid,jdbcType=INTEGER},
+      </if>
+      <if test="receivestatus != null">
+        #{receivestatus,jdbcType=INTEGER},
+      </if>
+      <if test="receivetime != null">
+        #{receivetime,jdbcType=DATE},
+      </if>
+      <if test="sendstatus != null">
+        #{sendstatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendtime != null">
+        #{sendtime,jdbcType=DATE},
+      </if>
+      <if test="preaddress != null">
+        #{preaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="preremark != null">
+        #{preremark,jdbcType=VARCHAR},
+      </if>
+      <if test="transporttype != null">
+        #{transporttype,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.PreregistrationExample" resultType="java.lang.Integer">
+    select count(*) from preregistration
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update preregistration
+    <set>
+      <if test="record.preid != null">
+        preid = #{record.preid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.destination != null">
+        destination = #{record.destination,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pretime != null">
+        pretime = #{record.pretime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sid != null">
+        sid = #{record.sid,jdbcType=INTEGER},
+      </if>
+      <if test="record.conid != null">
+        conid = #{record.conid,jdbcType=INTEGER},
+      </if>
+      <if test="record.receivestatus != null">
+        receivestatus = #{record.receivestatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.receivetime != null">
+        receivetime = #{record.receivetime,jdbcType=DATE},
+      </if>
+      <if test="record.sendstatus != null">
+        sendstatus = #{record.sendstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.sendtime != null">
+        sendtime = #{record.sendtime,jdbcType=DATE},
+      </if>
+      <if test="record.preaddress != null">
+        preaddress = #{record.preaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.preremark != null">
+        preremark = #{record.preremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transporttype != null">
+        transporttype = #{record.transporttype,jdbcType=INTEGER},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update preregistration
+    set preid = #{record.preid,jdbcType=VARCHAR},
+      destination = #{record.destination,jdbcType=VARCHAR},
+      pretime = #{record.pretime,jdbcType=TIMESTAMP},
+      pid = #{record.pid,jdbcType=INTEGER},
+      sid = #{record.sid,jdbcType=INTEGER},
+      conid = #{record.conid,jdbcType=INTEGER},
+      receivestatus = #{record.receivestatus,jdbcType=INTEGER},
+      receivetime = #{record.receivetime,jdbcType=DATE},
+      sendstatus = #{record.sendstatus,jdbcType=INTEGER},
+      sendtime = #{record.sendtime,jdbcType=DATE},
+      preaddress = #{record.preaddress,jdbcType=VARCHAR},
+      preremark = #{record.preremark,jdbcType=VARCHAR},
+      transporttype = #{record.transporttype,jdbcType=INTEGER},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Preregistration">
+    update preregistration
+    <set>
+      <if test="destination != null">
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="pretime != null">
+        pretime = #{pretime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="conid != null">
+        conid = #{conid,jdbcType=INTEGER},
+      </if>
+      <if test="receivestatus != null">
+        receivestatus = #{receivestatus,jdbcType=INTEGER},
+      </if>
+      <if test="receivetime != null">
+        receivetime = #{receivetime,jdbcType=DATE},
+      </if>
+      <if test="sendstatus != null">
+        sendstatus = #{sendstatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendtime != null">
+        sendtime = #{sendtime,jdbcType=DATE},
+      </if>
+      <if test="preaddress != null">
+        preaddress = #{preaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="preremark != null">
+        preremark = #{preremark,jdbcType=VARCHAR},
+      </if>
+      <if test="transporttype != null">
+        transporttype = #{transporttype,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where preid = #{preid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Preregistration">
+    update preregistration
+    set destination = #{destination,jdbcType=VARCHAR},
+      pretime = #{pretime,jdbcType=TIMESTAMP},
+      pid = #{pid,jdbcType=INTEGER},
+      sid = #{sid,jdbcType=INTEGER},
+      conid = #{conid,jdbcType=INTEGER},
+      receivestatus = #{receivestatus,jdbcType=INTEGER},
+      receivetime = #{receivetime,jdbcType=DATE},
+      sendstatus = #{sendstatus,jdbcType=INTEGER},
+      sendtime = #{sendtime,jdbcType=DATE},
+      preaddress = #{preaddress,jdbcType=VARCHAR},
+      preremark = #{preremark,jdbcType=VARCHAR},
+      transporttype = #{transporttype,jdbcType=INTEGER},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where preid = #{preid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Preregistration">
+    <id column="preid" jdbcType="VARCHAR" property="preid" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+    <result column="pretime" jdbcType="TIMESTAMP" property="pretime" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="conid" jdbcType="INTEGER" property="conid" />
+    <result column="receivestatus" jdbcType="INTEGER" property="receivestatus" />
+    <result column="receivetime" jdbcType="DATE" property="receivetime" />
+    <result column="sendstatus" jdbcType="INTEGER" property="sendstatus" />
+    <result column="sendtime" jdbcType="DATE" property="sendtime" />
+    <result column="preaddress" jdbcType="VARCHAR" property="preaddress" />
+    <result column="preremark" jdbcType="VARCHAR" property="preremark" />
+    <result column="transporttype" jdbcType="INTEGER" property="transporttype" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    preid, destination, pretime, pid, sid, conid, receivestatus, receivetime, sendstatus, 
+    sendtime, preaddress, preremark, transporttype, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.PreregistrationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from preregistration
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from preregistration
+    where preid = #{preid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from preregistration
+    where preid = #{preid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.PreregistrationExample">
+    delete from preregistration
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Preregistration">
+    insert into preregistration (preid, destination, pretime, 
+      pid, sid, conid, receivestatus, 
+      receivetime, sendstatus, sendtime, 
+      preaddress, preremark, transporttype, 
+      int0, string0, string1
+      )
+    values (#{preid,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, #{pretime,jdbcType=TIMESTAMP}, 
+      #{pid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{conid,jdbcType=INTEGER}, #{receivestatus,jdbcType=INTEGER}, 
+      #{receivetime,jdbcType=DATE}, #{sendstatus,jdbcType=INTEGER}, #{sendtime,jdbcType=DATE}, 
+      #{preaddress,jdbcType=VARCHAR}, #{preremark,jdbcType=VARCHAR}, #{transporttype,jdbcType=INTEGER}, 
+      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Preregistration">
+    insert into preregistration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="preid != null">
+        preid,
+      </if>
+      <if test="destination != null">
+        destination,
+      </if>
+      <if test="pretime != null">
+        pretime,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="conid != null">
+        conid,
+      </if>
+      <if test="receivestatus != null">
+        receivestatus,
+      </if>
+      <if test="receivetime != null">
+        receivetime,
+      </if>
+      <if test="sendstatus != null">
+        sendstatus,
+      </if>
+      <if test="sendtime != null">
+        sendtime,
+      </if>
+      <if test="preaddress != null">
+        preaddress,
+      </if>
+      <if test="preremark != null">
+        preremark,
+      </if>
+      <if test="transporttype != null">
+        transporttype,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="preid != null">
+        #{preid,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="pretime != null">
+        #{pretime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="conid != null">
+        #{conid,jdbcType=INTEGER},
+      </if>
+      <if test="receivestatus != null">
+        #{receivestatus,jdbcType=INTEGER},
+      </if>
+      <if test="receivetime != null">
+        #{receivetime,jdbcType=DATE},
+      </if>
+      <if test="sendstatus != null">
+        #{sendstatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendtime != null">
+        #{sendtime,jdbcType=DATE},
+      </if>
+      <if test="preaddress != null">
+        #{preaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="preremark != null">
+        #{preremark,jdbcType=VARCHAR},
+      </if>
+      <if test="transporttype != null">
+        #{transporttype,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.PreregistrationExample" resultType="java.lang.Integer">
+    select count(*) from preregistration
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update preregistration
+    <set>
+      <if test="record.preid != null">
+        preid = #{record.preid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.destination != null">
+        destination = #{record.destination,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pretime != null">
+        pretime = #{record.pretime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sid != null">
+        sid = #{record.sid,jdbcType=INTEGER},
+      </if>
+      <if test="record.conid != null">
+        conid = #{record.conid,jdbcType=INTEGER},
+      </if>
+      <if test="record.receivestatus != null">
+        receivestatus = #{record.receivestatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.receivetime != null">
+        receivetime = #{record.receivetime,jdbcType=DATE},
+      </if>
+      <if test="record.sendstatus != null">
+        sendstatus = #{record.sendstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.sendtime != null">
+        sendtime = #{record.sendtime,jdbcType=DATE},
+      </if>
+      <if test="record.preaddress != null">
+        preaddress = #{record.preaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.preremark != null">
+        preremark = #{record.preremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transporttype != null">
+        transporttype = #{record.transporttype,jdbcType=INTEGER},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update preregistration
+    set preid = #{record.preid,jdbcType=VARCHAR},
+      destination = #{record.destination,jdbcType=VARCHAR},
+      pretime = #{record.pretime,jdbcType=TIMESTAMP},
+      pid = #{record.pid,jdbcType=INTEGER},
+      sid = #{record.sid,jdbcType=INTEGER},
+      conid = #{record.conid,jdbcType=INTEGER},
+      receivestatus = #{record.receivestatus,jdbcType=INTEGER},
+      receivetime = #{record.receivetime,jdbcType=DATE},
+      sendstatus = #{record.sendstatus,jdbcType=INTEGER},
+      sendtime = #{record.sendtime,jdbcType=DATE},
+      preaddress = #{record.preaddress,jdbcType=VARCHAR},
+      preremark = #{record.preremark,jdbcType=VARCHAR},
+      transporttype = #{record.transporttype,jdbcType=INTEGER},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Preregistration">
+    update preregistration
+    <set>
+      <if test="destination != null">
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="pretime != null">
+        pretime = #{pretime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="conid != null">
+        conid = #{conid,jdbcType=INTEGER},
+      </if>
+      <if test="receivestatus != null">
+        receivestatus = #{receivestatus,jdbcType=INTEGER},
+      </if>
+      <if test="receivetime != null">
+        receivetime = #{receivetime,jdbcType=DATE},
+      </if>
+      <if test="sendstatus != null">
+        sendstatus = #{sendstatus,jdbcType=INTEGER},
+      </if>
+      <if test="sendtime != null">
+        sendtime = #{sendtime,jdbcType=DATE},
+      </if>
+      <if test="preaddress != null">
+        preaddress = #{preaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="preremark != null">
+        preremark = #{preremark,jdbcType=VARCHAR},
+      </if>
+      <if test="transporttype != null">
+        transporttype = #{transporttype,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where preid = #{preid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Preregistration">
+    update preregistration
+    set destination = #{destination,jdbcType=VARCHAR},
+      pretime = #{pretime,jdbcType=TIMESTAMP},
+      pid = #{pid,jdbcType=INTEGER},
+      sid = #{sid,jdbcType=INTEGER},
+      conid = #{conid,jdbcType=INTEGER},
+      receivestatus = #{receivestatus,jdbcType=INTEGER},
+      receivetime = #{receivetime,jdbcType=DATE},
+      sendstatus = #{sendstatus,jdbcType=INTEGER},
+      sendtime = #{sendtime,jdbcType=DATE},
+      preaddress = #{preaddress,jdbcType=VARCHAR},
+      preremark = #{preremark,jdbcType=VARCHAR},
+      transporttype = #{transporttype,jdbcType=INTEGER},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where preid = #{preid,jdbcType=VARCHAR}
+  </update>
+</mapper>

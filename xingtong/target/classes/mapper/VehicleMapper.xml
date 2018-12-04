@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.VehicleMapper">
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Vehicle">
+    <id column="vid" jdbcType="INTEGER" property="vid" />
+    <result column="vnumber" jdbcType="VARCHAR" property="vnumber" />
+    <result column="vehiclenature" jdbcType="VARCHAR" property="vehiclenature" />
+    <result column="brandmodel" jdbcType="VARCHAR" property="brandmodel" />
+    <result column="enginenumber" jdbcType="DATE" property="enginenumber" />
+    <result column="load" jdbcType="INTEGER" property="load" />
+    <result column="vlength" jdbcType="VARCHAR" property="vlength" />
+    <result column="vphone" jdbcType="CHAR" property="vphone" />
+    <result column="registrationtime" jdbcType="DATE" property="registrationtime" />
+    <result column="vaddress" jdbcType="VARCHAR" property="vaddress" />
+    <result column="visenable" jdbcType="DATE" property="visenable" />
+    <result column="vremark" jdbcType="VARCHAR" property="vremark" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    vid, vnumber, vehiclenature, brandmodel, enginenumber, load, vlength, vphone, registrationtime, 
+    vaddress, visenable, vremark, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.VehicleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from vehicle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from vehicle
+    where vid = #{vid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from vehicle
+    where vid = #{vid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.VehicleExample">
+    delete from vehicle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Vehicle">
+    insert into vehicle (vid, vnumber, vehiclenature, 
+      brandmodel, enginenumber, load, 
+      vlength, vphone, registrationtime, 
+      vaddress, visenable, vremark, 
+      int0, string0, string1
+      )
+    values (#{vid,jdbcType=INTEGER}, #{vnumber,jdbcType=VARCHAR}, #{vehiclenature,jdbcType=VARCHAR}, 
+      #{brandmodel,jdbcType=VARCHAR}, #{enginenumber,jdbcType=DATE}, #{load,jdbcType=INTEGER}, 
+      #{vlength,jdbcType=VARCHAR}, #{vphone,jdbcType=CHAR}, #{registrationtime,jdbcType=DATE}, 
+      #{vaddress,jdbcType=VARCHAR}, #{visenable,jdbcType=DATE}, #{vremark,jdbcType=VARCHAR}, 
+      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Vehicle">
+    insert into vehicle
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="vid != null">
+        vid,
+      </if>
+      <if test="vnumber != null">
+        vnumber,
+      </if>
+      <if test="vehiclenature != null">
+        vehiclenature,
+      </if>
+      <if test="brandmodel != null">
+        brandmodel,
+      </if>
+      <if test="enginenumber != null">
+        enginenumber,
+      </if>
+      <if test="load != null">
+        load,
+      </if>
+      <if test="vlength != null">
+        vlength,
+      </if>
+      <if test="vphone != null">
+        vphone,
+      </if>
+      <if test="registrationtime != null">
+        registrationtime,
+      </if>
+      <if test="vaddress != null">
+        vaddress,
+      </if>
+      <if test="visenable != null">
+        visenable,
+      </if>
+      <if test="vremark != null">
+        vremark,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="vid != null">
+        #{vid,jdbcType=INTEGER},
+      </if>
+      <if test="vnumber != null">
+        #{vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehiclenature != null">
+        #{vehiclenature,jdbcType=VARCHAR},
+      </if>
+      <if test="brandmodel != null">
+        #{brandmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="enginenumber != null">
+        #{enginenumber,jdbcType=DATE},
+      </if>
+      <if test="load != null">
+        #{load,jdbcType=INTEGER},
+      </if>
+      <if test="vlength != null">
+        #{vlength,jdbcType=VARCHAR},
+      </if>
+      <if test="vphone != null">
+        #{vphone,jdbcType=CHAR},
+      </if>
+      <if test="registrationtime != null">
+        #{registrationtime,jdbcType=DATE},
+      </if>
+      <if test="vaddress != null">
+        #{vaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="visenable != null">
+        #{visenable,jdbcType=DATE},
+      </if>
+      <if test="vremark != null">
+        #{vremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.VehicleExample" resultType="java.lang.Integer">
+    select count(*) from vehicle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update vehicle
+    <set>
+      <if test="record.vid != null">
+        vid = #{record.vid,jdbcType=INTEGER},
+      </if>
+      <if test="record.vnumber != null">
+        vnumber = #{record.vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vehiclenature != null">
+        vehiclenature = #{record.vehiclenature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandmodel != null">
+        brandmodel = #{record.brandmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enginenumber != null">
+        enginenumber = #{record.enginenumber,jdbcType=DATE},
+      </if>
+      <if test="record.load != null">
+        load = #{record.load,jdbcType=INTEGER},
+      </if>
+      <if test="record.vlength != null">
+        vlength = #{record.vlength,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vphone != null">
+        vphone = #{record.vphone,jdbcType=CHAR},
+      </if>
+      <if test="record.registrationtime != null">
+        registrationtime = #{record.registrationtime,jdbcType=DATE},
+      </if>
+      <if test="record.vaddress != null">
+        vaddress = #{record.vaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visenable != null">
+        visenable = #{record.visenable,jdbcType=DATE},
+      </if>
+      <if test="record.vremark != null">
+        vremark = #{record.vremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update vehicle
+    set vid = #{record.vid,jdbcType=INTEGER},
+      vnumber = #{record.vnumber,jdbcType=VARCHAR},
+      vehiclenature = #{record.vehiclenature,jdbcType=VARCHAR},
+      brandmodel = #{record.brandmodel,jdbcType=VARCHAR},
+      enginenumber = #{record.enginenumber,jdbcType=DATE},
+      load = #{record.load,jdbcType=INTEGER},
+      vlength = #{record.vlength,jdbcType=VARCHAR},
+      vphone = #{record.vphone,jdbcType=CHAR},
+      registrationtime = #{record.registrationtime,jdbcType=DATE},
+      vaddress = #{record.vaddress,jdbcType=VARCHAR},
+      visenable = #{record.visenable,jdbcType=DATE},
+      vremark = #{record.vremark,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Vehicle">
+    update vehicle
+    <set>
+      <if test="vnumber != null">
+        vnumber = #{vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehiclenature != null">
+        vehiclenature = #{vehiclenature,jdbcType=VARCHAR},
+      </if>
+      <if test="brandmodel != null">
+        brandmodel = #{brandmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="enginenumber != null">
+        enginenumber = #{enginenumber,jdbcType=DATE},
+      </if>
+      <if test="load != null">
+        load = #{load,jdbcType=INTEGER},
+      </if>
+      <if test="vlength != null">
+        vlength = #{vlength,jdbcType=VARCHAR},
+      </if>
+      <if test="vphone != null">
+        vphone = #{vphone,jdbcType=CHAR},
+      </if>
+      <if test="registrationtime != null">
+        registrationtime = #{registrationtime,jdbcType=DATE},
+      </if>
+      <if test="vaddress != null">
+        vaddress = #{vaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="visenable != null">
+        visenable = #{visenable,jdbcType=DATE},
+      </if>
+      <if test="vremark != null">
+        vremark = #{vremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vid = #{vid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Vehicle">
+    update vehicle
+    set vnumber = #{vnumber,jdbcType=VARCHAR},
+      vehiclenature = #{vehiclenature,jdbcType=VARCHAR},
+      brandmodel = #{brandmodel,jdbcType=VARCHAR},
+      enginenumber = #{enginenumber,jdbcType=DATE},
+      load = #{load,jdbcType=INTEGER},
+      vlength = #{vlength,jdbcType=VARCHAR},
+      vphone = #{vphone,jdbcType=CHAR},
+      registrationtime = #{registrationtime,jdbcType=DATE},
+      vaddress = #{vaddress,jdbcType=VARCHAR},
+      visenable = #{visenable,jdbcType=DATE},
+      vremark = #{vremark,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where vid = #{vid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyr.entity.Vehicle">
+    <id column="vid" jdbcType="INTEGER" property="vid" />
+    <result column="vnumber" jdbcType="VARCHAR" property="vnumber" />
+    <result column="vehiclenature" jdbcType="VARCHAR" property="vehiclenature" />
+    <result column="brandmodel" jdbcType="VARCHAR" property="brandmodel" />
+    <result column="enginenumber" jdbcType="DATE" property="enginenumber" />
+    <result column="load" jdbcType="INTEGER" property="load" />
+    <result column="vlength" jdbcType="VARCHAR" property="vlength" />
+    <result column="vphone" jdbcType="CHAR" property="vphone" />
+    <result column="registrationtime" jdbcType="DATE" property="registrationtime" />
+    <result column="vaddress" jdbcType="VARCHAR" property="vaddress" />
+    <result column="visenable" jdbcType="DATE" property="visenable" />
+    <result column="vremark" jdbcType="VARCHAR" property="vremark" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    vid, vnumber, vehiclenature, brandmodel, enginenumber, load, vlength, vphone, registrationtime, 
+    vaddress, visenable, vremark, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.yyr.entity.VehicleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from vehicle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from vehicle
+    where vid = #{vid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from vehicle
+    where vid = #{vid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yyr.entity.VehicleExample">
+    delete from vehicle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yyr.entity.Vehicle">
+    insert into vehicle (vid, vnumber, vehiclenature, 
+      brandmodel, enginenumber, load, 
+      vlength, vphone, registrationtime, 
+      vaddress, visenable, vremark, 
+      int0, string0, string1
+      )
+    values (#{vid,jdbcType=INTEGER}, #{vnumber,jdbcType=VARCHAR}, #{vehiclenature,jdbcType=VARCHAR}, 
+      #{brandmodel,jdbcType=VARCHAR}, #{enginenumber,jdbcType=DATE}, #{load,jdbcType=INTEGER}, 
+      #{vlength,jdbcType=VARCHAR}, #{vphone,jdbcType=CHAR}, #{registrationtime,jdbcType=DATE}, 
+      #{vaddress,jdbcType=VARCHAR}, #{visenable,jdbcType=DATE}, #{vremark,jdbcType=VARCHAR}, 
+      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyr.entity.Vehicle">
+    insert into vehicle
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="vid != null">
+        vid,
+      </if>
+      <if test="vnumber != null">
+        vnumber,
+      </if>
+      <if test="vehiclenature != null">
+        vehiclenature,
+      </if>
+      <if test="brandmodel != null">
+        brandmodel,
+      </if>
+      <if test="enginenumber != null">
+        enginenumber,
+      </if>
+      <if test="load != null">
+        load,
+      </if>
+      <if test="vlength != null">
+        vlength,
+      </if>
+      <if test="vphone != null">
+        vphone,
+      </if>
+      <if test="registrationtime != null">
+        registrationtime,
+      </if>
+      <if test="vaddress != null">
+        vaddress,
+      </if>
+      <if test="visenable != null">
+        visenable,
+      </if>
+      <if test="vremark != null">
+        vremark,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="vid != null">
+        #{vid,jdbcType=INTEGER},
+      </if>
+      <if test="vnumber != null">
+        #{vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehiclenature != null">
+        #{vehiclenature,jdbcType=VARCHAR},
+      </if>
+      <if test="brandmodel != null">
+        #{brandmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="enginenumber != null">
+        #{enginenumber,jdbcType=DATE},
+      </if>
+      <if test="load != null">
+        #{load,jdbcType=INTEGER},
+      </if>
+      <if test="vlength != null">
+        #{vlength,jdbcType=VARCHAR},
+      </if>
+      <if test="vphone != null">
+        #{vphone,jdbcType=CHAR},
+      </if>
+      <if test="registrationtime != null">
+        #{registrationtime,jdbcType=DATE},
+      </if>
+      <if test="vaddress != null">
+        #{vaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="visenable != null">
+        #{visenable,jdbcType=DATE},
+      </if>
+      <if test="vremark != null">
+        #{vremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yyr.entity.VehicleExample" resultType="java.lang.Integer">
+    select count(*) from vehicle
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update vehicle
+    <set>
+      <if test="record.vid != null">
+        vid = #{record.vid,jdbcType=INTEGER},
+      </if>
+      <if test="record.vnumber != null">
+        vnumber = #{record.vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vehiclenature != null">
+        vehiclenature = #{record.vehiclenature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandmodel != null">
+        brandmodel = #{record.brandmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enginenumber != null">
+        enginenumber = #{record.enginenumber,jdbcType=DATE},
+      </if>
+      <if test="record.load != null">
+        load = #{record.load,jdbcType=INTEGER},
+      </if>
+      <if test="record.vlength != null">
+        vlength = #{record.vlength,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vphone != null">
+        vphone = #{record.vphone,jdbcType=CHAR},
+      </if>
+      <if test="record.registrationtime != null">
+        registrationtime = #{record.registrationtime,jdbcType=DATE},
+      </if>
+      <if test="record.vaddress != null">
+        vaddress = #{record.vaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visenable != null">
+        visenable = #{record.visenable,jdbcType=DATE},
+      </if>
+      <if test="record.vremark != null">
+        vremark = #{record.vremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update vehicle
+    set vid = #{record.vid,jdbcType=INTEGER},
+      vnumber = #{record.vnumber,jdbcType=VARCHAR},
+      vehiclenature = #{record.vehiclenature,jdbcType=VARCHAR},
+      brandmodel = #{record.brandmodel,jdbcType=VARCHAR},
+      enginenumber = #{record.enginenumber,jdbcType=DATE},
+      load = #{record.load,jdbcType=INTEGER},
+      vlength = #{record.vlength,jdbcType=VARCHAR},
+      vphone = #{record.vphone,jdbcType=CHAR},
+      registrationtime = #{record.registrationtime,jdbcType=DATE},
+      vaddress = #{record.vaddress,jdbcType=VARCHAR},
+      visenable = #{record.visenable,jdbcType=DATE},
+      vremark = #{record.vremark,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Vehicle">
+    update vehicle
+    <set>
+      <if test="vnumber != null">
+        vnumber = #{vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="vehiclenature != null">
+        vehiclenature = #{vehiclenature,jdbcType=VARCHAR},
+      </if>
+      <if test="brandmodel != null">
+        brandmodel = #{brandmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="enginenumber != null">
+        enginenumber = #{enginenumber,jdbcType=DATE},
+      </if>
+      <if test="load != null">
+        load = #{load,jdbcType=INTEGER},
+      </if>
+      <if test="vlength != null">
+        vlength = #{vlength,jdbcType=VARCHAR},
+      </if>
+      <if test="vphone != null">
+        vphone = #{vphone,jdbcType=CHAR},
+      </if>
+      <if test="registrationtime != null">
+        registrationtime = #{registrationtime,jdbcType=DATE},
+      </if>
+      <if test="vaddress != null">
+        vaddress = #{vaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="visenable != null">
+        visenable = #{visenable,jdbcType=DATE},
+      </if>
+      <if test="vremark != null">
+        vremark = #{vremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vid = #{vid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Vehicle">
+    update vehicle
+    set vnumber = #{vnumber,jdbcType=VARCHAR},
+      vehiclenature = #{vehiclenature,jdbcType=VARCHAR},
+      brandmodel = #{brandmodel,jdbcType=VARCHAR},
+      enginenumber = #{enginenumber,jdbcType=DATE},
+      load = #{load,jdbcType=INTEGER},
+      vlength = #{vlength,jdbcType=VARCHAR},
+      vphone = #{vphone,jdbcType=CHAR},
+      registrationtime = #{registrationtime,jdbcType=DATE},
+      vaddress = #{vaddress,jdbcType=VARCHAR},
+      visenable = #{visenable,jdbcType=DATE},
+      vremark = #{vremark,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where vid = #{vid,jdbcType=INTEGER}
+  </update>
+</mapper>
