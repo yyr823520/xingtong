@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.SecondaryPackageMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.SecondaryPackage">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.SecondaryPackage">
     <id column="secid" jdbcType="INTEGER" property="secid" />
     <result column="secname" jdbcType="VARCHAR" property="secname" />
     <result column="secrule" jdbcType="VARCHAR" property="secrule" />
@@ -78,7 +78,7 @@
     secid, secname, secrule, secdescription, secweight, measureunit, seclength, secwidth, 
     sechigh, volumn, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.SecondaryPackageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -102,13 +102,13 @@
     delete from secondarypackage
     where secid = #{secid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.SecondaryPackageExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample">
     delete from secondarypackage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.SecondaryPackage">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.SecondaryPackage">
     insert into secondarypackage (secid, secname, secrule, 
       secdescription, secweight, measureunit, 
       seclength, secwidth, sechigh, 
@@ -120,7 +120,7 @@
       #{volumn,jdbcType=DOUBLE}, #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, 
       #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.SecondaryPackage">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.SecondaryPackage">
     insert into secondarypackage
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="secid != null">
@@ -205,7 +205,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.SecondaryPackageExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample" resultType="java.lang.Integer">
     select count(*) from secondarypackage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -277,7 +277,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.SecondaryPackage">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.SecondaryPackage">
     update secondarypackage
     <set>
       <if test="secname != null">
@@ -319,7 +319,7 @@
     </set>
     where secid = #{secid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.SecondaryPackage">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.SecondaryPackage">
     update secondarypackage
     set secname = #{secname,jdbcType=VARCHAR},
       secrule = #{secrule,jdbcType=VARCHAR},
@@ -335,7 +335,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where secid = #{secid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.SecondaryPackage">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.SecondaryPackage">
     <id column="secid" jdbcType="INTEGER" property="secid" />
     <result column="secname" jdbcType="VARCHAR" property="secname" />
     <result column="secrule" jdbcType="VARCHAR" property="secrule" />
@@ -412,7 +412,7 @@
     secid, secname, secrule, secdescription, secweight, measureunit, seclength, secwidth, 
     sechigh, volumn, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.SecondaryPackageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -436,13 +436,13 @@
     delete from secondarypackage
     where secid = #{secid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.SecondaryPackageExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample">
     delete from secondarypackage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.SecondaryPackage">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.SecondaryPackage">
     insert into secondarypackage (secid, secname, secrule, 
       secdescription, secweight, measureunit, 
       seclength, secwidth, sechigh, 
@@ -454,7 +454,7 @@
       #{volumn,jdbcType=DOUBLE}, #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, 
       #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.SecondaryPackage">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.SecondaryPackage">
     insert into secondarypackage
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="secid != null">
@@ -539,7 +539,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.SecondaryPackageExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample" resultType="java.lang.Integer">
     select count(*) from secondarypackage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -611,7 +611,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.SecondaryPackage">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.SecondaryPackage">
     update secondarypackage
     <set>
       <if test="secname != null">
@@ -653,7 +653,7 @@
     </set>
     where secid = #{secid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.SecondaryPackage">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.SecondaryPackage">
     update secondarypackage
     set secname = #{secname,jdbcType=VARCHAR},
       secrule = #{secrule,jdbcType=VARCHAR},

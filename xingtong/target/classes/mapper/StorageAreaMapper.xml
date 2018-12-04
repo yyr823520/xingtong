@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.StorageAreaMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.StorageArea">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.StorageArea">
     <id column="sid" jdbcType="INTEGER" property="sid" />
     <result column="snumber" jdbcType="VARCHAR" property="snumber" />
     <result column="areaname" jdbcType="VARCHAR" property="areaname" />
@@ -72,7 +72,7 @@
   <sql id="Base_Column_List">
     sid, snumber, areaname, creationdate, wid, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.StorageAreaExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.StorageAreaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -96,13 +96,13 @@
     delete from storagearea
     where sid = #{sid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.StorageAreaExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.StorageAreaExample">
     delete from storagearea
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.StorageArea">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.StorageArea">
     insert into storagearea (sid, snumber, areaname, 
       creationdate, wid, int0, 
       string0, string1)
@@ -110,7 +110,7 @@
       #{creationdate,jdbcType=TIMESTAMP}, #{wid,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.StorageArea">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.StorageArea">
     insert into storagearea
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="sid != null">
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.StorageAreaExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.StorageAreaExample" resultType="java.lang.Integer">
     select count(*) from storagearea
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -217,7 +217,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.StorageArea">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.StorageArea">
     update storagearea
     <set>
       <if test="snumber != null">
@@ -244,7 +244,7 @@
     </set>
     where sid = #{sid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.StorageArea">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.StorageArea">
     update storagearea
     set snumber = #{snumber,jdbcType=VARCHAR},
       areaname = #{areaname,jdbcType=VARCHAR},
@@ -255,7 +255,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where sid = #{sid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.StorageArea">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.StorageArea">
     <id column="sid" jdbcType="INTEGER" property="sid" />
     <result column="snumber" jdbcType="VARCHAR" property="snumber" />
     <result column="areaname" jdbcType="VARCHAR" property="areaname" />
@@ -326,7 +326,7 @@
   <sql id="Base_Column_List">
     sid, snumber, areaname, creationdate, wid, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.StorageAreaExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.StorageAreaExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -350,13 +350,13 @@
     delete from storagearea
     where sid = #{sid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.StorageAreaExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.StorageAreaExample">
     delete from storagearea
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.StorageArea">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.StorageArea">
     insert into storagearea (sid, snumber, areaname, 
       creationdate, wid, int0, 
       string0, string1)
@@ -364,7 +364,7 @@
       #{creationdate,jdbcType=TIMESTAMP}, #{wid,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.StorageArea">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.StorageArea">
     insert into storagearea
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="sid != null">
@@ -419,7 +419,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.StorageAreaExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.StorageAreaExample" resultType="java.lang.Integer">
     select count(*) from storagearea
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -471,7 +471,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.StorageArea">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.StorageArea">
     update storagearea
     <set>
       <if test="snumber != null">
@@ -498,7 +498,7 @@
     </set>
     where sid = #{sid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.StorageArea">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.StorageArea">
     update storagearea
     set snumber = #{snumber,jdbcType=VARCHAR},
       areaname = #{areaname,jdbcType=VARCHAR},

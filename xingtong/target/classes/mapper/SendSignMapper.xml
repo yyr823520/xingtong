@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.SendSignMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.SendSign">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.SendSign">
     <id column="signid" jdbcType="INTEGER" property="signid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="signstatus" jdbcType="INTEGER" property="signstatus" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     signid, consignid, signstatus, receiptstatus
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.SendSignExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.SendSignExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from sendsign
     where signid = #{signid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.SendSignExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.SendSignExample">
     delete from sendsign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.SendSign">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.SendSign">
     insert into sendsign (signid, consignid, signstatus, 
       receiptstatus)
     values (#{signid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, #{signstatus,jdbcType=INTEGER}, 
       #{receiptstatus,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.SendSign">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.SendSign">
     insert into sendsign
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="signid != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.SendSignExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.SendSignExample" resultType="java.lang.Integer">
     select count(*) from sendsign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.SendSign">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.SendSign">
     update sendsign
     <set>
       <if test="consignid != null">
@@ -186,14 +186,14 @@
     </set>
     where signid = #{signid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.SendSign">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.SendSign">
     update sendsign
     set consignid = #{consignid,jdbcType=VARCHAR},
       signstatus = #{signstatus,jdbcType=INTEGER},
       receiptstatus = #{receiptstatus,jdbcType=INTEGER}
     where signid = #{signid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.SendSign">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.SendSign">
     <id column="signid" jdbcType="INTEGER" property="signid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="signstatus" jdbcType="INTEGER" property="signstatus" />
@@ -260,7 +260,7 @@
   <sql id="Base_Column_List">
     signid, consignid, signstatus, receiptstatus
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.SendSignExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.SendSignExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -284,19 +284,19 @@
     delete from sendsign
     where signid = #{signid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.SendSignExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.SendSignExample">
     delete from sendsign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.SendSign">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.SendSign">
     insert into sendsign (signid, consignid, signstatus, 
       receiptstatus)
     values (#{signid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, #{signstatus,jdbcType=INTEGER}, 
       #{receiptstatus,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.SendSign">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.SendSign">
     insert into sendsign
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="signid != null">
@@ -327,7 +327,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.SendSignExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.SendSignExample" resultType="java.lang.Integer">
     select count(*) from sendsign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -363,7 +363,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.SendSign">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.SendSign">
     update sendsign
     <set>
       <if test="consignid != null">
@@ -378,7 +378,7 @@
     </set>
     where signid = #{signid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.SendSign">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.SendSign">
     update sendsign
     set consignid = #{consignid,jdbcType=VARCHAR},
       signstatus = #{signstatus,jdbcType=INTEGER},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.RefuelRegisterMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.RefuelRegister">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.RefuelRegister">
     <id column="reid" jdbcType="INTEGER" property="reid" />
     <result column="driverid" jdbcType="INTEGER" property="driverid" />
     <result column="refueltime" jdbcType="DATE" property="refueltime" />
@@ -80,7 +80,7 @@
     reid, driverid, refueltime, vehiclenumber, drviername, dictionaryid, petrolstation, 
     unitprice, quantity, money, remark, ckeckstatus, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.RefuelRegisterExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.RefuelRegisterExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -104,13 +104,13 @@
     delete from refuelregister
     where reid = #{reid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.RefuelRegisterExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.RefuelRegisterExample">
     delete from refuelregister
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.RefuelRegister">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.RefuelRegister">
     insert into refuelregister (reid, driverid, refueltime, 
       vehiclenumber, drviername, dictionaryid, 
       petrolstation, unitprice, quantity, 
@@ -124,7 +124,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.RefuelRegister">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.RefuelRegister">
     insert into refuelregister
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="reid != null">
@@ -221,7 +221,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.RefuelRegisterExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.RefuelRegisterExample" resultType="java.lang.Integer">
     select count(*) from refuelregister
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -301,7 +301,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.RefuelRegister">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.RefuelRegister">
     update refuelregister
     <set>
       <if test="driverid != null">
@@ -349,7 +349,7 @@
     </set>
     where reid = #{reid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.RefuelRegister">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.RefuelRegister">
     update refuelregister
     set driverid = #{driverid,jdbcType=INTEGER},
       refueltime = #{refueltime,jdbcType=DATE},
@@ -367,7 +367,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where reid = #{reid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.RefuelRegister">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.RefuelRegister">
     <id column="reid" jdbcType="INTEGER" property="reid" />
     <result column="driverid" jdbcType="INTEGER" property="driverid" />
     <result column="refueltime" jdbcType="DATE" property="refueltime" />
@@ -446,7 +446,7 @@
     reid, driverid, refueltime, vehiclenumber, drviername, dictionaryid, petrolstation, 
     unitprice, quantity, money, remark, ckeckstatus, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.RefuelRegisterExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.RefuelRegisterExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -470,13 +470,13 @@
     delete from refuelregister
     where reid = #{reid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.RefuelRegisterExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.RefuelRegisterExample">
     delete from refuelregister
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.RefuelRegister">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.RefuelRegister">
     insert into refuelregister (reid, driverid, refueltime, 
       vehiclenumber, drviername, dictionaryid, 
       petrolstation, unitprice, quantity, 
@@ -490,7 +490,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.RefuelRegister">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.RefuelRegister">
     insert into refuelregister
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="reid != null">
@@ -587,7 +587,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.RefuelRegisterExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.RefuelRegisterExample" resultType="java.lang.Integer">
     select count(*) from refuelregister
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -667,7 +667,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.RefuelRegister">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.RefuelRegister">
     update refuelregister
     <set>
       <if test="driverid != null">
@@ -715,7 +715,7 @@
     </set>
     where reid = #{reid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.RefuelRegister">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.RefuelRegister">
     update refuelregister
     set driverid = #{driverid,jdbcType=INTEGER},
       refueltime = #{refueltime,jdbcType=DATE},

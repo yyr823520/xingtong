@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.CustomerPayMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.CustomerPay">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.CustomerPay">
     <id column="customerpayid" jdbcType="INTEGER" property="customerpayid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="pay" jdbcType="VARCHAR" property="pay" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     customerpayid, consignid, pay, personpay, employeeid, cpremark
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.CustomerPayExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.CustomerPayExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +94,13 @@
     delete from customerpay
     where customerpayid = #{customerpayid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.CustomerPayExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.CustomerPayExample">
     delete from customerpay
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.CustomerPay">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.CustomerPay">
     insert into customerpay (customerpayid, consignid, pay, 
       personpay, employeeid, cpremark
       )
@@ -108,7 +108,7 @@
       #{personpay,jdbcType=TIMESTAMP}, #{employeeid,jdbcType=INTEGER}, #{cpremark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.CustomerPay">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.CustomerPay">
     insert into customerpay
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="customerpayid != null">
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.CustomerPayExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.CustomerPayExample" resultType="java.lang.Integer">
     select count(*) from customerpay
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.CustomerPay">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.CustomerPay">
     update customerpay
     <set>
       <if test="consignid != null">
@@ -216,7 +216,7 @@
     </set>
     where customerpayid = #{customerpayid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.CustomerPay">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.CustomerPay">
     update customerpay
     set consignid = #{consignid,jdbcType=VARCHAR},
       pay = #{pay,jdbcType=VARCHAR},
@@ -225,7 +225,7 @@
       cpremark = #{cpremark,jdbcType=VARCHAR}
     where customerpayid = #{customerpayid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.CustomerPay">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.CustomerPay">
     <id column="customerpayid" jdbcType="INTEGER" property="customerpayid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="pay" jdbcType="VARCHAR" property="pay" />
@@ -294,7 +294,7 @@
   <sql id="Base_Column_List">
     customerpayid, consignid, pay, personpay, employeeid, cpremark
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.CustomerPayExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.CustomerPayExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -318,13 +318,13 @@
     delete from customerpay
     where customerpayid = #{customerpayid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.CustomerPayExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.CustomerPayExample">
     delete from customerpay
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.CustomerPay">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.CustomerPay">
     insert into customerpay (customerpayid, consignid, pay, 
       personpay, employeeid, cpremark
       )
@@ -332,7 +332,7 @@
       #{personpay,jdbcType=TIMESTAMP}, #{employeeid,jdbcType=INTEGER}, #{cpremark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.CustomerPay">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.CustomerPay">
     insert into customerpay
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="customerpayid != null">
@@ -375,7 +375,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.CustomerPayExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.CustomerPayExample" resultType="java.lang.Integer">
     select count(*) from customerpay
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -419,7 +419,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.CustomerPay">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.CustomerPay">
     update customerpay
     <set>
       <if test="consignid != null">
@@ -440,7 +440,7 @@
     </set>
     where customerpayid = #{customerpayid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.CustomerPay">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.CustomerPay">
     update customerpay
     set consignid = #{consignid,jdbcType=VARCHAR},
       pay = #{pay,jdbcType=VARCHAR},

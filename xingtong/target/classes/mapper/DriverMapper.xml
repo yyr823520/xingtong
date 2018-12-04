@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.DriverMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Driver">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Driver">
     <id column="drvid" jdbcType="INTEGER" property="drvid" />
     <result column="drvname" jdbcType="VARCHAR" property="drvname" />
     <result column="drvsex" jdbcType="CHAR" property="drvsex" />
@@ -79,7 +79,7 @@
     drvid, drvname, drvsex, drvcardnumber, drivingtype, drivingyears, drvphone, drvisenable, 
     drvaddress, drvremark, vid, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.DriverExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.DriverExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -103,13 +103,13 @@
     delete from driver
     where drvid = #{drvid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.DriverExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.DriverExample">
     delete from driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Driver">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Driver">
     insert into driver (drvid, drvname, drvsex, 
       drvcardnumber, drivingtype, drivingyears, 
       drvphone, drvisenable, drvaddress, 
@@ -121,7 +121,7 @@
       #{drvremark,jdbcType=VARCHAR}, #{vid,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Driver">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Driver">
     insert into driver
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="drvid != null">
@@ -212,7 +212,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.DriverExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.DriverExample" resultType="java.lang.Integer">
     select count(*) from driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -288,7 +288,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Driver">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Driver">
     update driver
     <set>
       <if test="drvname != null">
@@ -333,7 +333,7 @@
     </set>
     where drvid = #{drvid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Driver">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Driver">
     update driver
     set drvname = #{drvname,jdbcType=VARCHAR},
       drvsex = #{drvsex,jdbcType=CHAR},
@@ -350,7 +350,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where drvid = #{drvid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Driver">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Driver">
     <id column="drvid" jdbcType="INTEGER" property="drvid" />
     <result column="drvname" jdbcType="VARCHAR" property="drvname" />
     <result column="drvsex" jdbcType="CHAR" property="drvsex" />
@@ -428,7 +428,7 @@
     drvid, drvname, drvsex, drvcardnumber, drivingtype, drivingyears, drvphone, drvisenable, 
     drvaddress, drvremark, vid, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.DriverExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.DriverExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -452,13 +452,13 @@
     delete from driver
     where drvid = #{drvid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.DriverExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.DriverExample">
     delete from driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Driver">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Driver">
     insert into driver (drvid, drvname, drvsex, 
       drvcardnumber, drivingtype, drivingyears, 
       drvphone, drvisenable, drvaddress, 
@@ -470,7 +470,7 @@
       #{drvremark,jdbcType=VARCHAR}, #{vid,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Driver">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Driver">
     insert into driver
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="drvid != null">
@@ -561,7 +561,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.DriverExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.DriverExample" resultType="java.lang.Integer">
     select count(*) from driver
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -637,7 +637,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Driver">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Driver">
     update driver
     <set>
       <if test="drvname != null">
@@ -682,7 +682,7 @@
     </set>
     where drvid = #{drvid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Driver">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Driver">
     update driver
     set drvname = #{drvname,jdbcType=VARCHAR},
       drvsex = #{drvsex,jdbcType=CHAR},

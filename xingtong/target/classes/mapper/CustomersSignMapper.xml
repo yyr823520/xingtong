@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.CustomersSignMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.CustomersSign">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.CustomersSign">
     <id column="csid" jdbcType="INTEGER" property="csid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="pickstatus" jdbcType="INTEGER" property="pickstatus" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     csid, consignid, pickstatus, receiptstatus
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.CustomersSignExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.CustomersSignExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from customersign
     where csid = #{csid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.CustomersSignExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.CustomersSignExample">
     delete from customersign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.CustomersSign">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.CustomersSign">
     insert into customersign (csid, consignid, pickstatus, 
       receiptstatus)
     values (#{csid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, #{pickstatus,jdbcType=INTEGER}, 
       #{receiptstatus,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.CustomersSign">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.CustomersSign">
     insert into customersign
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="csid != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.CustomersSignExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.CustomersSignExample" resultType="java.lang.Integer">
     select count(*) from customersign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.CustomersSign">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.CustomersSign">
     update customersign
     <set>
       <if test="consignid != null">
@@ -186,14 +186,14 @@
     </set>
     where csid = #{csid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.CustomersSign">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.CustomersSign">
     update customersign
     set consignid = #{consignid,jdbcType=VARCHAR},
       pickstatus = #{pickstatus,jdbcType=INTEGER},
       receiptstatus = #{receiptstatus,jdbcType=INTEGER}
     where csid = #{csid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.CustomersSign">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.CustomersSign">
     <id column="csid" jdbcType="INTEGER" property="csid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="pickstatus" jdbcType="INTEGER" property="pickstatus" />
@@ -260,7 +260,7 @@
   <sql id="Base_Column_List">
     csid, consignid, pickstatus, receiptstatus
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.CustomersSignExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.CustomersSignExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -284,19 +284,19 @@
     delete from customersign
     where csid = #{csid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.CustomersSignExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.CustomersSignExample">
     delete from customersign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.CustomersSign">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.CustomersSign">
     insert into customersign (csid, consignid, pickstatus, 
       receiptstatus)
     values (#{csid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, #{pickstatus,jdbcType=INTEGER}, 
       #{receiptstatus,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.CustomersSign">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.CustomersSign">
     insert into customersign
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="csid != null">
@@ -327,7 +327,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.CustomersSignExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.CustomersSignExample" resultType="java.lang.Integer">
     select count(*) from customersign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -363,7 +363,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.CustomersSign">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.CustomersSign">
     update customersign
     <set>
       <if test="consignid != null">
@@ -378,7 +378,7 @@
     </set>
     where csid = #{csid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.CustomersSign">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.CustomersSign">
     update customersign
     set consignid = #{consignid,jdbcType=VARCHAR},
       pickstatus = #{pickstatus,jdbcType=INTEGER},

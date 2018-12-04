@@ -11,6 +11,19 @@
     <result column="string1" jdbcType="VARCHAR" property="string1" />
     <result column="pic" jdbcType="VARCHAR" property="pic" />
   </resultMap>
+  
+  <select id="getModuleTree" resultMap="BaseResultMap" parameterType="int" >
+  SELECT m.* FROM module m JOIN module_user mu 
+ ON m.mid=mu.mid JOIN employee e ON e.eid=mu.eid WHERE e.eid=#{userId} 
+  </select>
+  
+  
+  
+  
+  
+  
+  
+  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

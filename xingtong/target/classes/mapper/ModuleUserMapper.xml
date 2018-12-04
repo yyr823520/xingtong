@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ModuleUserMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.ModuleUser">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.ModuleUser">
     <id column="muid" jdbcType="INTEGER" property="muid" />
     <result column="mid" jdbcType="INTEGER" property="mid" />
     <result column="eid" jdbcType="INTEGER" property="eid" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     muid, mid, eid
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ModuleUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ModuleUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from module_user
     where muid = #{muid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ModuleUserExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ModuleUserExample">
     delete from module_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.ModuleUser">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.ModuleUser">
     insert into module_user (muid, mid, eid
       )
     values (#{muid,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.ModuleUser">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.ModuleUser">
     insert into module_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="muid != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ModuleUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ModuleUserExample" resultType="java.lang.Integer">
     select count(*) from module_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ModuleUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.ModuleUser">
     update module_user
     <set>
       <if test="mid != null">
@@ -172,13 +172,13 @@
     </set>
     where muid = #{muid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ModuleUser">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.ModuleUser">
     update module_user
     set mid = #{mid,jdbcType=INTEGER},
       eid = #{eid,jdbcType=INTEGER}
     where muid = #{muid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.ModuleUser">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.ModuleUser">
     <id column="muid" jdbcType="INTEGER" property="muid" />
     <result column="mid" jdbcType="INTEGER" property="mid" />
     <result column="eid" jdbcType="INTEGER" property="eid" />
@@ -244,7 +244,7 @@
   <sql id="Base_Column_List">
     muid, mid, eid
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ModuleUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ModuleUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -268,19 +268,19 @@
     delete from module_user
     where muid = #{muid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ModuleUserExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ModuleUserExample">
     delete from module_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.ModuleUser">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.ModuleUser">
     insert into module_user (muid, mid, eid
       )
     values (#{muid,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.ModuleUser">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.ModuleUser">
     insert into module_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="muid != null">
@@ -305,7 +305,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ModuleUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ModuleUserExample" resultType="java.lang.Integer">
     select count(*) from module_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -337,7 +337,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ModuleUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.ModuleUser">
     update module_user
     <set>
       <if test="mid != null">
@@ -349,7 +349,7 @@
     </set>
     where muid = #{muid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ModuleUser">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.ModuleUser">
     update module_user
     set mid = #{mid,jdbcType=INTEGER},
       eid = #{eid,jdbcType=INTEGER}

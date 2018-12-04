@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ShipperMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Shipper">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Shipper">
     <id column="sid" jdbcType="INTEGER" property="sid" />
     <result column="sname" jdbcType="VARCHAR" property="sname" />
     <result column="companyname" jdbcType="VARCHAR" property="companyname" />
@@ -79,7 +79,7 @@
     sid, sname, companyname, stelephone, sfax, sphone, email, qqormsn, earlyaccount, 
     saddress, sremark, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ShipperExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ShipperExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -103,13 +103,13 @@
     delete from shipper
     where sid = #{sid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ShipperExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ShipperExample">
     delete from shipper
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Shipper">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Shipper">
     insert into shipper (sid, sname, companyname, 
       stelephone, sfax, sphone, 
       email, qqormsn, earlyaccount, 
@@ -121,7 +121,7 @@
       #{saddress,jdbcType=VARCHAR}, #{sremark,jdbcType=VARCHAR}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Shipper">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Shipper">
     insert into shipper
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="sid != null">
@@ -212,7 +212,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ShipperExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ShipperExample" resultType="java.lang.Integer">
     select count(*) from shipper
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -288,7 +288,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Shipper">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Shipper">
     update shipper
     <set>
       <if test="sname != null">
@@ -333,7 +333,7 @@
     </set>
     where sid = #{sid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Shipper">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Shipper">
     update shipper
     set sname = #{sname,jdbcType=VARCHAR},
       companyname = #{companyname,jdbcType=VARCHAR},
@@ -350,7 +350,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where sid = #{sid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Shipper">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Shipper">
     <id column="sid" jdbcType="INTEGER" property="sid" />
     <result column="sname" jdbcType="VARCHAR" property="sname" />
     <result column="companyname" jdbcType="VARCHAR" property="companyname" />
@@ -428,7 +428,7 @@
     sid, sname, companyname, stelephone, sfax, sphone, email, qqormsn, earlyaccount, 
     saddress, sremark, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ShipperExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ShipperExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -452,13 +452,13 @@
     delete from shipper
     where sid = #{sid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ShipperExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ShipperExample">
     delete from shipper
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Shipper">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Shipper">
     insert into shipper (sid, sname, companyname, 
       stelephone, sfax, sphone, 
       email, qqormsn, earlyaccount, 
@@ -470,7 +470,7 @@
       #{saddress,jdbcType=VARCHAR}, #{sremark,jdbcType=VARCHAR}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Shipper">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Shipper">
     insert into shipper
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="sid != null">
@@ -561,7 +561,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ShipperExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ShipperExample" resultType="java.lang.Integer">
     select count(*) from shipper
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -637,7 +637,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Shipper">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Shipper">
     update shipper
     <set>
       <if test="sname != null">
@@ -682,7 +682,7 @@
     </set>
     where sid = #{sid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Shipper">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Shipper">
     update shipper
     set sname = #{sname,jdbcType=VARCHAR},
       companyname = #{companyname,jdbcType=VARCHAR},

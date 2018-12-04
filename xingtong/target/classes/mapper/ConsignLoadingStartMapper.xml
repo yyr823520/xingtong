@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ConsignLoadingStartMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.ConsignLoadingStart">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.ConsignLoadingStart">
     <id column="clsid" jdbcType="INTEGER" property="clsid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="loadid" jdbcType="INTEGER" property="loadid" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     clsid, consignid, loadid
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ConsignLoadingStartExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConsignLoadingStartExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from consignloadingstart
     where clsid = #{clsid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ConsignLoadingStartExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConsignLoadingStartExample">
     delete from consignloadingstart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.ConsignLoadingStart">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.ConsignLoadingStart">
     insert into consignloadingstart (clsid, consignid, loadid
       )
     values (#{clsid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, #{loadid,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.ConsignLoadingStart">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.ConsignLoadingStart">
     insert into consignloadingstart
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="clsid != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ConsignLoadingStartExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConsignLoadingStartExample" resultType="java.lang.Integer">
     select count(*) from consignloadingstart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ConsignLoadingStart">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.ConsignLoadingStart">
     update consignloadingstart
     <set>
       <if test="consignid != null">
@@ -172,13 +172,13 @@
     </set>
     where clsid = #{clsid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ConsignLoadingStart">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.ConsignLoadingStart">
     update consignloadingstart
     set consignid = #{consignid,jdbcType=VARCHAR},
       loadid = #{loadid,jdbcType=INTEGER}
     where clsid = #{clsid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.ConsignLoadingStart">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.ConsignLoadingStart">
     <id column="clsid" jdbcType="INTEGER" property="clsid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="loadid" jdbcType="INTEGER" property="loadid" />
@@ -244,7 +244,7 @@
   <sql id="Base_Column_List">
     clsid, consignid, loadid
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ConsignLoadingStartExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConsignLoadingStartExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -268,19 +268,19 @@
     delete from consignloadingstart
     where clsid = #{clsid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ConsignLoadingStartExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConsignLoadingStartExample">
     delete from consignloadingstart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.ConsignLoadingStart">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.ConsignLoadingStart">
     insert into consignloadingstart (clsid, consignid, loadid
       )
     values (#{clsid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, #{loadid,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.ConsignLoadingStart">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.ConsignLoadingStart">
     insert into consignloadingstart
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="clsid != null">
@@ -305,7 +305,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ConsignLoadingStartExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConsignLoadingStartExample" resultType="java.lang.Integer">
     select count(*) from consignloadingstart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -337,7 +337,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ConsignLoadingStart">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.ConsignLoadingStart">
     update consignloadingstart
     <set>
       <if test="consignid != null">
@@ -349,7 +349,7 @@
     </set>
     where clsid = #{clsid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ConsignLoadingStart">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.ConsignLoadingStart">
     update consignloadingstart
     set consignid = #{consignid,jdbcType=VARCHAR},
       loadid = #{loadid,jdbcType=INTEGER}

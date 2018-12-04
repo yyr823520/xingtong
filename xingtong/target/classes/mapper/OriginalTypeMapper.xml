@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.OriginalTypeMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.OriginalType">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.OriginalType">
     <id column="oid" jdbcType="INTEGER" property="oid" />
     <result column="otypename" jdbcType="VARCHAR" property="otypename" />
     <result column="otype" jdbcType="VARCHAR" property="otype" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     oid, otypename, otype, oenglishname
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.OriginalTypeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from originaltype
     where oid = #{oid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.OriginalTypeExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample">
     delete from originaltype
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.OriginalType">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.OriginalType">
     insert into originaltype (oid, otypename, otype, 
       oenglishname)
     values (#{oid,jdbcType=INTEGER}, #{otypename,jdbcType=VARCHAR}, #{otype,jdbcType=VARCHAR}, 
       #{oenglishname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.OriginalType">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.OriginalType">
     insert into originaltype
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oid != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.OriginalTypeExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample" resultType="java.lang.Integer">
     select count(*) from originaltype
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.OriginalType">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.OriginalType">
     update originaltype
     <set>
       <if test="otypename != null">
@@ -186,14 +186,14 @@
     </set>
     where oid = #{oid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.OriginalType">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.OriginalType">
     update originaltype
     set otypename = #{otypename,jdbcType=VARCHAR},
       otype = #{otype,jdbcType=VARCHAR},
       oenglishname = #{oenglishname,jdbcType=VARCHAR}
     where oid = #{oid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.OriginalType">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.OriginalType">
     <id column="oid" jdbcType="INTEGER" property="oid" />
     <result column="otypename" jdbcType="VARCHAR" property="otypename" />
     <result column="otype" jdbcType="VARCHAR" property="otype" />
@@ -260,7 +260,7 @@
   <sql id="Base_Column_List">
     oid, otypename, otype, oenglishname
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.OriginalTypeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -284,19 +284,19 @@
     delete from originaltype
     where oid = #{oid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.OriginalTypeExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample">
     delete from originaltype
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.OriginalType">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.OriginalType">
     insert into originaltype (oid, otypename, otype, 
       oenglishname)
     values (#{oid,jdbcType=INTEGER}, #{otypename,jdbcType=VARCHAR}, #{otype,jdbcType=VARCHAR}, 
       #{oenglishname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.OriginalType">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.OriginalType">
     insert into originaltype
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oid != null">
@@ -327,7 +327,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.OriginalTypeExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample" resultType="java.lang.Integer">
     select count(*) from originaltype
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -363,7 +363,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.OriginalType">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.OriginalType">
     update originaltype
     <set>
       <if test="otypename != null">
@@ -378,7 +378,7 @@
     </set>
     where oid = #{oid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.OriginalType">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.OriginalType">
     update originaltype
     set otypename = #{otypename,jdbcType=VARCHAR},
       otype = #{otype,jdbcType=VARCHAR},

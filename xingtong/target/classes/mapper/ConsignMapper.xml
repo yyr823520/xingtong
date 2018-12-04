@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ConsignMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Consign">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Consign">
     <id column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="destination" jdbcType="VARCHAR" property="destination" />
     <result column="wid" jdbcType="INTEGER" property="wid" />
@@ -94,7 +94,7 @@
     dictionaryid, owetopay, spotpayment, tosubmit, receiptfor, monthlypay, operatingcosts, 
     otherdescription, billingtime, operator, orderstatus, int0, string0, string2
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ConsignExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConsignExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -118,13 +118,13 @@
     delete from consign
     where consignid = #{consignid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ConsignExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConsignExample">
     delete from consign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Consign">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Consign">
     insert into consign (consignid, destination, wid, 
       receivenoteid, originalprice, measurement, 
       totalmoney, freightcharge, receivingfee, 
@@ -146,7 +146,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string2,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Consign">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Consign">
     insert into consign
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="consignid != null">
@@ -315,7 +315,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ConsignExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConsignExample" resultType="java.lang.Integer">
     select count(*) from consign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -443,7 +443,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Consign">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Consign">
     update consign
     <set>
       <if test="destination != null">
@@ -527,7 +527,7 @@
     </set>
     where consignid = #{consignid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Consign">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Consign">
     update consign
     set destination = #{destination,jdbcType=VARCHAR},
       wid = #{wid,jdbcType=INTEGER},
@@ -557,7 +557,7 @@
       string2 = #{string2,jdbcType=VARCHAR}
     where consignid = #{consignid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Consign">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Consign">
     <id column="consignid" jdbcType="VARCHAR" property="consignid" />
     <result column="destination" jdbcType="VARCHAR" property="destination" />
     <result column="wid" jdbcType="INTEGER" property="wid" />
@@ -650,7 +650,7 @@
     dictionaryid, owetopay, spotpayment, tosubmit, receiptfor, monthlypay, operatingcosts, 
     otherdescription, billingtime, operator, orderstatus, int0, string0, string2
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ConsignExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConsignExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -674,13 +674,13 @@
     delete from consign
     where consignid = #{consignid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ConsignExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConsignExample">
     delete from consign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Consign">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Consign">
     insert into consign (consignid, destination, wid, 
       receivenoteid, originalprice, measurement, 
       totalmoney, freightcharge, receivingfee, 
@@ -702,7 +702,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string2,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Consign">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Consign">
     insert into consign
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="consignid != null">
@@ -871,7 +871,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ConsignExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConsignExample" resultType="java.lang.Integer">
     select count(*) from consign
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -999,7 +999,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Consign">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Consign">
     update consign
     <set>
       <if test="destination != null">
@@ -1083,7 +1083,7 @@
     </set>
     where consignid = #{consignid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Consign">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Consign">
     update consign
     set destination = #{destination,jdbcType=VARCHAR},
       wid = #{wid,jdbcType=INTEGER},

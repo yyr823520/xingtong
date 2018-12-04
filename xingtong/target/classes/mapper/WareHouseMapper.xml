@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.WareHouseMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.WareHouse">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.WareHouse">
     <id column="wid" jdbcType="INTEGER" property="wid" />
     <result column="Warehousename" jdbcType="VARCHAR" property="warehousename" />
     <result column="cityid" jdbcType="INTEGER" property="cityid" />
@@ -78,7 +78,7 @@
     wid, Warehousename, cityid, telephone, fax, phone, username, address, wremark, creationdate, 
     int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.WareHouseExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.WareHouseExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -102,13 +102,13 @@
     delete from warehouse
     where wid = #{wid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.WareHouseExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.WareHouseExample">
     delete from warehouse
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.WareHouse">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.WareHouse">
     insert into warehouse (wid, Warehousename, cityid, 
       telephone, fax, phone, 
       username, address, wremark, 
@@ -120,7 +120,7 @@
       #{creationdate,jdbcType=TIMESTAMP}, #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, 
       #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.WareHouse">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.WareHouse">
     insert into warehouse
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="wid != null">
@@ -205,7 +205,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.WareHouseExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.WareHouseExample" resultType="java.lang.Integer">
     select count(*) from warehouse
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -277,7 +277,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.WareHouse">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.WareHouse">
     update warehouse
     <set>
       <if test="warehousename != null">
@@ -319,7 +319,7 @@
     </set>
     where wid = #{wid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.WareHouse">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.WareHouse">
     update warehouse
     set Warehousename = #{warehousename,jdbcType=VARCHAR},
       cityid = #{cityid,jdbcType=INTEGER},
@@ -335,7 +335,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where wid = #{wid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.WareHouse">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.WareHouse">
     <id column="wid" jdbcType="INTEGER" property="wid" />
     <result column="Warehousename" jdbcType="VARCHAR" property="warehousename" />
     <result column="cityid" jdbcType="INTEGER" property="cityid" />
@@ -412,7 +412,7 @@
     wid, Warehousename, cityid, telephone, fax, phone, username, address, wremark, creationdate, 
     int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.WareHouseExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.WareHouseExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -436,13 +436,13 @@
     delete from warehouse
     where wid = #{wid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.WareHouseExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.WareHouseExample">
     delete from warehouse
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.WareHouse">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.WareHouse">
     insert into warehouse (wid, Warehousename, cityid, 
       telephone, fax, phone, 
       username, address, wremark, 
@@ -454,7 +454,7 @@
       #{creationdate,jdbcType=TIMESTAMP}, #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, 
       #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.WareHouse">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.WareHouse">
     insert into warehouse
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="wid != null">
@@ -539,7 +539,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.WareHouseExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.WareHouseExample" resultType="java.lang.Integer">
     select count(*) from warehouse
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -611,7 +611,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.WareHouse">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.WareHouse">
     update warehouse
     <set>
       <if test="warehousename != null">
@@ -653,7 +653,7 @@
     </set>
     where wid = #{wid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.WareHouse">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.WareHouse">
     update warehouse
     set Warehousename = #{warehousename,jdbcType=VARCHAR},
       cityid = #{cityid,jdbcType=INTEGER},
