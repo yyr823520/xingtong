@@ -13,11 +13,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  *
  */
 
+@SpringBootApplication
+@MapperScan("com.xt.xingtong.interf")//扫描dao接口
 @EnableSwagger2
 @EnableTransactionManagement
 @EnableScheduling
-@SpringBootApplication
-@MapperScan("com.xt.xingtong.interf")//扫描dao接口
 public class App 
 {
     public static void main( String[] args )
