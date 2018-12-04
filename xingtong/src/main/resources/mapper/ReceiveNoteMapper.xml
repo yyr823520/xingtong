@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ReceiveNoteMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.ReceiveNote">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.ReceiveNote">
     <id column="recid" jdbcType="INTEGER" property="recid" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="sid" jdbcType="INTEGER" property="sid" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     recid, pid, sid, conid
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ReceiveNoteExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ReceiveNoteExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from receivenote
     where recid = #{recid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ReceiveNoteExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ReceiveNoteExample">
     delete from receivenote
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.ReceiveNote">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.ReceiveNote">
     insert into receivenote (recid, pid, sid, 
       conid)
     values (#{recid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, 
       #{conid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.ReceiveNote">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.ReceiveNote">
     insert into receivenote
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="recid != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ReceiveNoteExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ReceiveNoteExample" resultType="java.lang.Integer">
     select count(*) from receivenote
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ReceiveNote">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.ReceiveNote">
     update receivenote
     <set>
       <if test="pid != null">
@@ -186,14 +186,14 @@
     </set>
     where recid = #{recid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ReceiveNote">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.ReceiveNote">
     update receivenote
     set pid = #{pid,jdbcType=INTEGER},
       sid = #{sid,jdbcType=INTEGER},
       conid = #{conid,jdbcType=INTEGER}
     where recid = #{recid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.ReceiveNote">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.ReceiveNote">
     <id column="recid" jdbcType="INTEGER" property="recid" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="sid" jdbcType="INTEGER" property="sid" />
@@ -260,7 +260,7 @@
   <sql id="Base_Column_List">
     recid, pid, sid, conid
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ReceiveNoteExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ReceiveNoteExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -284,19 +284,19 @@
     delete from receivenote
     where recid = #{recid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ReceiveNoteExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ReceiveNoteExample">
     delete from receivenote
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.ReceiveNote">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.ReceiveNote">
     insert into receivenote (recid, pid, sid, 
       conid)
     values (#{recid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, 
       #{conid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.ReceiveNote">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.ReceiveNote">
     insert into receivenote
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="recid != null">
@@ -327,7 +327,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ReceiveNoteExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ReceiveNoteExample" resultType="java.lang.Integer">
     select count(*) from receivenote
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -363,7 +363,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ReceiveNote">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.ReceiveNote">
     update receivenote
     <set>
       <if test="pid != null">
@@ -378,7 +378,7 @@
     </set>
     where recid = #{recid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ReceiveNote">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.ReceiveNote">
     update receivenote
     set pid = #{pid,jdbcType=INTEGER},
       sid = #{sid,jdbcType=INTEGER},

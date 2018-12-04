@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.CustomPackgeMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.CustomPackge">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.CustomPackge">
     <id column="cuid" jdbcType="INTEGER" property="cuid" />
     <result column="cuname" jdbcType="VARCHAR" property="cuname" />
     <result column="associatedname" jdbcType="VARCHAR" property="associatedname" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     cuid, cuname, associatedname
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.CustomPackgeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from custompackge
     where cuid = #{cuid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.CustomPackgeExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample">
     delete from custompackge
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.CustomPackge">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.CustomPackge">
     insert into custompackge (cuid, cuname, associatedname
       )
     values (#{cuid,jdbcType=INTEGER}, #{cuname,jdbcType=VARCHAR}, #{associatedname,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.CustomPackge">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.CustomPackge">
     insert into custompackge
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="cuid != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.CustomPackgeExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample" resultType="java.lang.Integer">
     select count(*) from custompackge
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.CustomPackge">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.CustomPackge">
     update custompackge
     <set>
       <if test="cuname != null">
@@ -172,13 +172,13 @@
     </set>
     where cuid = #{cuid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.CustomPackge">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.CustomPackge">
     update custompackge
     set cuname = #{cuname,jdbcType=VARCHAR},
       associatedname = #{associatedname,jdbcType=VARCHAR}
     where cuid = #{cuid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.CustomPackge">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.CustomPackge">
     <id column="cuid" jdbcType="INTEGER" property="cuid" />
     <result column="cuname" jdbcType="VARCHAR" property="cuname" />
     <result column="associatedname" jdbcType="VARCHAR" property="associatedname" />
@@ -244,7 +244,7 @@
   <sql id="Base_Column_List">
     cuid, cuname, associatedname
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.CustomPackgeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -268,19 +268,19 @@
     delete from custompackge
     where cuid = #{cuid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.CustomPackgeExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample">
     delete from custompackge
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.CustomPackge">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.CustomPackge">
     insert into custompackge (cuid, cuname, associatedname
       )
     values (#{cuid,jdbcType=INTEGER}, #{cuname,jdbcType=VARCHAR}, #{associatedname,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.CustomPackge">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.CustomPackge">
     insert into custompackge
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="cuid != null">
@@ -305,7 +305,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.CustomPackgeExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample" resultType="java.lang.Integer">
     select count(*) from custompackge
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -337,7 +337,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.CustomPackge">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.CustomPackge">
     update custompackge
     <set>
       <if test="cuname != null">
@@ -349,7 +349,7 @@
     </set>
     where cuid = #{cuid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.CustomPackge">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.CustomPackge">
     update custompackge
     set cuname = #{cuname,jdbcType=VARCHAR},
       associatedname = #{associatedname,jdbcType=VARCHAR}

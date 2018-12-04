@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ReceiveCompleteMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.ReceiveComplete">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.ReceiveComplete">
     <id column="rcompleteid" jdbcType="VARCHAR" property="rcompleteid" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="completetime" jdbcType="DATE" property="completetime" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     rcompleteid, status, completetime
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ReceiveCompleteExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ReceiveCompleteExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from receivecomplete
     where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ReceiveCompleteExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ReceiveCompleteExample">
     delete from receivecomplete
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.ReceiveComplete">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.ReceiveComplete">
     insert into receivecomplete (rcompleteid, status, completetime
       )
     values (#{rcompleteid,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{completetime,jdbcType=DATE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.ReceiveComplete">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.ReceiveComplete">
     insert into receivecomplete
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="rcompleteid != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ReceiveCompleteExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ReceiveCompleteExample" resultType="java.lang.Integer">
     select count(*) from receivecomplete
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ReceiveComplete">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.ReceiveComplete">
     update receivecomplete
     <set>
       <if test="status != null">
@@ -172,13 +172,13 @@
     </set>
     where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ReceiveComplete">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.ReceiveComplete">
     update receivecomplete
     set status = #{status,jdbcType=INTEGER},
       completetime = #{completetime,jdbcType=DATE}
     where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.ReceiveComplete">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.ReceiveComplete">
     <id column="rcompleteid" jdbcType="VARCHAR" property="rcompleteid" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="completetime" jdbcType="DATE" property="completetime" />
@@ -244,7 +244,7 @@
   <sql id="Base_Column_List">
     rcompleteid, status, completetime
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ReceiveCompleteExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ReceiveCompleteExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -268,19 +268,19 @@
     delete from receivecomplete
     where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ReceiveCompleteExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ReceiveCompleteExample">
     delete from receivecomplete
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.ReceiveComplete">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.ReceiveComplete">
     insert into receivecomplete (rcompleteid, status, completetime
       )
     values (#{rcompleteid,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{completetime,jdbcType=DATE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.ReceiveComplete">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.ReceiveComplete">
     insert into receivecomplete
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="rcompleteid != null">
@@ -305,7 +305,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ReceiveCompleteExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ReceiveCompleteExample" resultType="java.lang.Integer">
     select count(*) from receivecomplete
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -337,7 +337,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.ReceiveComplete">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.ReceiveComplete">
     update receivecomplete
     <set>
       <if test="status != null">
@@ -349,7 +349,7 @@
     </set>
     where rcompleteid = #{rcompleteid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.ReceiveComplete">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.ReceiveComplete">
     update receivecomplete
     set status = #{status,jdbcType=INTEGER},
       completetime = #{completetime,jdbcType=DATE}

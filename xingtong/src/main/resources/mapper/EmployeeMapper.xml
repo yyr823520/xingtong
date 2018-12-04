@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.EmployeeMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Employee">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Employee">
     <id column="eid" jdbcType="INTEGER" property="eid" />
     <result column="ename" jdbcType="VARCHAR" property="ename" />
     <result column="esex" jdbcType="CHAR" property="esex" />
@@ -80,7 +80,7 @@
     eid, ename, esex, wid, entrydate, birthdate, eaddress, ecardnumber, epassword, ephone, 
     isenable, eremark, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.EmployeeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.EmployeeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -104,13 +104,13 @@
     delete from employee
     where eid = #{eid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.EmployeeExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.EmployeeExample">
     delete from employee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Employee">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Employee">
     insert into employee (eid, ename, esex, 
       wid, entrydate, birthdate, 
       eaddress, ecardnumber, epassword, 
@@ -124,7 +124,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Employee">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Employee">
     insert into employee
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="eid != null">
@@ -221,7 +221,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.EmployeeExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.EmployeeExample" resultType="java.lang.Integer">
     select count(*) from employee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -301,7 +301,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Employee">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Employee">
     update employee
     <set>
       <if test="ename != null">
@@ -349,7 +349,7 @@
     </set>
     where eid = #{eid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Employee">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Employee">
     update employee
     set ename = #{ename,jdbcType=VARCHAR},
       esex = #{esex,jdbcType=CHAR},
@@ -367,7 +367,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where eid = #{eid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Employee">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Employee">
     <id column="eid" jdbcType="INTEGER" property="eid" />
     <result column="ename" jdbcType="VARCHAR" property="ename" />
     <result column="esex" jdbcType="CHAR" property="esex" />
@@ -446,7 +446,7 @@
     eid, ename, esex, wid, entrydate, birthdate, eaddress, ecardnumber, epassword, ephone, 
     isenable, eremark, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.EmployeeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.EmployeeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -470,13 +470,13 @@
     delete from employee
     where eid = #{eid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.EmployeeExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.EmployeeExample">
     delete from employee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Employee">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Employee">
     insert into employee (eid, ename, esex, 
       wid, entrydate, birthdate, 
       eaddress, ecardnumber, epassword, 
@@ -490,7 +490,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Employee">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Employee">
     insert into employee
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="eid != null">
@@ -587,7 +587,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.EmployeeExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.EmployeeExample" resultType="java.lang.Integer">
     select count(*) from employee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -667,7 +667,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Employee">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Employee">
     update employee
     <set>
       <if test="ename != null">
@@ -715,7 +715,7 @@
     </set>
     where eid = #{eid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Employee">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Employee">
     update employee
     set ename = #{ename,jdbcType=VARCHAR},
       esex = #{esex,jdbcType=CHAR},

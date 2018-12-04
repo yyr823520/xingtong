@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.DictionaryMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Dictionary">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Dictionary">
     <id column="did" jdbcType="INTEGER" property="did" />
     <result column="dname" jdbcType="VARCHAR" property="dname" />
     <result column="dtype" jdbcType="VARCHAR" property="dtype" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     did, dname, dtype
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.DictionaryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.DictionaryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from dictionary
     where did = #{did,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.DictionaryExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.DictionaryExample">
     delete from dictionary
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Dictionary">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Dictionary">
     insert into dictionary (did, dname, dtype
       )
     values (#{did,jdbcType=INTEGER}, #{dname,jdbcType=VARCHAR}, #{dtype,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Dictionary">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Dictionary">
     insert into dictionary
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="did != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.DictionaryExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.DictionaryExample" resultType="java.lang.Integer">
     select count(*) from dictionary
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Dictionary">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Dictionary">
     update dictionary
     <set>
       <if test="dname != null">
@@ -172,13 +172,13 @@
     </set>
     where did = #{did,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Dictionary">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Dictionary">
     update dictionary
     set dname = #{dname,jdbcType=VARCHAR},
       dtype = #{dtype,jdbcType=VARCHAR}
     where did = #{did,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Dictionary">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Dictionary">
     <id column="did" jdbcType="INTEGER" property="did" />
     <result column="dname" jdbcType="VARCHAR" property="dname" />
     <result column="dtype" jdbcType="VARCHAR" property="dtype" />
@@ -244,7 +244,7 @@
   <sql id="Base_Column_List">
     did, dname, dtype
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.DictionaryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.DictionaryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -268,19 +268,19 @@
     delete from dictionary
     where did = #{did,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.DictionaryExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.DictionaryExample">
     delete from dictionary
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Dictionary">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Dictionary">
     insert into dictionary (did, dname, dtype
       )
     values (#{did,jdbcType=INTEGER}, #{dname,jdbcType=VARCHAR}, #{dtype,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Dictionary">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Dictionary">
     insert into dictionary
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="did != null">
@@ -305,7 +305,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.DictionaryExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.DictionaryExample" resultType="java.lang.Integer">
     select count(*) from dictionary
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -337,7 +337,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Dictionary">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Dictionary">
     update dictionary
     <set>
       <if test="dname != null">
@@ -349,7 +349,7 @@
     </set>
     where did = #{did,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Dictionary">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Dictionary">
     update dictionary
     set dname = #{dname,jdbcType=VARCHAR},
       dtype = #{dtype,jdbcType=VARCHAR}

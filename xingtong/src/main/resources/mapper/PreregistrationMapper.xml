@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.PreregistrationMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Preregistration">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Preregistration">
     <id column="preid" jdbcType="VARCHAR" property="preid" />
     <result column="destination" jdbcType="VARCHAR" property="destination" />
     <result column="pretime" jdbcType="TIMESTAMP" property="pretime" />
@@ -81,7 +81,7 @@
     preid, destination, pretime, pid, sid, conid, receivestatus, receivetime, sendstatus, 
     sendtime, preaddress, preremark, transporttype, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.PreregistrationExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.PreregistrationExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -105,13 +105,13 @@
     delete from preregistration
     where preid = #{preid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.PreregistrationExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.PreregistrationExample">
     delete from preregistration
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Preregistration">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Preregistration">
     insert into preregistration (preid, destination, pretime, 
       pid, sid, conid, receivestatus, 
       receivetime, sendstatus, sendtime, 
@@ -125,7 +125,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Preregistration">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Preregistration">
     insert into preregistration
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="preid != null">
@@ -228,7 +228,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.PreregistrationExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.PreregistrationExample" resultType="java.lang.Integer">
     select count(*) from preregistration
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -312,7 +312,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Preregistration">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Preregistration">
     update preregistration
     <set>
       <if test="destination != null">
@@ -363,7 +363,7 @@
     </set>
     where preid = #{preid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Preregistration">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Preregistration">
     update preregistration
     set destination = #{destination,jdbcType=VARCHAR},
       pretime = #{pretime,jdbcType=TIMESTAMP},
@@ -382,7 +382,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where preid = #{preid,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Preregistration">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Preregistration">
     <id column="preid" jdbcType="VARCHAR" property="preid" />
     <result column="destination" jdbcType="VARCHAR" property="destination" />
     <result column="pretime" jdbcType="TIMESTAMP" property="pretime" />
@@ -462,7 +462,7 @@
     preid, destination, pretime, pid, sid, conid, receivestatus, receivetime, sendstatus, 
     sendtime, preaddress, preremark, transporttype, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.PreregistrationExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.PreregistrationExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -486,13 +486,13 @@
     delete from preregistration
     where preid = #{preid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.PreregistrationExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.PreregistrationExample">
     delete from preregistration
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Preregistration">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Preregistration">
     insert into preregistration (preid, destination, pretime, 
       pid, sid, conid, receivestatus, 
       receivetime, sendstatus, sendtime, 
@@ -506,7 +506,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Preregistration">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Preregistration">
     insert into preregistration
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="preid != null">
@@ -609,7 +609,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.PreregistrationExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.PreregistrationExample" resultType="java.lang.Integer">
     select count(*) from preregistration
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -693,7 +693,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Preregistration">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Preregistration">
     update preregistration
     <set>
       <if test="destination != null">
@@ -744,7 +744,7 @@
     </set>
     where preid = #{preid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Preregistration">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Preregistration">
     update preregistration
     set destination = #{destination,jdbcType=VARCHAR},
       pretime = #{pretime,jdbcType=TIMESTAMP},

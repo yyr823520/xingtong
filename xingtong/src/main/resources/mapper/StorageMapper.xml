@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.StorageMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Storage">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Storage">
     <id column="stid" jdbcType="INTEGER" property="stid" />
     <result column="rcompleteid" jdbcType="VARCHAR" property="rcompleteid" />
     <result column="wid" jdbcType="INTEGER" property="wid" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     stid, rcompleteid, wid, arrivaltime, status
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.StorageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.StorageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -93,19 +93,19 @@
     delete from storage
     where stid = #{stid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.StorageExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.StorageExample">
     delete from storage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Storage">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Storage">
     insert into storage (stid, rcompleteid, wid, 
       arrivaltime, status)
     values (#{stid,jdbcType=INTEGER}, #{rcompleteid,jdbcType=VARCHAR}, #{wid,jdbcType=INTEGER}, 
       #{arrivaltime,jdbcType=DATE}, #{status,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Storage">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Storage">
     insert into storage
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="stid != null">
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.StorageExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.StorageExample" resultType="java.lang.Integer">
     select count(*) from storage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Storage">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Storage">
     update storage
     <set>
       <if test="rcompleteid != null">
@@ -200,7 +200,7 @@
     </set>
     where stid = #{stid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Storage">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Storage">
     update storage
     set rcompleteid = #{rcompleteid,jdbcType=VARCHAR},
       wid = #{wid,jdbcType=INTEGER},
@@ -208,7 +208,7 @@
       status = #{status,jdbcType=CHAR}
     where stid = #{stid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Storage">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Storage">
     <id column="stid" jdbcType="INTEGER" property="stid" />
     <result column="rcompleteid" jdbcType="VARCHAR" property="rcompleteid" />
     <result column="wid" jdbcType="INTEGER" property="wid" />
@@ -276,7 +276,7 @@
   <sql id="Base_Column_List">
     stid, rcompleteid, wid, arrivaltime, status
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.StorageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.StorageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -300,19 +300,19 @@
     delete from storage
     where stid = #{stid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.StorageExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.StorageExample">
     delete from storage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Storage">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Storage">
     insert into storage (stid, rcompleteid, wid, 
       arrivaltime, status)
     values (#{stid,jdbcType=INTEGER}, #{rcompleteid,jdbcType=VARCHAR}, #{wid,jdbcType=INTEGER}, 
       #{arrivaltime,jdbcType=DATE}, #{status,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Storage">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Storage">
     insert into storage
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="stid != null">
@@ -349,7 +349,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.StorageExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.StorageExample" resultType="java.lang.Integer">
     select count(*) from storage
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -389,7 +389,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Storage">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Storage">
     update storage
     <set>
       <if test="rcompleteid != null">
@@ -407,7 +407,7 @@
     </set>
     where stid = #{stid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Storage">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Storage">
     update storage
     set rcompleteid = #{rcompleteid,jdbcType=VARCHAR},
       wid = #{wid,jdbcType=INTEGER},

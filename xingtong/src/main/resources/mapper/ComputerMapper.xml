@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ComputerMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Computer">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Computer">
     <id column="cid" jdbcType="INTEGER" property="cid" />
     <result column="computername" jdbcType="VARCHAR" property="computername" />
     <result column="telephone" jdbcType="CHAR" property="telephone" />
@@ -76,7 +76,7 @@
     cid, computername, telephone, openingbank, dutyparagraph, address, busregnumber, 
     fax, accountnumber, email, remark
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ComputerExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ComputerExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -100,13 +100,13 @@
     delete from computer
     where cid = #{cid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ComputerExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ComputerExample">
     delete from computer
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Computer">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Computer">
     insert into computer (cid, computername, telephone, 
       openingbank, dutyparagraph, address, 
       busregnumber, fax, accountnumber, 
@@ -116,7 +116,7 @@
       #{busregnumber,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{accountnumber,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Computer">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Computer">
     insert into computer
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="cid != null">
@@ -189,7 +189,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ComputerExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ComputerExample" resultType="java.lang.Integer">
     select count(*) from computer
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -253,7 +253,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Computer">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Computer">
     update computer
     <set>
       <if test="computername != null">
@@ -289,7 +289,7 @@
     </set>
     where cid = #{cid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Computer">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Computer">
     update computer
     set computername = #{computername,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=CHAR},
@@ -303,7 +303,7 @@
       remark = #{remark,jdbcType=VARCHAR}
     where cid = #{cid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Computer">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Computer">
     <id column="cid" jdbcType="INTEGER" property="cid" />
     <result column="computername" jdbcType="VARCHAR" property="computername" />
     <result column="telephone" jdbcType="CHAR" property="telephone" />
@@ -378,7 +378,7 @@
     cid, computername, telephone, openingbank, dutyparagraph, address, busregnumber, 
     fax, accountnumber, email, remark
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ComputerExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ComputerExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -402,13 +402,13 @@
     delete from computer
     where cid = #{cid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ComputerExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ComputerExample">
     delete from computer
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Computer">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Computer">
     insert into computer (cid, computername, telephone, 
       openingbank, dutyparagraph, address, 
       busregnumber, fax, accountnumber, 
@@ -418,7 +418,7 @@
       #{busregnumber,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{accountnumber,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Computer">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Computer">
     insert into computer
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="cid != null">
@@ -491,7 +491,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ComputerExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ComputerExample" resultType="java.lang.Integer">
     select count(*) from computer
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -555,7 +555,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Computer">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Computer">
     update computer
     <set>
       <if test="computername != null">
@@ -591,7 +591,7 @@
     </set>
     where cid = #{cid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Computer">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Computer">
     update computer
     set computername = #{computername,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=CHAR},

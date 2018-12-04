@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.VehicleMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Vehicle">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Vehicle">
     <id column="vid" jdbcType="INTEGER" property="vid" />
     <result column="vnumber" jdbcType="VARCHAR" property="vnumber" />
     <result column="vehiclenature" jdbcType="VARCHAR" property="vehiclenature" />
@@ -80,7 +80,7 @@
     vid, vnumber, vehiclenature, brandmodel, enginenumber, load, vlength, vphone, registrationtime, 
     vaddress, visenable, vremark, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.VehicleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.VehicleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -104,13 +104,13 @@
     delete from vehicle
     where vid = #{vid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.VehicleExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.VehicleExample">
     delete from vehicle
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Vehicle">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Vehicle">
     insert into vehicle (vid, vnumber, vehiclenature, 
       brandmodel, enginenumber, load, 
       vlength, vphone, registrationtime, 
@@ -124,7 +124,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Vehicle">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Vehicle">
     insert into vehicle
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="vid != null">
@@ -221,7 +221,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.VehicleExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.VehicleExample" resultType="java.lang.Integer">
     select count(*) from vehicle
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -301,7 +301,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Vehicle">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Vehicle">
     update vehicle
     <set>
       <if test="vnumber != null">
@@ -349,7 +349,7 @@
     </set>
     where vid = #{vid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Vehicle">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Vehicle">
     update vehicle
     set vnumber = #{vnumber,jdbcType=VARCHAR},
       vehiclenature = #{vehiclenature,jdbcType=VARCHAR},
@@ -367,7 +367,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where vid = #{vid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Vehicle">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Vehicle">
     <id column="vid" jdbcType="INTEGER" property="vid" />
     <result column="vnumber" jdbcType="VARCHAR" property="vnumber" />
     <result column="vehiclenature" jdbcType="VARCHAR" property="vehiclenature" />
@@ -446,7 +446,7 @@
     vid, vnumber, vehiclenature, brandmodel, enginenumber, load, vlength, vphone, registrationtime, 
     vaddress, visenable, vremark, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.VehicleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.VehicleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -470,13 +470,13 @@
     delete from vehicle
     where vid = #{vid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.VehicleExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.VehicleExample">
     delete from vehicle
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Vehicle">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Vehicle">
     insert into vehicle (vid, vnumber, vehiclenature, 
       brandmodel, enginenumber, load, 
       vlength, vphone, registrationtime, 
@@ -490,7 +490,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Vehicle">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Vehicle">
     insert into vehicle
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="vid != null">
@@ -587,7 +587,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.VehicleExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.VehicleExample" resultType="java.lang.Integer">
     select count(*) from vehicle
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -667,7 +667,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Vehicle">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Vehicle">
     update vehicle
     <set>
       <if test="vnumber != null">
@@ -715,7 +715,7 @@
     </set>
     where vid = #{vid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Vehicle">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Vehicle">
     update vehicle
     set vnumber = #{vnumber,jdbcType=VARCHAR},
       vehiclenature = #{vehiclenature,jdbcType=VARCHAR},

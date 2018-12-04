@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ProductMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Product">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Product">
     <id column="pid" jdbcType="INTEGER" property="pid" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
     <result column="oid" jdbcType="INTEGER" property="oid" />
@@ -73,7 +73,7 @@
   <sql id="Base_Column_List">
     pid, pname, oid, number, weight, volumn, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ProductExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ProductExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -97,13 +97,13 @@
     delete from product
     where pid = #{pid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ProductExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ProductExample">
     delete from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Product">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Product">
     insert into product (pid, pname, oid, 
       number, weight, volumn, 
       int0, string0, string1
@@ -113,7 +113,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Product">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Product">
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="pid != null">
@@ -174,7 +174,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ProductExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ProductExample" resultType="java.lang.Integer">
     select count(*) from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -230,7 +230,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Product">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Product">
     update product
     <set>
       <if test="pname != null">
@@ -260,7 +260,7 @@
     </set>
     where pid = #{pid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Product">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Product">
     update product
     set pname = #{pname,jdbcType=VARCHAR},
       oid = #{oid,jdbcType=INTEGER},
@@ -272,7 +272,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where pid = #{pid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Product">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Product">
     <id column="pid" jdbcType="INTEGER" property="pid" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
     <result column="oid" jdbcType="INTEGER" property="oid" />
@@ -344,7 +344,7 @@
   <sql id="Base_Column_List">
     pid, pname, oid, number, weight, volumn, int0, string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ProductExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ProductExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -368,13 +368,13 @@
     delete from product
     where pid = #{pid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ProductExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ProductExample">
     delete from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Product">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Product">
     insert into product (pid, pname, oid, 
       number, weight, volumn, 
       int0, string0, string1
@@ -384,7 +384,7 @@
       #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Product">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Product">
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="pid != null">
@@ -445,7 +445,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ProductExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ProductExample" resultType="java.lang.Integer">
     select count(*) from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -501,7 +501,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Product">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Product">
     update product
     <set>
       <if test="pname != null">
@@ -531,7 +531,7 @@
     </set>
     where pid = #{pid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Product">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Product">
     update product
     set pname = #{pname,jdbcType=VARCHAR},
       oid = #{oid,jdbcType=INTEGER},

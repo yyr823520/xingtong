@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.LoadingStartMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.LoadingStart">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.LoadingStart">
     <id column="loadid" jdbcType="INTEGER" property="loadid" />
     <result column="loadingstarttime" jdbcType="DATE" property="loadingstarttime" />
     <result column="destinationnetwork" jdbcType="VARCHAR" property="destinationnetwork" />
@@ -83,7 +83,7 @@
     drivername, phone, carrierfee, spotpayment, owetopay, remark, startstatus, int0, 
     string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.LoadingStartExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -107,13 +107,13 @@
     delete from loadingstart
     where loadid = #{loadid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.LoadingStartExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample">
     delete from loadingstart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.LoadingStart">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.LoadingStart">
     insert into loadingstart (loadid, loadingstarttime, destinationnetwork, 
       wid, waytonetwork, vnumber, 
       driverid, drivername, phone, 
@@ -127,7 +127,7 @@
       #{remark,jdbcType=VARCHAR}, #{startstatus,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.LoadingStart">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.LoadingStart">
     insert into loadingstart
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="loadid != null">
@@ -236,7 +236,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.LoadingStartExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample" resultType="java.lang.Integer">
     select count(*) from loadingstart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -324,7 +324,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.LoadingStart">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.LoadingStart">
     update loadingstart
     <set>
       <if test="loadingstarttime != null">
@@ -378,7 +378,7 @@
     </set>
     where loadid = #{loadid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.LoadingStart">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.LoadingStart">
     update loadingstart
     set loadingstarttime = #{loadingstarttime,jdbcType=DATE},
       destinationnetwork = #{destinationnetwork,jdbcType=VARCHAR},
@@ -398,7 +398,7 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where loadid = #{loadid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.LoadingStart">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.LoadingStart">
     <id column="loadid" jdbcType="INTEGER" property="loadid" />
     <result column="loadingstarttime" jdbcType="DATE" property="loadingstarttime" />
     <result column="destinationnetwork" jdbcType="VARCHAR" property="destinationnetwork" />
@@ -480,7 +480,7 @@
     drivername, phone, carrierfee, spotpayment, owetopay, remark, startstatus, int0, 
     string0, string1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.LoadingStartExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -504,13 +504,13 @@
     delete from loadingstart
     where loadid = #{loadid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.LoadingStartExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample">
     delete from loadingstart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.LoadingStart">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.LoadingStart">
     insert into loadingstart (loadid, loadingstarttime, destinationnetwork, 
       wid, waytonetwork, vnumber, 
       driverid, drivername, phone, 
@@ -524,7 +524,7 @@
       #{remark,jdbcType=VARCHAR}, #{startstatus,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.LoadingStart">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.LoadingStart">
     insert into loadingstart
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="loadid != null">
@@ -633,7 +633,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.LoadingStartExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample" resultType="java.lang.Integer">
     select count(*) from loadingstart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -721,7 +721,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.LoadingStart">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.LoadingStart">
     update loadingstart
     <set>
       <if test="loadingstarttime != null">
@@ -775,7 +775,7 @@
     </set>
     where loadid = #{loadid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.LoadingStart">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.LoadingStart">
     update loadingstart
     set loadingstarttime = #{loadingstarttime,jdbcType=DATE},
       destinationnetwork = #{destinationnetwork,jdbcType=VARCHAR},

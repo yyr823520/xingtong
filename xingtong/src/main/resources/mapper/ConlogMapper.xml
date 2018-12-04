@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ConlogMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Conlog">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Conlog">
     <id column="loginid" jdbcType="INTEGER" property="loginid" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="logintime" jdbcType="TIMESTAMP" property="logintime" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     loginid, username, logintime, computername, computerip
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ConlogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConlogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -93,19 +93,19 @@
     delete from conlog
     where loginid = #{loginid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ConlogExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConlogExample">
     delete from conlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Conlog">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Conlog">
     insert into conlog (loginid, username, logintime, 
       computername, computerip)
     values (#{loginid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{logintime,jdbcType=TIMESTAMP}, 
       #{computername,jdbcType=VARCHAR}, #{computerip,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Conlog">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Conlog">
     insert into conlog
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="loginid != null">
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ConlogExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConlogExample" resultType="java.lang.Integer">
     select count(*) from conlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Conlog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Conlog">
     update conlog
     <set>
       <if test="username != null">
@@ -200,7 +200,7 @@
     </set>
     where loginid = #{loginid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Conlog">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Conlog">
     update conlog
     set username = #{username,jdbcType=VARCHAR},
       logintime = #{logintime,jdbcType=TIMESTAMP},
@@ -208,7 +208,7 @@
       computerip = #{computerip,jdbcType=VARCHAR}
     where loginid = #{loginid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Conlog">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Conlog">
     <id column="loginid" jdbcType="INTEGER" property="loginid" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="logintime" jdbcType="TIMESTAMP" property="logintime" />
@@ -276,7 +276,7 @@
   <sql id="Base_Column_List">
     loginid, username, logintime, computername, computerip
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ConlogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConlogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -300,19 +300,19 @@
     delete from conlog
     where loginid = #{loginid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ConlogExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConlogExample">
     delete from conlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Conlog">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Conlog">
     insert into conlog (loginid, username, logintime, 
       computername, computerip)
     values (#{loginid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{logintime,jdbcType=TIMESTAMP}, 
       #{computername,jdbcType=VARCHAR}, #{computerip,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Conlog">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Conlog">
     insert into conlog
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="loginid != null">
@@ -349,7 +349,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ConlogExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConlogExample" resultType="java.lang.Integer">
     select count(*) from conlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -389,7 +389,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Conlog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Conlog">
     update conlog
     <set>
       <if test="username != null">
@@ -407,7 +407,7 @@
     </set>
     where loginid = #{loginid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Conlog">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Conlog">
     update conlog
     set username = #{username,jdbcType=VARCHAR},
       logintime = #{logintime,jdbcType=TIMESTAMP},

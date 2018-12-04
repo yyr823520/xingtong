@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.VehicleTrackMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.VehicleTrack">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.VehicleTrack">
     <id column="vehicletrackid" jdbcType="INTEGER" property="vehicletrackid" />
     <result column="vehicleid" jdbcType="INTEGER" property="vehicleid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List">
     vehicletrackid, vehicleid, consignid, currentposition
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.VehicleTrackExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.VehicleTrackExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -92,19 +92,19 @@
     delete from vehicletrack
     where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.VehicleTrackExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.VehicleTrackExample">
     delete from vehicletrack
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.VehicleTrack">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.VehicleTrack">
     insert into vehicletrack (vehicletrackid, vehicleid, consignid, 
       currentposition)
     values (#{vehicletrackid,jdbcType=INTEGER}, #{vehicleid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, 
       #{currentposition,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.VehicleTrack">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.VehicleTrack">
     insert into vehicletrack
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="vehicletrackid != null">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.VehicleTrackExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.VehicleTrackExample" resultType="java.lang.Integer">
     select count(*) from vehicletrack
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.VehicleTrack">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.VehicleTrack">
     update vehicletrack
     <set>
       <if test="vehicleid != null">
@@ -186,14 +186,14 @@
     </set>
     where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.VehicleTrack">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.VehicleTrack">
     update vehicletrack
     set vehicleid = #{vehicleid,jdbcType=INTEGER},
       consignid = #{consignid,jdbcType=VARCHAR},
       currentposition = #{currentposition,jdbcType=VARCHAR}
     where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.VehicleTrack">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.VehicleTrack">
     <id column="vehicletrackid" jdbcType="INTEGER" property="vehicletrackid" />
     <result column="vehicleid" jdbcType="INTEGER" property="vehicleid" />
     <result column="consignid" jdbcType="VARCHAR" property="consignid" />
@@ -260,7 +260,7 @@
   <sql id="Base_Column_List">
     vehicletrackid, vehicleid, consignid, currentposition
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.VehicleTrackExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.VehicleTrackExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -284,19 +284,19 @@
     delete from vehicletrack
     where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.VehicleTrackExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.VehicleTrackExample">
     delete from vehicletrack
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.VehicleTrack">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.VehicleTrack">
     insert into vehicletrack (vehicletrackid, vehicleid, consignid, 
       currentposition)
     values (#{vehicletrackid,jdbcType=INTEGER}, #{vehicleid,jdbcType=INTEGER}, #{consignid,jdbcType=VARCHAR}, 
       #{currentposition,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.VehicleTrack">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.VehicleTrack">
     insert into vehicletrack
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="vehicletrackid != null">
@@ -327,7 +327,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.VehicleTrackExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.VehicleTrackExample" resultType="java.lang.Integer">
     select count(*) from vehicletrack
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -363,7 +363,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.VehicleTrack">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.VehicleTrack">
     update vehicletrack
     <set>
       <if test="vehicleid != null">
@@ -378,7 +378,7 @@
     </set>
     where vehicletrackid = #{vehicletrackid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.VehicleTrack">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.VehicleTrack">
     update vehicletrack
     set vehicleid = #{vehicleid,jdbcType=INTEGER},
       consignid = #{consignid,jdbcType=VARCHAR},

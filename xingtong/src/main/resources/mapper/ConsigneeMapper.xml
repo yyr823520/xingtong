@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ConsigneeMapper">
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Consignee">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Consignee">
     <id column="conid" jdbcType="INTEGER" property="conid" />
     <result column="conname" jdbcType="VARCHAR" property="conname" />
     <result column="concompanyname" jdbcType="VARCHAR" property="concompanyname" />
@@ -79,7 +79,7 @@
     conid, conname, concompanyname, contelphone, confax, conphone, conemail, conqqormsn, 
     conearlyaccount, conaddress, conremark, int0, string0, sting1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ConsigneeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -103,13 +103,13 @@
     delete from consignee
     where conid = #{conid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ConsigneeExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample">
     delete from consignee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Consignee">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Consignee">
     insert into consignee (conid, conname, concompanyname, 
       contelphone, confax, conphone, 
       conemail, conqqormsn, conearlyaccount, 
@@ -121,7 +121,7 @@
       #{conaddress,jdbcType=VARCHAR}, #{conremark,jdbcType=VARCHAR}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{sting1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Consignee">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Consignee">
     insert into consignee
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="conid != null">
@@ -212,7 +212,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ConsigneeExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample" resultType="java.lang.Integer">
     select count(*) from consignee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -288,7 +288,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Consignee">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Consignee">
     update consignee
     <set>
       <if test="conname != null">
@@ -333,7 +333,7 @@
     </set>
     where conid = #{conid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Consignee">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Consignee">
     update consignee
     set conname = #{conname,jdbcType=VARCHAR},
       concompanyname = #{concompanyname,jdbcType=VARCHAR},
@@ -350,7 +350,7 @@
       sting1 = #{sting1,jdbcType=VARCHAR}
     where conid = #{conid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.yyr.entity.Consignee">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Consignee">
     <id column="conid" jdbcType="INTEGER" property="conid" />
     <result column="conname" jdbcType="VARCHAR" property="conname" />
     <result column="concompanyname" jdbcType="VARCHAR" property="concompanyname" />
@@ -428,7 +428,7 @@
     conid, conname, concompanyname, contelphone, confax, conphone, conemail, conqqormsn, 
     conearlyaccount, conaddress, conremark, int0, string0, sting1
   </sql>
-  <select id="selectByExample" parameterType="com.yyr.entity.ConsigneeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -452,13 +452,13 @@
     delete from consignee
     where conid = #{conid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yyr.entity.ConsigneeExample">
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample">
     delete from consignee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yyr.entity.Consignee">
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Consignee">
     insert into consignee (conid, conname, concompanyname, 
       contelphone, confax, conphone, 
       conemail, conqqormsn, conearlyaccount, 
@@ -470,7 +470,7 @@
       #{conaddress,jdbcType=VARCHAR}, #{conremark,jdbcType=VARCHAR}, #{int0,jdbcType=INTEGER}, 
       #{string0,jdbcType=VARCHAR}, #{sting1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yyr.entity.Consignee">
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Consignee">
     insert into consignee
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="conid != null">
@@ -561,7 +561,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yyr.entity.ConsigneeExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample" resultType="java.lang.Integer">
     select count(*) from consignee
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -637,7 +637,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yyr.entity.Consignee">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Consignee">
     update consignee
     <set>
       <if test="conname != null">
@@ -682,7 +682,7 @@
     </set>
     where conid = #{conid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yyr.entity.Consignee">
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Consignee">
     update consignee
     set conname = #{conname,jdbcType=VARCHAR},
       concompanyname = #{concompanyname,jdbcType=VARCHAR},
