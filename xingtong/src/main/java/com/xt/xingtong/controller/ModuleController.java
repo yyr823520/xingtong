@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.xt.xingtong.service.ModuleService;
 
+/**
+ * jgjdjgjdjgj
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping("/module")
 public class ModuleController {
