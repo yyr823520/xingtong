@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.SecondaryPackageMapper">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.SecondaryPackage">
+    <id column="secid" jdbcType="INTEGER" property="secid" />
+    <result column="secname" jdbcType="VARCHAR" property="secname" />
+    <result column="secrule" jdbcType="VARCHAR" property="secrule" />
+    <result column="secdescription" jdbcType="VARCHAR" property="secdescription" />
+    <result column="secweight" jdbcType="DOUBLE" property="secweight" />
+    <result column="measureunit" jdbcType="VARCHAR" property="measureunit" />
+    <result column="seclength" jdbcType="DOUBLE" property="seclength" />
+    <result column="secwidth" jdbcType="DOUBLE" property="secwidth" />
+    <result column="sechigh" jdbcType="DOUBLE" property="sechigh" />
+    <result column="volumn" jdbcType="DOUBLE" property="volumn" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    secid, secname, secrule, secdescription, secweight, measureunit, seclength, secwidth, 
+    sechigh, volumn, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from secondarypackage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from secondarypackage
+    where secid = #{secid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from secondarypackage
+    where secid = #{secid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample">
+    delete from secondarypackage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.SecondaryPackage">
+    insert into secondarypackage (secid, secname, secrule, 
+      secdescription, secweight, measureunit, 
+      seclength, secwidth, sechigh, 
+      volumn, int0, string0, 
+      string1)
+    values (#{secid,jdbcType=INTEGER}, #{secname,jdbcType=VARCHAR}, #{secrule,jdbcType=VARCHAR}, 
+      #{secdescription,jdbcType=VARCHAR}, #{secweight,jdbcType=DOUBLE}, #{measureunit,jdbcType=VARCHAR}, 
+      #{seclength,jdbcType=DOUBLE}, #{secwidth,jdbcType=DOUBLE}, #{sechigh,jdbcType=DOUBLE}, 
+      #{volumn,jdbcType=DOUBLE}, #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, 
+      #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.SecondaryPackage">
+    insert into secondarypackage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="secid != null">
+        secid,
+      </if>
+      <if test="secname != null">
+        secname,
+      </if>
+      <if test="secrule != null">
+        secrule,
+      </if>
+      <if test="secdescription != null">
+        secdescription,
+      </if>
+      <if test="secweight != null">
+        secweight,
+      </if>
+      <if test="measureunit != null">
+        measureunit,
+      </if>
+      <if test="seclength != null">
+        seclength,
+      </if>
+      <if test="secwidth != null">
+        secwidth,
+      </if>
+      <if test="sechigh != null">
+        sechigh,
+      </if>
+      <if test="volumn != null">
+        volumn,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="secid != null">
+        #{secid,jdbcType=INTEGER},
+      </if>
+      <if test="secname != null">
+        #{secname,jdbcType=VARCHAR},
+      </if>
+      <if test="secrule != null">
+        #{secrule,jdbcType=VARCHAR},
+      </if>
+      <if test="secdescription != null">
+        #{secdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="secweight != null">
+        #{secweight,jdbcType=DOUBLE},
+      </if>
+      <if test="measureunit != null">
+        #{measureunit,jdbcType=VARCHAR},
+      </if>
+      <if test="seclength != null">
+        #{seclength,jdbcType=DOUBLE},
+      </if>
+      <if test="secwidth != null">
+        #{secwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="sechigh != null">
+        #{sechigh,jdbcType=DOUBLE},
+      </if>
+      <if test="volumn != null">
+        #{volumn,jdbcType=DOUBLE},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample" resultType="java.lang.Integer">
+    select count(*) from secondarypackage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update secondarypackage
+    <set>
+      <if test="record.secid != null">
+        secid = #{record.secid,jdbcType=INTEGER},
+      </if>
+      <if test="record.secname != null">
+        secname = #{record.secname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secrule != null">
+        secrule = #{record.secrule,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secdescription != null">
+        secdescription = #{record.secdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secweight != null">
+        secweight = #{record.secweight,jdbcType=DOUBLE},
+      </if>
+      <if test="record.measureunit != null">
+        measureunit = #{record.measureunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seclength != null">
+        seclength = #{record.seclength,jdbcType=DOUBLE},
+      </if>
+      <if test="record.secwidth != null">
+        secwidth = #{record.secwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sechigh != null">
+        sechigh = #{record.sechigh,jdbcType=DOUBLE},
+      </if>
+      <if test="record.volumn != null">
+        volumn = #{record.volumn,jdbcType=DOUBLE},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update secondarypackage
+    set secid = #{record.secid,jdbcType=INTEGER},
+      secname = #{record.secname,jdbcType=VARCHAR},
+      secrule = #{record.secrule,jdbcType=VARCHAR},
+      secdescription = #{record.secdescription,jdbcType=VARCHAR},
+      secweight = #{record.secweight,jdbcType=DOUBLE},
+      measureunit = #{record.measureunit,jdbcType=VARCHAR},
+      seclength = #{record.seclength,jdbcType=DOUBLE},
+      secwidth = #{record.secwidth,jdbcType=DOUBLE},
+      sechigh = #{record.sechigh,jdbcType=DOUBLE},
+      volumn = #{record.volumn,jdbcType=DOUBLE},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.SecondaryPackage">
+    update secondarypackage
+    <set>
+      <if test="secname != null">
+        secname = #{secname,jdbcType=VARCHAR},
+      </if>
+      <if test="secrule != null">
+        secrule = #{secrule,jdbcType=VARCHAR},
+      </if>
+      <if test="secdescription != null">
+        secdescription = #{secdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="secweight != null">
+        secweight = #{secweight,jdbcType=DOUBLE},
+      </if>
+      <if test="measureunit != null">
+        measureunit = #{measureunit,jdbcType=VARCHAR},
+      </if>
+      <if test="seclength != null">
+        seclength = #{seclength,jdbcType=DOUBLE},
+      </if>
+      <if test="secwidth != null">
+        secwidth = #{secwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="sechigh != null">
+        sechigh = #{sechigh,jdbcType=DOUBLE},
+      </if>
+      <if test="volumn != null">
+        volumn = #{volumn,jdbcType=DOUBLE},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where secid = #{secid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.SecondaryPackage">
+    update secondarypackage
+    set secname = #{secname,jdbcType=VARCHAR},
+      secrule = #{secrule,jdbcType=VARCHAR},
+      secdescription = #{secdescription,jdbcType=VARCHAR},
+      secweight = #{secweight,jdbcType=DOUBLE},
+      measureunit = #{measureunit,jdbcType=VARCHAR},
+      seclength = #{seclength,jdbcType=DOUBLE},
+      secwidth = #{secwidth,jdbcType=DOUBLE},
+      sechigh = #{sechigh,jdbcType=DOUBLE},
+      volumn = #{volumn,jdbcType=DOUBLE},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where secid = #{secid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.SecondaryPackage">
+    <id column="secid" jdbcType="INTEGER" property="secid" />
+    <result column="secname" jdbcType="VARCHAR" property="secname" />
+    <result column="secrule" jdbcType="VARCHAR" property="secrule" />
+    <result column="secdescription" jdbcType="VARCHAR" property="secdescription" />
+    <result column="secweight" jdbcType="DOUBLE" property="secweight" />
+    <result column="measureunit" jdbcType="VARCHAR" property="measureunit" />
+    <result column="seclength" jdbcType="DOUBLE" property="seclength" />
+    <result column="secwidth" jdbcType="DOUBLE" property="secwidth" />
+    <result column="sechigh" jdbcType="DOUBLE" property="sechigh" />
+    <result column="volumn" jdbcType="DOUBLE" property="volumn" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    secid, secname, secrule, secdescription, secweight, measureunit, seclength, secwidth, 
+    sechigh, volumn, int0, string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from secondarypackage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from secondarypackage
+    where secid = #{secid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from secondarypackage
+    where secid = #{secid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample">
+    delete from secondarypackage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.SecondaryPackage">
+    insert into secondarypackage (secid, secname, secrule, 
+      secdescription, secweight, measureunit, 
+      seclength, secwidth, sechigh, 
+      volumn, int0, string0, 
+      string1)
+    values (#{secid,jdbcType=INTEGER}, #{secname,jdbcType=VARCHAR}, #{secrule,jdbcType=VARCHAR}, 
+      #{secdescription,jdbcType=VARCHAR}, #{secweight,jdbcType=DOUBLE}, #{measureunit,jdbcType=VARCHAR}, 
+      #{seclength,jdbcType=DOUBLE}, #{secwidth,jdbcType=DOUBLE}, #{sechigh,jdbcType=DOUBLE}, 
+      #{volumn,jdbcType=DOUBLE}, #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, 
+      #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.SecondaryPackage">
+    insert into secondarypackage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="secid != null">
+        secid,
+      </if>
+      <if test="secname != null">
+        secname,
+      </if>
+      <if test="secrule != null">
+        secrule,
+      </if>
+      <if test="secdescription != null">
+        secdescription,
+      </if>
+      <if test="secweight != null">
+        secweight,
+      </if>
+      <if test="measureunit != null">
+        measureunit,
+      </if>
+      <if test="seclength != null">
+        seclength,
+      </if>
+      <if test="secwidth != null">
+        secwidth,
+      </if>
+      <if test="sechigh != null">
+        sechigh,
+      </if>
+      <if test="volumn != null">
+        volumn,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="secid != null">
+        #{secid,jdbcType=INTEGER},
+      </if>
+      <if test="secname != null">
+        #{secname,jdbcType=VARCHAR},
+      </if>
+      <if test="secrule != null">
+        #{secrule,jdbcType=VARCHAR},
+      </if>
+      <if test="secdescription != null">
+        #{secdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="secweight != null">
+        #{secweight,jdbcType=DOUBLE},
+      </if>
+      <if test="measureunit != null">
+        #{measureunit,jdbcType=VARCHAR},
+      </if>
+      <if test="seclength != null">
+        #{seclength,jdbcType=DOUBLE},
+      </if>
+      <if test="secwidth != null">
+        #{secwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="sechigh != null">
+        #{sechigh,jdbcType=DOUBLE},
+      </if>
+      <if test="volumn != null">
+        #{volumn,jdbcType=DOUBLE},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.SecondaryPackageExample" resultType="java.lang.Integer">
+    select count(*) from secondarypackage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update secondarypackage
+    <set>
+      <if test="record.secid != null">
+        secid = #{record.secid,jdbcType=INTEGER},
+      </if>
+      <if test="record.secname != null">
+        secname = #{record.secname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secrule != null">
+        secrule = #{record.secrule,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secdescription != null">
+        secdescription = #{record.secdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secweight != null">
+        secweight = #{record.secweight,jdbcType=DOUBLE},
+      </if>
+      <if test="record.measureunit != null">
+        measureunit = #{record.measureunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seclength != null">
+        seclength = #{record.seclength,jdbcType=DOUBLE},
+      </if>
+      <if test="record.secwidth != null">
+        secwidth = #{record.secwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sechigh != null">
+        sechigh = #{record.sechigh,jdbcType=DOUBLE},
+      </if>
+      <if test="record.volumn != null">
+        volumn = #{record.volumn,jdbcType=DOUBLE},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update secondarypackage
+    set secid = #{record.secid,jdbcType=INTEGER},
+      secname = #{record.secname,jdbcType=VARCHAR},
+      secrule = #{record.secrule,jdbcType=VARCHAR},
+      secdescription = #{record.secdescription,jdbcType=VARCHAR},
+      secweight = #{record.secweight,jdbcType=DOUBLE},
+      measureunit = #{record.measureunit,jdbcType=VARCHAR},
+      seclength = #{record.seclength,jdbcType=DOUBLE},
+      secwidth = #{record.secwidth,jdbcType=DOUBLE},
+      sechigh = #{record.sechigh,jdbcType=DOUBLE},
+      volumn = #{record.volumn,jdbcType=DOUBLE},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.SecondaryPackage">
+    update secondarypackage
+    <set>
+      <if test="secname != null">
+        secname = #{secname,jdbcType=VARCHAR},
+      </if>
+      <if test="secrule != null">
+        secrule = #{secrule,jdbcType=VARCHAR},
+      </if>
+      <if test="secdescription != null">
+        secdescription = #{secdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="secweight != null">
+        secweight = #{secweight,jdbcType=DOUBLE},
+      </if>
+      <if test="measureunit != null">
+        measureunit = #{measureunit,jdbcType=VARCHAR},
+      </if>
+      <if test="seclength != null">
+        seclength = #{seclength,jdbcType=DOUBLE},
+      </if>
+      <if test="secwidth != null">
+        secwidth = #{secwidth,jdbcType=DOUBLE},
+      </if>
+      <if test="sechigh != null">
+        sechigh = #{sechigh,jdbcType=DOUBLE},
+      </if>
+      <if test="volumn != null">
+        volumn = #{volumn,jdbcType=DOUBLE},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where secid = #{secid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.SecondaryPackage">
+    update secondarypackage
+    set secname = #{secname,jdbcType=VARCHAR},
+      secrule = #{secrule,jdbcType=VARCHAR},
+      secdescription = #{secdescription,jdbcType=VARCHAR},
+      secweight = #{secweight,jdbcType=DOUBLE},
+      measureunit = #{measureunit,jdbcType=VARCHAR},
+      seclength = #{seclength,jdbcType=DOUBLE},
+      secwidth = #{secwidth,jdbcType=DOUBLE},
+      sechigh = #{sechigh,jdbcType=DOUBLE},
+      volumn = #{volumn,jdbcType=DOUBLE},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where secid = #{secid,jdbcType=INTEGER}
+  </update>
+</mapper>

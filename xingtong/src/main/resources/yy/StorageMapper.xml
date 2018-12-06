@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.StorageMapper">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Storage">
+    <id column="stid" jdbcType="INTEGER" property="stid" />
+    <result column="rcompleteid" jdbcType="VARCHAR" property="rcompleteid" />
+    <result column="wid" jdbcType="INTEGER" property="wid" />
+    <result column="arrivaltime" jdbcType="DATE" property="arrivaltime" />
+    <result column="status" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    stid, rcompleteid, wid, arrivaltime, status
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.StorageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from storage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from storage
+    where stid = #{stid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from storage
+    where stid = #{stid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.StorageExample">
+    delete from storage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Storage">
+    insert into storage (stid, rcompleteid, wid, 
+      arrivaltime, status)
+    values (#{stid,jdbcType=INTEGER}, #{rcompleteid,jdbcType=VARCHAR}, #{wid,jdbcType=INTEGER}, 
+      #{arrivaltime,jdbcType=DATE}, #{status,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Storage">
+    insert into storage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stid != null">
+        stid,
+      </if>
+      <if test="rcompleteid != null">
+        rcompleteid,
+      </if>
+      <if test="wid != null">
+        wid,
+      </if>
+      <if test="arrivaltime != null">
+        arrivaltime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stid != null">
+        #{stid,jdbcType=INTEGER},
+      </if>
+      <if test="rcompleteid != null">
+        #{rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="arrivaltime != null">
+        #{arrivaltime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.StorageExample" resultType="java.lang.Integer">
+    select count(*) from storage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update storage
+    <set>
+      <if test="record.stid != null">
+        stid = #{record.stid,jdbcType=INTEGER},
+      </if>
+      <if test="record.rcompleteid != null">
+        rcompleteid = #{record.rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wid != null">
+        wid = #{record.wid,jdbcType=INTEGER},
+      </if>
+      <if test="record.arrivaltime != null">
+        arrivaltime = #{record.arrivaltime,jdbcType=DATE},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update storage
+    set stid = #{record.stid,jdbcType=INTEGER},
+      rcompleteid = #{record.rcompleteid,jdbcType=VARCHAR},
+      wid = #{record.wid,jdbcType=INTEGER},
+      arrivaltime = #{record.arrivaltime,jdbcType=DATE},
+      status = #{record.status,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Storage">
+    update storage
+    <set>
+      <if test="rcompleteid != null">
+        rcompleteid = #{rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        wid = #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="arrivaltime != null">
+        arrivaltime = #{arrivaltime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where stid = #{stid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Storage">
+    update storage
+    set rcompleteid = #{rcompleteid,jdbcType=VARCHAR},
+      wid = #{wid,jdbcType=INTEGER},
+      arrivaltime = #{arrivaltime,jdbcType=DATE},
+      status = #{status,jdbcType=CHAR}
+    where stid = #{stid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Storage">
+    <id column="stid" jdbcType="INTEGER" property="stid" />
+    <result column="rcompleteid" jdbcType="VARCHAR" property="rcompleteid" />
+    <result column="wid" jdbcType="INTEGER" property="wid" />
+    <result column="arrivaltime" jdbcType="DATE" property="arrivaltime" />
+    <result column="status" jdbcType="CHAR" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    stid, rcompleteid, wid, arrivaltime, status
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.StorageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from storage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from storage
+    where stid = #{stid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from storage
+    where stid = #{stid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.StorageExample">
+    delete from storage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Storage">
+    insert into storage (stid, rcompleteid, wid, 
+      arrivaltime, status)
+    values (#{stid,jdbcType=INTEGER}, #{rcompleteid,jdbcType=VARCHAR}, #{wid,jdbcType=INTEGER}, 
+      #{arrivaltime,jdbcType=DATE}, #{status,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Storage">
+    insert into storage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stid != null">
+        stid,
+      </if>
+      <if test="rcompleteid != null">
+        rcompleteid,
+      </if>
+      <if test="wid != null">
+        wid,
+      </if>
+      <if test="arrivaltime != null">
+        arrivaltime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stid != null">
+        #{stid,jdbcType=INTEGER},
+      </if>
+      <if test="rcompleteid != null">
+        #{rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="arrivaltime != null">
+        #{arrivaltime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.StorageExample" resultType="java.lang.Integer">
+    select count(*) from storage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update storage
+    <set>
+      <if test="record.stid != null">
+        stid = #{record.stid,jdbcType=INTEGER},
+      </if>
+      <if test="record.rcompleteid != null">
+        rcompleteid = #{record.rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wid != null">
+        wid = #{record.wid,jdbcType=INTEGER},
+      </if>
+      <if test="record.arrivaltime != null">
+        arrivaltime = #{record.arrivaltime,jdbcType=DATE},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update storage
+    set stid = #{record.stid,jdbcType=INTEGER},
+      rcompleteid = #{record.rcompleteid,jdbcType=VARCHAR},
+      wid = #{record.wid,jdbcType=INTEGER},
+      arrivaltime = #{record.arrivaltime,jdbcType=DATE},
+      status = #{record.status,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Storage">
+    update storage
+    <set>
+      <if test="rcompleteid != null">
+        rcompleteid = #{rcompleteid,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        wid = #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="arrivaltime != null">
+        arrivaltime = #{arrivaltime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where stid = #{stid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Storage">
+    update storage
+    set rcompleteid = #{rcompleteid,jdbcType=VARCHAR},
+      wid = #{wid,jdbcType=INTEGER},
+      arrivaltime = #{arrivaltime,jdbcType=DATE},
+      status = #{status,jdbcType=CHAR}
+    where stid = #{stid,jdbcType=INTEGER}
+  </update>
+</mapper>

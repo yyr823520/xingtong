@@ -1,354 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.xt.xingtong.interf.EmployeeMapper">
-  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Employee">
-    <id column="eid" jdbcType="INTEGER" property="eid" />
-    <result column="ename" jdbcType="VARCHAR" property="ename" />
-    <result column="esex" jdbcType="CHAR" property="esex" />
-    <result column="wid" jdbcType="INTEGER" property="wid" />
-    <result column="entrydate" jdbcType="DATE" property="entrydate" />
-    <result column="birthdate" jdbcType="DATE" property="birthdate" />
-    <result column="eaddress" jdbcType="VARCHAR" property="eaddress" />
-    <result column="ecardnumber" jdbcType="CHAR" property="ecardnumber" />
-    <result column="epassword" jdbcType="CHAR" property="epassword" />
-    <result column="ephone" jdbcType="CHAR" property="ephone" />
-    <result column="isenable" jdbcType="CHAR" property="isenable" />
-    <result column="eremark" jdbcType="VARCHAR" property="eremark" />
-    <result column="int0" jdbcType="INTEGER" property="int0" />
-    <result column="string0" jdbcType="VARCHAR" property="string0" />
-    <result column="string1" jdbcType="VARCHAR" property="string1" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    eid, ename, esex, wid, entrydate, birthdate, eaddress, ecardnumber, epassword, ephone, 
-    isenable, eremark, int0, string0, string1
-  </sql>
-  <select id="selectByExample" parameterType="com.xt.xingtong.entity.EmployeeExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from employee
-    where eid = #{eid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from employee
-    where eid = #{eid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.EmployeeExample">
-    delete from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.xt.xingtong.entity.Employee">
-    insert into employee (eid, ename, esex, 
+
+<select id="userLogin" resultType="employee">
+	SELECT * FROM employee where  ecardnumber = #{cardId} and
+      epassword = #{pass}
+
+</select>
+
+<!-- 删除员工 -->
+	<select id="existsName" resultType="com.xt.xingtong.entity.Employee">
+		SELECT * FROM employee e INNER JOIN warehouse w ON e.wid = w.wid where
+		w.username = #{ename,jdbcType=VARCHAR};
+	</select>
+	
+	<update id="deleteWareHouseById" parameterType="com.xt.xingtong.entity.Employee">
+		UPDATE employee
+		SET TYPE = 0
+		where eid =#{eid,jdbcType=INTEGER}
+	</update>
+<!-- 添加 -->
+<insert id="addEmployee" parameterType="com.xt.xingtong.entity.Employee">
+    insert into employee ( ename, esex, 
       wid, entrydate, birthdate, 
       eaddress, ecardnumber, epassword, 
       ephone, isenable, eremark, 
-      int0, string0, string1
+      int0, string0, string1,type
       )
-    values (#{eid,jdbcType=INTEGER}, #{ename,jdbcType=VARCHAR}, #{esex,jdbcType=CHAR}, 
+    values ( #{ename,jdbcType=VARCHAR}, #{esex,jdbcType=CHAR}, 
       #{wid,jdbcType=INTEGER}, #{entrydate,jdbcType=DATE}, #{birthdate,jdbcType=DATE}, 
       #{eaddress,jdbcType=VARCHAR}, #{ecardnumber,jdbcType=CHAR}, #{epassword,jdbcType=CHAR}, 
       #{ephone,jdbcType=CHAR}, #{isenable,jdbcType=CHAR}, #{eremark,jdbcType=VARCHAR}, 
-      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
+      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Employee">
-    insert into employee
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="eid != null">
-        eid,
-      </if>
-      <if test="ename != null">
-        ename,
-      </if>
-      <if test="esex != null">
-        esex,
-      </if>
-      <if test="wid != null">
-        wid,
-      </if>
-      <if test="entrydate != null">
-        entrydate,
-      </if>
-      <if test="birthdate != null">
-        birthdate,
-      </if>
-      <if test="eaddress != null">
-        eaddress,
-      </if>
-      <if test="ecardnumber != null">
-        ecardnumber,
-      </if>
-      <if test="epassword != null">
-        epassword,
-      </if>
-      <if test="ephone != null">
-        ephone,
-      </if>
-      <if test="isenable != null">
-        isenable,
-      </if>
-      <if test="eremark != null">
-        eremark,
-      </if>
-      <if test="int0 != null">
-        int0,
-      </if>
-      <if test="string0 != null">
-        string0,
-      </if>
-      <if test="string1 != null">
-        string1,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="eid != null">
-        #{eid,jdbcType=INTEGER},
-      </if>
-      <if test="ename != null">
-        #{ename,jdbcType=VARCHAR},
-      </if>
-      <if test="esex != null">
-        #{esex,jdbcType=CHAR},
-      </if>
-      <if test="wid != null">
-        #{wid,jdbcType=INTEGER},
-      </if>
-      <if test="entrydate != null">
-        #{entrydate,jdbcType=DATE},
-      </if>
-      <if test="birthdate != null">
-        #{birthdate,jdbcType=DATE},
-      </if>
-      <if test="eaddress != null">
-        #{eaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="ecardnumber != null">
-        #{ecardnumber,jdbcType=CHAR},
-      </if>
-      <if test="epassword != null">
-        #{epassword,jdbcType=CHAR},
-      </if>
-      <if test="ephone != null">
-        #{ephone,jdbcType=CHAR},
-      </if>
-      <if test="isenable != null">
-        #{isenable,jdbcType=CHAR},
-      </if>
-      <if test="eremark != null">
-        #{eremark,jdbcType=VARCHAR},
-      </if>
-      <if test="int0 != null">
-        #{int0,jdbcType=INTEGER},
-      </if>
-      <if test="string0 != null">
-        #{string0,jdbcType=VARCHAR},
-      </if>
-      <if test="string1 != null">
-        #{string1,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.xt.xingtong.entity.EmployeeExample" resultType="java.lang.Integer">
-    select count(*) from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update employee
-    <set>
-      <if test="record.eid != null">
-        eid = #{record.eid,jdbcType=INTEGER},
-      </if>
-      <if test="record.ename != null">
-        ename = #{record.ename,jdbcType=VARCHAR},
-      </if>
-      <if test="record.esex != null">
-        esex = #{record.esex,jdbcType=CHAR},
-      </if>
-      <if test="record.wid != null">
-        wid = #{record.wid,jdbcType=INTEGER},
-      </if>
-      <if test="record.entrydate != null">
-        entrydate = #{record.entrydate,jdbcType=DATE},
-      </if>
-      <if test="record.birthdate != null">
-        birthdate = #{record.birthdate,jdbcType=DATE},
-      </if>
-      <if test="record.eaddress != null">
-        eaddress = #{record.eaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ecardnumber != null">
-        ecardnumber = #{record.ecardnumber,jdbcType=CHAR},
-      </if>
-      <if test="record.epassword != null">
-        epassword = #{record.epassword,jdbcType=CHAR},
-      </if>
-      <if test="record.ephone != null">
-        ephone = #{record.ephone,jdbcType=CHAR},
-      </if>
-      <if test="record.isenable != null">
-        isenable = #{record.isenable,jdbcType=CHAR},
-      </if>
-      <if test="record.eremark != null">
-        eremark = #{record.eremark,jdbcType=VARCHAR},
-      </if>
-      <if test="record.int0 != null">
-        int0 = #{record.int0,jdbcType=INTEGER},
-      </if>
-      <if test="record.string0 != null">
-        string0 = #{record.string0,jdbcType=VARCHAR},
-      </if>
-      <if test="record.string1 != null">
-        string1 = #{record.string1,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update employee
-    set eid = #{record.eid,jdbcType=INTEGER},
-      ename = #{record.ename,jdbcType=VARCHAR},
-      esex = #{record.esex,jdbcType=CHAR},
-      wid = #{record.wid,jdbcType=INTEGER},
-      entrydate = #{record.entrydate,jdbcType=DATE},
-      birthdate = #{record.birthdate,jdbcType=DATE},
-      eaddress = #{record.eaddress,jdbcType=VARCHAR},
-      ecardnumber = #{record.ecardnumber,jdbcType=CHAR},
-      epassword = #{record.epassword,jdbcType=CHAR},
-      ephone = #{record.ephone,jdbcType=CHAR},
-      isenable = #{record.isenable,jdbcType=CHAR},
-      eremark = #{record.eremark,jdbcType=VARCHAR},
-      int0 = #{record.int0,jdbcType=INTEGER},
-      string0 = #{record.string0,jdbcType=VARCHAR},
-      string1 = #{record.string1,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Employee">
-    update employee
-    <set>
-      <if test="ename != null">
-        ename = #{ename,jdbcType=VARCHAR},
-      </if>
-      <if test="esex != null">
-        esex = #{esex,jdbcType=CHAR},
-      </if>
-      <if test="wid != null">
-        wid = #{wid,jdbcType=INTEGER},
-      </if>
-      <if test="entrydate != null">
-        entrydate = #{entrydate,jdbcType=DATE},
-      </if>
-      <if test="birthdate != null">
-        birthdate = #{birthdate,jdbcType=DATE},
-      </if>
-      <if test="eaddress != null">
-        eaddress = #{eaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="ecardnumber != null">
-        ecardnumber = #{ecardnumber,jdbcType=CHAR},
-      </if>
-      <if test="epassword != null">
-        epassword = #{epassword,jdbcType=CHAR},
-      </if>
-      <if test="ephone != null">
-        ephone = #{ephone,jdbcType=CHAR},
-      </if>
-      <if test="isenable != null">
-        isenable = #{isenable,jdbcType=CHAR},
-      </if>
-      <if test="eremark != null">
-        eremark = #{eremark,jdbcType=VARCHAR},
-      </if>
-      <if test="int0 != null">
-        int0 = #{int0,jdbcType=INTEGER},
-      </if>
-      <if test="string0 != null">
-        string0 = #{string0,jdbcType=VARCHAR},
-      </if>
-      <if test="string1 != null">
-        string1 = #{string1,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where eid = #{eid,jdbcType=INTEGER}
-  </update>
+  
+  
+  
+  <!-- 修改 -->
   <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Employee">
     update employee
     set ename = #{ename,jdbcType=VARCHAR},
@@ -367,370 +57,103 @@
       string1 = #{string1,jdbcType=VARCHAR}
     where eid = #{eid,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Employee">
-    <id column="eid" jdbcType="INTEGER" property="eid" />
-    <result column="ename" jdbcType="VARCHAR" property="ename" />
-    <result column="esex" jdbcType="CHAR" property="esex" />
-    <result column="wid" jdbcType="INTEGER" property="wid" />
-    <result column="entrydate" jdbcType="DATE" property="entrydate" />
-    <result column="birthdate" jdbcType="DATE" property="birthdate" />
-    <result column="eaddress" jdbcType="VARCHAR" property="eaddress" />
-    <result column="ecardnumber" jdbcType="CHAR" property="ecardnumber" />
-    <result column="epassword" jdbcType="CHAR" property="epassword" />
-    <result column="ephone" jdbcType="CHAR" property="ephone" />
-    <result column="isenable" jdbcType="CHAR" property="isenable" />
-    <result column="eremark" jdbcType="VARCHAR" property="eremark" />
-    <result column="int0" jdbcType="INTEGER" property="int0" />
-    <result column="string0" jdbcType="VARCHAR" property="string0" />
-    <result column="string1" jdbcType="VARCHAR" property="string1" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    eid, ename, esex, wid, entrydate, birthdate, eaddress, ecardnumber, epassword, ephone, 
-    isenable, eremark, int0, string0, string1
-  </sql>
-  <select id="selectByExample" parameterType="com.xt.xingtong.entity.EmployeeExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from employee
-    where eid = #{eid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from employee
-    where eid = #{eid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.EmployeeExample">
-    delete from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.xt.xingtong.entity.Employee">
-    insert into employee (eid, ename, esex, 
-      wid, entrydate, birthdate, 
-      eaddress, ecardnumber, epassword, 
-      ephone, isenable, eremark, 
-      int0, string0, string1
-      )
-    values (#{eid,jdbcType=INTEGER}, #{ename,jdbcType=VARCHAR}, #{esex,jdbcType=CHAR}, 
-      #{wid,jdbcType=INTEGER}, #{entrydate,jdbcType=DATE}, #{birthdate,jdbcType=DATE}, 
-      #{eaddress,jdbcType=VARCHAR}, #{ecardnumber,jdbcType=CHAR}, #{epassword,jdbcType=CHAR}, 
-      #{ephone,jdbcType=CHAR}, #{isenable,jdbcType=CHAR}, #{eremark,jdbcType=VARCHAR}, 
-      #{int0,jdbcType=INTEGER}, #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Employee">
-    insert into employee
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="eid != null">
-        eid,
-      </if>
-      <if test="ename != null">
-        ename,
-      </if>
-      <if test="esex != null">
-        esex,
-      </if>
-      <if test="wid != null">
-        wid,
-      </if>
-      <if test="entrydate != null">
-        entrydate,
-      </if>
-      <if test="birthdate != null">
-        birthdate,
-      </if>
-      <if test="eaddress != null">
-        eaddress,
-      </if>
-      <if test="ecardnumber != null">
-        ecardnumber,
-      </if>
-      <if test="epassword != null">
-        epassword,
-      </if>
-      <if test="ephone != null">
-        ephone,
-      </if>
-      <if test="isenable != null">
-        isenable,
-      </if>
-      <if test="eremark != null">
-        eremark,
-      </if>
-      <if test="int0 != null">
-        int0,
-      </if>
-      <if test="string0 != null">
-        string0,
-      </if>
-      <if test="string1 != null">
-        string1,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="eid != null">
-        #{eid,jdbcType=INTEGER},
-      </if>
-      <if test="ename != null">
-        #{ename,jdbcType=VARCHAR},
-      </if>
-      <if test="esex != null">
-        #{esex,jdbcType=CHAR},
-      </if>
-      <if test="wid != null">
-        #{wid,jdbcType=INTEGER},
-      </if>
-      <if test="entrydate != null">
-        #{entrydate,jdbcType=DATE},
-      </if>
-      <if test="birthdate != null">
-        #{birthdate,jdbcType=DATE},
-      </if>
-      <if test="eaddress != null">
-        #{eaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="ecardnumber != null">
-        #{ecardnumber,jdbcType=CHAR},
-      </if>
-      <if test="epassword != null">
-        #{epassword,jdbcType=CHAR},
-      </if>
-      <if test="ephone != null">
-        #{ephone,jdbcType=CHAR},
-      </if>
-      <if test="isenable != null">
-        #{isenable,jdbcType=CHAR},
-      </if>
-      <if test="eremark != null">
-        #{eremark,jdbcType=VARCHAR},
-      </if>
-      <if test="int0 != null">
-        #{int0,jdbcType=INTEGER},
-      </if>
-      <if test="string0 != null">
-        #{string0,jdbcType=VARCHAR},
-      </if>
-      <if test="string1 != null">
-        #{string1,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.xt.xingtong.entity.EmployeeExample" resultType="java.lang.Integer">
-    select count(*) from employee
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update employee
-    <set>
-      <if test="record.eid != null">
-        eid = #{record.eid,jdbcType=INTEGER},
-      </if>
-      <if test="record.ename != null">
-        ename = #{record.ename,jdbcType=VARCHAR},
-      </if>
-      <if test="record.esex != null">
-        esex = #{record.esex,jdbcType=CHAR},
-      </if>
-      <if test="record.wid != null">
-        wid = #{record.wid,jdbcType=INTEGER},
-      </if>
-      <if test="record.entrydate != null">
-        entrydate = #{record.entrydate,jdbcType=DATE},
-      </if>
-      <if test="record.birthdate != null">
-        birthdate = #{record.birthdate,jdbcType=DATE},
-      </if>
-      <if test="record.eaddress != null">
-        eaddress = #{record.eaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ecardnumber != null">
-        ecardnumber = #{record.ecardnumber,jdbcType=CHAR},
-      </if>
-      <if test="record.epassword != null">
-        epassword = #{record.epassword,jdbcType=CHAR},
-      </if>
-      <if test="record.ephone != null">
-        ephone = #{record.ephone,jdbcType=CHAR},
-      </if>
-      <if test="record.isenable != null">
-        isenable = #{record.isenable,jdbcType=CHAR},
-      </if>
-      <if test="record.eremark != null">
-        eremark = #{record.eremark,jdbcType=VARCHAR},
-      </if>
-      <if test="record.int0 != null">
-        int0 = #{record.int0,jdbcType=INTEGER},
-      </if>
-      <if test="record.string0 != null">
-        string0 = #{record.string0,jdbcType=VARCHAR},
-      </if>
-      <if test="record.string1 != null">
-        string1 = #{record.string1,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update employee
-    set eid = #{record.eid,jdbcType=INTEGER},
-      ename = #{record.ename,jdbcType=VARCHAR},
-      esex = #{record.esex,jdbcType=CHAR},
-      wid = #{record.wid,jdbcType=INTEGER},
-      entrydate = #{record.entrydate,jdbcType=DATE},
-      birthdate = #{record.birthdate,jdbcType=DATE},
-      eaddress = #{record.eaddress,jdbcType=VARCHAR},
-      ecardnumber = #{record.ecardnumber,jdbcType=CHAR},
-      epassword = #{record.epassword,jdbcType=CHAR},
-      ephone = #{record.ephone,jdbcType=CHAR},
-      isenable = #{record.isenable,jdbcType=CHAR},
-      eremark = #{record.eremark,jdbcType=VARCHAR},
-      int0 = #{record.int0,jdbcType=INTEGER},
-      string0 = #{record.string0,jdbcType=VARCHAR},
-      string1 = #{record.string1,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Employee">
-    update employee
-    <set>
-      <if test="ename != null">
-        ename = #{ename,jdbcType=VARCHAR},
-      </if>
-      <if test="esex != null">
-        esex = #{esex,jdbcType=CHAR},
-      </if>
-      <if test="wid != null">
-        wid = #{wid,jdbcType=INTEGER},
-      </if>
-      <if test="entrydate != null">
-        entrydate = #{entrydate,jdbcType=DATE},
-      </if>
-      <if test="birthdate != null">
-        birthdate = #{birthdate,jdbcType=DATE},
-      </if>
-      <if test="eaddress != null">
-        eaddress = #{eaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="ecardnumber != null">
-        ecardnumber = #{ecardnumber,jdbcType=CHAR},
-      </if>
-      <if test="epassword != null">
-        epassword = #{epassword,jdbcType=CHAR},
-      </if>
-      <if test="ephone != null">
-        ephone = #{ephone,jdbcType=CHAR},
-      </if>
-      <if test="isenable != null">
-        isenable = #{isenable,jdbcType=CHAR},
-      </if>
-      <if test="eremark != null">
-        eremark = #{eremark,jdbcType=VARCHAR},
-      </if>
-      <if test="int0 != null">
-        int0 = #{int0,jdbcType=INTEGER},
-      </if>
-      <if test="string0 != null">
-        string0 = #{string0,jdbcType=VARCHAR},
-      </if>
-      <if test="string1 != null">
-        string1 = #{string1,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where eid = #{eid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Employee">
-    update employee
-    set ename = #{ename,jdbcType=VARCHAR},
-      esex = #{esex,jdbcType=CHAR},
-      wid = #{wid,jdbcType=INTEGER},
-      entrydate = #{entrydate,jdbcType=DATE},
-      birthdate = #{birthdate,jdbcType=DATE},
-      eaddress = #{eaddress,jdbcType=VARCHAR},
-      ecardnumber = #{ecardnumber,jdbcType=CHAR},
-      epassword = #{epassword,jdbcType=CHAR},
-      ephone = #{ephone,jdbcType=CHAR},
-      isenable = #{isenable,jdbcType=CHAR},
-      eremark = #{eremark,jdbcType=VARCHAR},
-      int0 = #{int0,jdbcType=INTEGER},
-      string0 = #{string0,jdbcType=VARCHAR},
-      string1 = #{string1,jdbcType=VARCHAR}
-    where eid = #{eid,jdbcType=INTEGER}
-  </update>
+
+  
+  
+<!-- 分页 -->
+	<select id="selectEmployee" parameterType="com.xt.xingtong.info.Employeeinfo"
+		resultType="com.xt.xingtong.entity.Employee">
+		SELECT * FROM employee
+	<where>
+			<if test="eid!=null">
+				AND eid=#{eid}
+			</if>
+			<if test="ename!=null and ename!=''">
+				AND ename LIKE "%"#{ename}"%"
+			</if>
+			<if test="esex!=null and esex!=''">
+				AND esex =#{esex}
+			</if>
+			<if test="wid!=null and wid!=''">
+				AND wid = #{wid}
+			</if>
+			<if test="entrydate!=null and entrydate!=''">
+				AND entrydate =#{entrydate}
+			</if>
+			<if test="birthdate!=null and birthdate!=''">
+				AND birthdate =#{birthdate}
+			</if>
+			<if test="eaddress!=null and eaddress!=''">
+				AND eaddress =#{eaddress}
+			</if>
+			<if test="ecardnumber!=null and ecardnumber!=''">
+				AND ecardnumber =#{ecardnumber}
+			</if>
+			<if test="epassword!=null and epassword!=''">
+				AND esex =#{epassword}
+			</if>
+			<if test="ephone!=null and ephone!=''">
+				AND ephone = #{ephone}
+			</if>
+			<if test="isenable!=null and isenable!=''">
+				AND isenable =#{isenable}
+			</if>
+			<if test="eremark!=null and eremark!=''">
+				AND eremark =#{eremark}
+			</if>
+			
+		</where>
+		<if test="orderBy!=null and orderBy!=''">
+			ORDER BY ${orderBy} DESC
+		</if>
+		LIMIT #{startIndex},#{limit} 
+	</select>
+	
+	
+	<select id="selectEmployeeCount" parameterType="com.xt.xingtong.info.Employeeinfo"
+		resultType="int">
+		SELECT COUNT(*) FROM employee
+		<where>
+			<if test="eid!=null">
+				AND eid=#{eid}
+			</if>
+			<if test="ename!=null and ename!=''">
+				AND ename LIKE "%"#{ename}"%"
+			</if>
+			<if test="esex!=null and esex!=''">
+				AND esex =#{esex}
+			</if>
+			<if test="wid!=null and wid!=''">
+				AND wid = #{wid}
+			</if>
+			<if test="entrydate!=null and entrydate!=''">
+				AND entrydate =#{entrydate}
+			</if>
+			<if test="birthdate!=null and birthdate!=''">
+				AND birthdate =#{birthdate}
+			</if>
+			<if test="eaddress!=null and eaddress!=''">
+				AND eaddress =#{eaddress}
+			</if>
+			<if test="ecardnumber!=null and ecardnumber!=''">
+				AND ecardnumber =#{ecardnumber}
+			</if>
+			<if test="epassword!=null and epassword!=''">
+				AND esex =#{epassword}
+			</if>
+			<if test="ephone!=null and ephone!=''">
+				AND ephone = #{ephone}
+			</if>
+			<if test="isenable!=null and isenable!=''">
+				AND isenable =#{isenable}
+			</if>
+			<if test="eremark!=null and eremark!=''">
+				AND eremark =#{eremark}
+			</if>
+			
+		</where>
+		<if test="orderBy!=null and orderBy!=''">
+			ORDER BY ${orderBy} DESC
+		</if> 
+	</select>
 </mapper>

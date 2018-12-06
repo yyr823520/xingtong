@@ -6,6 +6,7 @@ package com.xt.xingtong.exception;
  * @Date           2018-5-17 上午12:03:48  
  * @Email          1119616605@qq.com
  */
+
 public class UnLoginException extends Exception {
 	
 	private static final long serialVersionUID = 1L;
@@ -14,6 +15,7 @@ public class UnLoginException extends Exception {
 		super("用户未登录异常");
 	}
 	
+
 	public UnLoginException(String info){
 		super(info);
 	}

@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.LoadingStartMapper">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.LoadingStart">
+    <id column="loadid" jdbcType="INTEGER" property="loadid" />
+    <result column="loadingstarttime" jdbcType="DATE" property="loadingstarttime" />
+    <result column="destinationnetwork" jdbcType="VARCHAR" property="destinationnetwork" />
+    <result column="wid" jdbcType="INTEGER" property="wid" />
+    <result column="waytonetwork" jdbcType="VARCHAR" property="waytonetwork" />
+    <result column="vnumber" jdbcType="VARCHAR" property="vnumber" />
+    <result column="driverid" jdbcType="INTEGER" property="driverid" />
+    <result column="drivername" jdbcType="VARCHAR" property="drivername" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="carrierfee" jdbcType="DECIMAL" property="carrierfee" />
+    <result column="spotpayment" jdbcType="DECIMAL" property="spotpayment" />
+    <result column="owetopay" jdbcType="DECIMAL" property="owetopay" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="startstatus" jdbcType="INTEGER" property="startstatus" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    loadid, loadingstarttime, destinationnetwork, wid, waytonetwork, vnumber, driverid, 
+    drivername, phone, carrierfee, spotpayment, owetopay, remark, startstatus, int0, 
+    string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from loadingstart
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from loadingstart
+    where loadid = #{loadid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from loadingstart
+    where loadid = #{loadid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample">
+    delete from loadingstart
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.LoadingStart">
+    insert into loadingstart (loadid, loadingstarttime, destinationnetwork, 
+      wid, waytonetwork, vnumber, 
+      driverid, drivername, phone, 
+      carrierfee, spotpayment, owetopay, 
+      remark, startstatus, int0, 
+      string0, string1)
+    values (#{loadid,jdbcType=INTEGER}, #{loadingstarttime,jdbcType=DATE}, #{destinationnetwork,jdbcType=VARCHAR}, 
+      #{wid,jdbcType=INTEGER}, #{waytonetwork,jdbcType=VARCHAR}, #{vnumber,jdbcType=VARCHAR}, 
+      #{driverid,jdbcType=INTEGER}, #{drivername,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, 
+      #{carrierfee,jdbcType=DECIMAL}, #{spotpayment,jdbcType=DECIMAL}, #{owetopay,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{startstatus,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.LoadingStart">
+    insert into loadingstart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loadid != null">
+        loadid,
+      </if>
+      <if test="loadingstarttime != null">
+        loadingstarttime,
+      </if>
+      <if test="destinationnetwork != null">
+        destinationnetwork,
+      </if>
+      <if test="wid != null">
+        wid,
+      </if>
+      <if test="waytonetwork != null">
+        waytonetwork,
+      </if>
+      <if test="vnumber != null">
+        vnumber,
+      </if>
+      <if test="driverid != null">
+        driverid,
+      </if>
+      <if test="drivername != null">
+        drivername,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="carrierfee != null">
+        carrierfee,
+      </if>
+      <if test="spotpayment != null">
+        spotpayment,
+      </if>
+      <if test="owetopay != null">
+        owetopay,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="startstatus != null">
+        startstatus,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loadid != null">
+        #{loadid,jdbcType=INTEGER},
+      </if>
+      <if test="loadingstarttime != null">
+        #{loadingstarttime,jdbcType=DATE},
+      </if>
+      <if test="destinationnetwork != null">
+        #{destinationnetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="waytonetwork != null">
+        #{waytonetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="vnumber != null">
+        #{vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverid != null">
+        #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="drivername != null">
+        #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="carrierfee != null">
+        #{carrierfee,jdbcType=DECIMAL},
+      </if>
+      <if test="spotpayment != null">
+        #{spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="owetopay != null">
+        #{owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="startstatus != null">
+        #{startstatus,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample" resultType="java.lang.Integer">
+    select count(*) from loadingstart
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update loadingstart
+    <set>
+      <if test="record.loadid != null">
+        loadid = #{record.loadid,jdbcType=INTEGER},
+      </if>
+      <if test="record.loadingstarttime != null">
+        loadingstarttime = #{record.loadingstarttime,jdbcType=DATE},
+      </if>
+      <if test="record.destinationnetwork != null">
+        destinationnetwork = #{record.destinationnetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wid != null">
+        wid = #{record.wid,jdbcType=INTEGER},
+      </if>
+      <if test="record.waytonetwork != null">
+        waytonetwork = #{record.waytonetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vnumber != null">
+        vnumber = #{record.vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.driverid != null">
+        driverid = #{record.driverid,jdbcType=INTEGER},
+      </if>
+      <if test="record.drivername != null">
+        drivername = #{record.drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=CHAR},
+      </if>
+      <if test="record.carrierfee != null">
+        carrierfee = #{record.carrierfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.spotpayment != null">
+        spotpayment = #{record.spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="record.owetopay != null">
+        owetopay = #{record.owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startstatus != null">
+        startstatus = #{record.startstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update loadingstart
+    set loadid = #{record.loadid,jdbcType=INTEGER},
+      loadingstarttime = #{record.loadingstarttime,jdbcType=DATE},
+      destinationnetwork = #{record.destinationnetwork,jdbcType=VARCHAR},
+      wid = #{record.wid,jdbcType=INTEGER},
+      waytonetwork = #{record.waytonetwork,jdbcType=VARCHAR},
+      vnumber = #{record.vnumber,jdbcType=VARCHAR},
+      driverid = #{record.driverid,jdbcType=INTEGER},
+      drivername = #{record.drivername,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=CHAR},
+      carrierfee = #{record.carrierfee,jdbcType=DECIMAL},
+      spotpayment = #{record.spotpayment,jdbcType=DECIMAL},
+      owetopay = #{record.owetopay,jdbcType=DECIMAL},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      startstatus = #{record.startstatus,jdbcType=INTEGER},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.LoadingStart">
+    update loadingstart
+    <set>
+      <if test="loadingstarttime != null">
+        loadingstarttime = #{loadingstarttime,jdbcType=DATE},
+      </if>
+      <if test="destinationnetwork != null">
+        destinationnetwork = #{destinationnetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        wid = #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="waytonetwork != null">
+        waytonetwork = #{waytonetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="vnumber != null">
+        vnumber = #{vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverid != null">
+        driverid = #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="drivername != null">
+        drivername = #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="carrierfee != null">
+        carrierfee = #{carrierfee,jdbcType=DECIMAL},
+      </if>
+      <if test="spotpayment != null">
+        spotpayment = #{spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="owetopay != null">
+        owetopay = #{owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="startstatus != null">
+        startstatus = #{startstatus,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where loadid = #{loadid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.LoadingStart">
+    update loadingstart
+    set loadingstarttime = #{loadingstarttime,jdbcType=DATE},
+      destinationnetwork = #{destinationnetwork,jdbcType=VARCHAR},
+      wid = #{wid,jdbcType=INTEGER},
+      waytonetwork = #{waytonetwork,jdbcType=VARCHAR},
+      vnumber = #{vnumber,jdbcType=VARCHAR},
+      driverid = #{driverid,jdbcType=INTEGER},
+      drivername = #{drivername,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=CHAR},
+      carrierfee = #{carrierfee,jdbcType=DECIMAL},
+      spotpayment = #{spotpayment,jdbcType=DECIMAL},
+      owetopay = #{owetopay,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      startstatus = #{startstatus,jdbcType=INTEGER},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where loadid = #{loadid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.LoadingStart">
+    <id column="loadid" jdbcType="INTEGER" property="loadid" />
+    <result column="loadingstarttime" jdbcType="DATE" property="loadingstarttime" />
+    <result column="destinationnetwork" jdbcType="VARCHAR" property="destinationnetwork" />
+    <result column="wid" jdbcType="INTEGER" property="wid" />
+    <result column="waytonetwork" jdbcType="VARCHAR" property="waytonetwork" />
+    <result column="vnumber" jdbcType="VARCHAR" property="vnumber" />
+    <result column="driverid" jdbcType="INTEGER" property="driverid" />
+    <result column="drivername" jdbcType="VARCHAR" property="drivername" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="carrierfee" jdbcType="DECIMAL" property="carrierfee" />
+    <result column="spotpayment" jdbcType="DECIMAL" property="spotpayment" />
+    <result column="owetopay" jdbcType="DECIMAL" property="owetopay" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="startstatus" jdbcType="INTEGER" property="startstatus" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="string1" jdbcType="VARCHAR" property="string1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    loadid, loadingstarttime, destinationnetwork, wid, waytonetwork, vnumber, driverid, 
+    drivername, phone, carrierfee, spotpayment, owetopay, remark, startstatus, int0, 
+    string0, string1
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from loadingstart
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from loadingstart
+    where loadid = #{loadid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from loadingstart
+    where loadid = #{loadid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample">
+    delete from loadingstart
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.LoadingStart">
+    insert into loadingstart (loadid, loadingstarttime, destinationnetwork, 
+      wid, waytonetwork, vnumber, 
+      driverid, drivername, phone, 
+      carrierfee, spotpayment, owetopay, 
+      remark, startstatus, int0, 
+      string0, string1)
+    values (#{loadid,jdbcType=INTEGER}, #{loadingstarttime,jdbcType=DATE}, #{destinationnetwork,jdbcType=VARCHAR}, 
+      #{wid,jdbcType=INTEGER}, #{waytonetwork,jdbcType=VARCHAR}, #{vnumber,jdbcType=VARCHAR}, 
+      #{driverid,jdbcType=INTEGER}, #{drivername,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, 
+      #{carrierfee,jdbcType=DECIMAL}, #{spotpayment,jdbcType=DECIMAL}, #{owetopay,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{startstatus,jdbcType=INTEGER}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{string1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.LoadingStart">
+    insert into loadingstart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loadid != null">
+        loadid,
+      </if>
+      <if test="loadingstarttime != null">
+        loadingstarttime,
+      </if>
+      <if test="destinationnetwork != null">
+        destinationnetwork,
+      </if>
+      <if test="wid != null">
+        wid,
+      </if>
+      <if test="waytonetwork != null">
+        waytonetwork,
+      </if>
+      <if test="vnumber != null">
+        vnumber,
+      </if>
+      <if test="driverid != null">
+        driverid,
+      </if>
+      <if test="drivername != null">
+        drivername,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="carrierfee != null">
+        carrierfee,
+      </if>
+      <if test="spotpayment != null">
+        spotpayment,
+      </if>
+      <if test="owetopay != null">
+        owetopay,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="startstatus != null">
+        startstatus,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="string1 != null">
+        string1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loadid != null">
+        #{loadid,jdbcType=INTEGER},
+      </if>
+      <if test="loadingstarttime != null">
+        #{loadingstarttime,jdbcType=DATE},
+      </if>
+      <if test="destinationnetwork != null">
+        #{destinationnetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="waytonetwork != null">
+        #{waytonetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="vnumber != null">
+        #{vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverid != null">
+        #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="drivername != null">
+        #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="carrierfee != null">
+        #{carrierfee,jdbcType=DECIMAL},
+      </if>
+      <if test="spotpayment != null">
+        #{spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="owetopay != null">
+        #{owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="startstatus != null">
+        #{startstatus,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        #{string1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.LoadingStartExample" resultType="java.lang.Integer">
+    select count(*) from loadingstart
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update loadingstart
+    <set>
+      <if test="record.loadid != null">
+        loadid = #{record.loadid,jdbcType=INTEGER},
+      </if>
+      <if test="record.loadingstarttime != null">
+        loadingstarttime = #{record.loadingstarttime,jdbcType=DATE},
+      </if>
+      <if test="record.destinationnetwork != null">
+        destinationnetwork = #{record.destinationnetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wid != null">
+        wid = #{record.wid,jdbcType=INTEGER},
+      </if>
+      <if test="record.waytonetwork != null">
+        waytonetwork = #{record.waytonetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vnumber != null">
+        vnumber = #{record.vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.driverid != null">
+        driverid = #{record.driverid,jdbcType=INTEGER},
+      </if>
+      <if test="record.drivername != null">
+        drivername = #{record.drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=CHAR},
+      </if>
+      <if test="record.carrierfee != null">
+        carrierfee = #{record.carrierfee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.spotpayment != null">
+        spotpayment = #{record.spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="record.owetopay != null">
+        owetopay = #{record.owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startstatus != null">
+        startstatus = #{record.startstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.string1 != null">
+        string1 = #{record.string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update loadingstart
+    set loadid = #{record.loadid,jdbcType=INTEGER},
+      loadingstarttime = #{record.loadingstarttime,jdbcType=DATE},
+      destinationnetwork = #{record.destinationnetwork,jdbcType=VARCHAR},
+      wid = #{record.wid,jdbcType=INTEGER},
+      waytonetwork = #{record.waytonetwork,jdbcType=VARCHAR},
+      vnumber = #{record.vnumber,jdbcType=VARCHAR},
+      driverid = #{record.driverid,jdbcType=INTEGER},
+      drivername = #{record.drivername,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=CHAR},
+      carrierfee = #{record.carrierfee,jdbcType=DECIMAL},
+      spotpayment = #{record.spotpayment,jdbcType=DECIMAL},
+      owetopay = #{record.owetopay,jdbcType=DECIMAL},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      startstatus = #{record.startstatus,jdbcType=INTEGER},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      string1 = #{record.string1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.LoadingStart">
+    update loadingstart
+    <set>
+      <if test="loadingstarttime != null">
+        loadingstarttime = #{loadingstarttime,jdbcType=DATE},
+      </if>
+      <if test="destinationnetwork != null">
+        destinationnetwork = #{destinationnetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null">
+        wid = #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="waytonetwork != null">
+        waytonetwork = #{waytonetwork,jdbcType=VARCHAR},
+      </if>
+      <if test="vnumber != null">
+        vnumber = #{vnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="driverid != null">
+        driverid = #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="drivername != null">
+        drivername = #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="carrierfee != null">
+        carrierfee = #{carrierfee,jdbcType=DECIMAL},
+      </if>
+      <if test="spotpayment != null">
+        spotpayment = #{spotpayment,jdbcType=DECIMAL},
+      </if>
+      <if test="owetopay != null">
+        owetopay = #{owetopay,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="startstatus != null">
+        startstatus = #{startstatus,jdbcType=INTEGER},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="string1 != null">
+        string1 = #{string1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where loadid = #{loadid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.LoadingStart">
+    update loadingstart
+    set loadingstarttime = #{loadingstarttime,jdbcType=DATE},
+      destinationnetwork = #{destinationnetwork,jdbcType=VARCHAR},
+      wid = #{wid,jdbcType=INTEGER},
+      waytonetwork = #{waytonetwork,jdbcType=VARCHAR},
+      vnumber = #{vnumber,jdbcType=VARCHAR},
+      driverid = #{driverid,jdbcType=INTEGER},
+      drivername = #{drivername,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=CHAR},
+      carrierfee = #{carrierfee,jdbcType=DECIMAL},
+      spotpayment = #{spotpayment,jdbcType=DECIMAL},
+      owetopay = #{owetopay,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      startstatus = #{startstatus,jdbcType=INTEGER},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      string1 = #{string1,jdbcType=VARCHAR}
+    where loadid = #{loadid,jdbcType=INTEGER}
+  </update>
+</mapper>

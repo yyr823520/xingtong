@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.ModuleMapper">
-  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Module">
+   <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Module">
     <id column="mid" jdbcType="INTEGER" property="mid" />
     <result column="modulename" jdbcType="VARCHAR" property="modulename" />
     <result column="parentId" jdbcType="INTEGER" property="parentid" />
@@ -10,17 +10,15 @@
     <result column="string0" jdbcType="VARCHAR" property="string0" />
     <result column="string1" jdbcType="VARCHAR" property="string1" />
     <result column="pic" jdbcType="VARCHAR" property="pic" />
-  </resultMap>
-  
-  <select id="getModuleTree" resultMap="BaseResultMap" parameterType="int" >
+  </resultMap> 
+
+  <select id="getModuleTree" resultType="module" parameterType="int">
   SELECT m.* FROM module m JOIN module_user mu 
- ON m.mid=mu.mid JOIN employee e ON e.eid=mu.eid WHERE e.eid=#{userId} 
+ ON m.mid=mu.mid JOIN employee e ON e.eid=mu.eid WHERE e.eid=#{userId}
   </select>
-  
-  
-  
-  
-  
+
+ 
+  <!-- 
   
   
   
@@ -521,5 +519,5 @@
       string1 = #{string1,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR}
     where mid = #{mid,jdbcType=INTEGER}
-  </update>
+  </update> -->
 </mapper>

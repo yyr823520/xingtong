@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.ConsigneeMapper">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Consignee">
+    <id column="conid" jdbcType="INTEGER" property="conid" />
+    <result column="conname" jdbcType="VARCHAR" property="conname" />
+    <result column="concompanyname" jdbcType="VARCHAR" property="concompanyname" />
+    <result column="contelphone" jdbcType="CHAR" property="contelphone" />
+    <result column="confax" jdbcType="VARCHAR" property="confax" />
+    <result column="conphone" jdbcType="CHAR" property="conphone" />
+    <result column="conemail" jdbcType="VARCHAR" property="conemail" />
+    <result column="conqqormsn" jdbcType="VARCHAR" property="conqqormsn" />
+    <result column="conearlyaccount" jdbcType="DECIMAL" property="conearlyaccount" />
+    <result column="conaddress" jdbcType="VARCHAR" property="conaddress" />
+    <result column="conremark" jdbcType="VARCHAR" property="conremark" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="sting1" jdbcType="VARCHAR" property="sting1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    conid, conname, concompanyname, contelphone, confax, conphone, conemail, conqqormsn, 
+    conearlyaccount, conaddress, conremark, int0, string0, sting1
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from consignee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from consignee
+    where conid = #{conid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from consignee
+    where conid = #{conid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample">
+    delete from consignee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Consignee">
+    insert into consignee (conid, conname, concompanyname, 
+      contelphone, confax, conphone, 
+      conemail, conqqormsn, conearlyaccount, 
+      conaddress, conremark, int0, 
+      string0, sting1)
+    values (#{conid,jdbcType=INTEGER}, #{conname,jdbcType=VARCHAR}, #{concompanyname,jdbcType=VARCHAR}, 
+      #{contelphone,jdbcType=CHAR}, #{confax,jdbcType=VARCHAR}, #{conphone,jdbcType=CHAR}, 
+      #{conemail,jdbcType=VARCHAR}, #{conqqormsn,jdbcType=VARCHAR}, #{conearlyaccount,jdbcType=DECIMAL}, 
+      #{conaddress,jdbcType=VARCHAR}, #{conremark,jdbcType=VARCHAR}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{sting1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Consignee">
+    insert into consignee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conid != null">
+        conid,
+      </if>
+      <if test="conname != null">
+        conname,
+      </if>
+      <if test="concompanyname != null">
+        concompanyname,
+      </if>
+      <if test="contelphone != null">
+        contelphone,
+      </if>
+      <if test="confax != null">
+        confax,
+      </if>
+      <if test="conphone != null">
+        conphone,
+      </if>
+      <if test="conemail != null">
+        conemail,
+      </if>
+      <if test="conqqormsn != null">
+        conqqormsn,
+      </if>
+      <if test="conearlyaccount != null">
+        conearlyaccount,
+      </if>
+      <if test="conaddress != null">
+        conaddress,
+      </if>
+      <if test="conremark != null">
+        conremark,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="sting1 != null">
+        sting1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conid != null">
+        #{conid,jdbcType=INTEGER},
+      </if>
+      <if test="conname != null">
+        #{conname,jdbcType=VARCHAR},
+      </if>
+      <if test="concompanyname != null">
+        #{concompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="contelphone != null">
+        #{contelphone,jdbcType=CHAR},
+      </if>
+      <if test="confax != null">
+        #{confax,jdbcType=VARCHAR},
+      </if>
+      <if test="conphone != null">
+        #{conphone,jdbcType=CHAR},
+      </if>
+      <if test="conemail != null">
+        #{conemail,jdbcType=VARCHAR},
+      </if>
+      <if test="conqqormsn != null">
+        #{conqqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="conearlyaccount != null">
+        #{conearlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="conaddress != null">
+        #{conaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="conremark != null">
+        #{conremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="sting1 != null">
+        #{sting1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample" resultType="java.lang.Integer">
+    select count(*) from consignee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update consignee
+    <set>
+      <if test="record.conid != null">
+        conid = #{record.conid,jdbcType=INTEGER},
+      </if>
+      <if test="record.conname != null">
+        conname = #{record.conname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.concompanyname != null">
+        concompanyname = #{record.concompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contelphone != null">
+        contelphone = #{record.contelphone,jdbcType=CHAR},
+      </if>
+      <if test="record.confax != null">
+        confax = #{record.confax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conphone != null">
+        conphone = #{record.conphone,jdbcType=CHAR},
+      </if>
+      <if test="record.conemail != null">
+        conemail = #{record.conemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conqqormsn != null">
+        conqqormsn = #{record.conqqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conearlyaccount != null">
+        conearlyaccount = #{record.conearlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.conaddress != null">
+        conaddress = #{record.conaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conremark != null">
+        conremark = #{record.conremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sting1 != null">
+        sting1 = #{record.sting1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update consignee
+    set conid = #{record.conid,jdbcType=INTEGER},
+      conname = #{record.conname,jdbcType=VARCHAR},
+      concompanyname = #{record.concompanyname,jdbcType=VARCHAR},
+      contelphone = #{record.contelphone,jdbcType=CHAR},
+      confax = #{record.confax,jdbcType=VARCHAR},
+      conphone = #{record.conphone,jdbcType=CHAR},
+      conemail = #{record.conemail,jdbcType=VARCHAR},
+      conqqormsn = #{record.conqqormsn,jdbcType=VARCHAR},
+      conearlyaccount = #{record.conearlyaccount,jdbcType=DECIMAL},
+      conaddress = #{record.conaddress,jdbcType=VARCHAR},
+      conremark = #{record.conremark,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      sting1 = #{record.sting1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Consignee">
+    update consignee
+    <set>
+      <if test="conname != null">
+        conname = #{conname,jdbcType=VARCHAR},
+      </if>
+      <if test="concompanyname != null">
+        concompanyname = #{concompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="contelphone != null">
+        contelphone = #{contelphone,jdbcType=CHAR},
+      </if>
+      <if test="confax != null">
+        confax = #{confax,jdbcType=VARCHAR},
+      </if>
+      <if test="conphone != null">
+        conphone = #{conphone,jdbcType=CHAR},
+      </if>
+      <if test="conemail != null">
+        conemail = #{conemail,jdbcType=VARCHAR},
+      </if>
+      <if test="conqqormsn != null">
+        conqqormsn = #{conqqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="conearlyaccount != null">
+        conearlyaccount = #{conearlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="conaddress != null">
+        conaddress = #{conaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="conremark != null">
+        conremark = #{conremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="sting1 != null">
+        sting1 = #{sting1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where conid = #{conid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Consignee">
+    update consignee
+    set conname = #{conname,jdbcType=VARCHAR},
+      concompanyname = #{concompanyname,jdbcType=VARCHAR},
+      contelphone = #{contelphone,jdbcType=CHAR},
+      confax = #{confax,jdbcType=VARCHAR},
+      conphone = #{conphone,jdbcType=CHAR},
+      conemail = #{conemail,jdbcType=VARCHAR},
+      conqqormsn = #{conqqormsn,jdbcType=VARCHAR},
+      conearlyaccount = #{conearlyaccount,jdbcType=DECIMAL},
+      conaddress = #{conaddress,jdbcType=VARCHAR},
+      conremark = #{conremark,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      sting1 = #{sting1,jdbcType=VARCHAR}
+    where conid = #{conid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Consignee">
+    <id column="conid" jdbcType="INTEGER" property="conid" />
+    <result column="conname" jdbcType="VARCHAR" property="conname" />
+    <result column="concompanyname" jdbcType="VARCHAR" property="concompanyname" />
+    <result column="contelphone" jdbcType="CHAR" property="contelphone" />
+    <result column="confax" jdbcType="VARCHAR" property="confax" />
+    <result column="conphone" jdbcType="CHAR" property="conphone" />
+    <result column="conemail" jdbcType="VARCHAR" property="conemail" />
+    <result column="conqqormsn" jdbcType="VARCHAR" property="conqqormsn" />
+    <result column="conearlyaccount" jdbcType="DECIMAL" property="conearlyaccount" />
+    <result column="conaddress" jdbcType="VARCHAR" property="conaddress" />
+    <result column="conremark" jdbcType="VARCHAR" property="conremark" />
+    <result column="int0" jdbcType="INTEGER" property="int0" />
+    <result column="string0" jdbcType="VARCHAR" property="string0" />
+    <result column="sting1" jdbcType="VARCHAR" property="sting1" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    conid, conname, concompanyname, contelphone, confax, conphone, conemail, conqqormsn, 
+    conearlyaccount, conaddress, conremark, int0, string0, sting1
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from consignee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from consignee
+    where conid = #{conid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from consignee
+    where conid = #{conid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample">
+    delete from consignee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Consignee">
+    insert into consignee (conid, conname, concompanyname, 
+      contelphone, confax, conphone, 
+      conemail, conqqormsn, conearlyaccount, 
+      conaddress, conremark, int0, 
+      string0, sting1)
+    values (#{conid,jdbcType=INTEGER}, #{conname,jdbcType=VARCHAR}, #{concompanyname,jdbcType=VARCHAR}, 
+      #{contelphone,jdbcType=CHAR}, #{confax,jdbcType=VARCHAR}, #{conphone,jdbcType=CHAR}, 
+      #{conemail,jdbcType=VARCHAR}, #{conqqormsn,jdbcType=VARCHAR}, #{conearlyaccount,jdbcType=DECIMAL}, 
+      #{conaddress,jdbcType=VARCHAR}, #{conremark,jdbcType=VARCHAR}, #{int0,jdbcType=INTEGER}, 
+      #{string0,jdbcType=VARCHAR}, #{sting1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Consignee">
+    insert into consignee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conid != null">
+        conid,
+      </if>
+      <if test="conname != null">
+        conname,
+      </if>
+      <if test="concompanyname != null">
+        concompanyname,
+      </if>
+      <if test="contelphone != null">
+        contelphone,
+      </if>
+      <if test="confax != null">
+        confax,
+      </if>
+      <if test="conphone != null">
+        conphone,
+      </if>
+      <if test="conemail != null">
+        conemail,
+      </if>
+      <if test="conqqormsn != null">
+        conqqormsn,
+      </if>
+      <if test="conearlyaccount != null">
+        conearlyaccount,
+      </if>
+      <if test="conaddress != null">
+        conaddress,
+      </if>
+      <if test="conremark != null">
+        conremark,
+      </if>
+      <if test="int0 != null">
+        int0,
+      </if>
+      <if test="string0 != null">
+        string0,
+      </if>
+      <if test="sting1 != null">
+        sting1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conid != null">
+        #{conid,jdbcType=INTEGER},
+      </if>
+      <if test="conname != null">
+        #{conname,jdbcType=VARCHAR},
+      </if>
+      <if test="concompanyname != null">
+        #{concompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="contelphone != null">
+        #{contelphone,jdbcType=CHAR},
+      </if>
+      <if test="confax != null">
+        #{confax,jdbcType=VARCHAR},
+      </if>
+      <if test="conphone != null">
+        #{conphone,jdbcType=CHAR},
+      </if>
+      <if test="conemail != null">
+        #{conemail,jdbcType=VARCHAR},
+      </if>
+      <if test="conqqormsn != null">
+        #{conqqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="conearlyaccount != null">
+        #{conearlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="conaddress != null">
+        #{conaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="conremark != null">
+        #{conremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="sting1 != null">
+        #{sting1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ConsigneeExample" resultType="java.lang.Integer">
+    select count(*) from consignee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update consignee
+    <set>
+      <if test="record.conid != null">
+        conid = #{record.conid,jdbcType=INTEGER},
+      </if>
+      <if test="record.conname != null">
+        conname = #{record.conname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.concompanyname != null">
+        concompanyname = #{record.concompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contelphone != null">
+        contelphone = #{record.contelphone,jdbcType=CHAR},
+      </if>
+      <if test="record.confax != null">
+        confax = #{record.confax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conphone != null">
+        conphone = #{record.conphone,jdbcType=CHAR},
+      </if>
+      <if test="record.conemail != null">
+        conemail = #{record.conemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conqqormsn != null">
+        conqqormsn = #{record.conqqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conearlyaccount != null">
+        conearlyaccount = #{record.conearlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.conaddress != null">
+        conaddress = #{record.conaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conremark != null">
+        conremark = #{record.conremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.int0 != null">
+        int0 = #{record.int0,jdbcType=INTEGER},
+      </if>
+      <if test="record.string0 != null">
+        string0 = #{record.string0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sting1 != null">
+        sting1 = #{record.sting1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update consignee
+    set conid = #{record.conid,jdbcType=INTEGER},
+      conname = #{record.conname,jdbcType=VARCHAR},
+      concompanyname = #{record.concompanyname,jdbcType=VARCHAR},
+      contelphone = #{record.contelphone,jdbcType=CHAR},
+      confax = #{record.confax,jdbcType=VARCHAR},
+      conphone = #{record.conphone,jdbcType=CHAR},
+      conemail = #{record.conemail,jdbcType=VARCHAR},
+      conqqormsn = #{record.conqqormsn,jdbcType=VARCHAR},
+      conearlyaccount = #{record.conearlyaccount,jdbcType=DECIMAL},
+      conaddress = #{record.conaddress,jdbcType=VARCHAR},
+      conremark = #{record.conremark,jdbcType=VARCHAR},
+      int0 = #{record.int0,jdbcType=INTEGER},
+      string0 = #{record.string0,jdbcType=VARCHAR},
+      sting1 = #{record.sting1,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Consignee">
+    update consignee
+    <set>
+      <if test="conname != null">
+        conname = #{conname,jdbcType=VARCHAR},
+      </if>
+      <if test="concompanyname != null">
+        concompanyname = #{concompanyname,jdbcType=VARCHAR},
+      </if>
+      <if test="contelphone != null">
+        contelphone = #{contelphone,jdbcType=CHAR},
+      </if>
+      <if test="confax != null">
+        confax = #{confax,jdbcType=VARCHAR},
+      </if>
+      <if test="conphone != null">
+        conphone = #{conphone,jdbcType=CHAR},
+      </if>
+      <if test="conemail != null">
+        conemail = #{conemail,jdbcType=VARCHAR},
+      </if>
+      <if test="conqqormsn != null">
+        conqqormsn = #{conqqormsn,jdbcType=VARCHAR},
+      </if>
+      <if test="conearlyaccount != null">
+        conearlyaccount = #{conearlyaccount,jdbcType=DECIMAL},
+      </if>
+      <if test="conaddress != null">
+        conaddress = #{conaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="conremark != null">
+        conremark = #{conremark,jdbcType=VARCHAR},
+      </if>
+      <if test="int0 != null">
+        int0 = #{int0,jdbcType=INTEGER},
+      </if>
+      <if test="string0 != null">
+        string0 = #{string0,jdbcType=VARCHAR},
+      </if>
+      <if test="sting1 != null">
+        sting1 = #{sting1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where conid = #{conid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Consignee">
+    update consignee
+    set conname = #{conname,jdbcType=VARCHAR},
+      concompanyname = #{concompanyname,jdbcType=VARCHAR},
+      contelphone = #{contelphone,jdbcType=CHAR},
+      confax = #{confax,jdbcType=VARCHAR},
+      conphone = #{conphone,jdbcType=CHAR},
+      conemail = #{conemail,jdbcType=VARCHAR},
+      conqqormsn = #{conqqormsn,jdbcType=VARCHAR},
+      conearlyaccount = #{conearlyaccount,jdbcType=DECIMAL},
+      conaddress = #{conaddress,jdbcType=VARCHAR},
+      conremark = #{conremark,jdbcType=VARCHAR},
+      int0 = #{int0,jdbcType=INTEGER},
+      string0 = #{string0,jdbcType=VARCHAR},
+      sting1 = #{sting1,jdbcType=VARCHAR}
+    where conid = #{conid,jdbcType=INTEGER}
+  </update>
+</mapper>

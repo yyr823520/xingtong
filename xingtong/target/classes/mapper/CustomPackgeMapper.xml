@@ -1,358 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xt.xingtong.interf.CustomPackgeMapper">
-  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.CustomPackge">
-    <id column="cuid" jdbcType="INTEGER" property="cuid" />
-    <result column="cuname" jdbcType="VARCHAR" property="cuname" />
-    <result column="associatedname" jdbcType="VARCHAR" property="associatedname" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    cuid, cuname, associatedname
-  </sql>
-  <select id="selectByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from custompackge
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from custompackge
-    where cuid = #{cuid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from custompackge
-    where cuid = #{cuid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample">
-    delete from custompackge
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.xt.xingtong.entity.CustomPackge">
-    insert into custompackge (cuid, cuname, associatedname
-      )
-    values (#{cuid,jdbcType=INTEGER}, #{cuname,jdbcType=VARCHAR}, #{associatedname,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.CustomPackge">
-    insert into custompackge
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cuid != null">
-        cuid,
-      </if>
-      <if test="cuname != null">
-        cuname,
-      </if>
-      <if test="associatedname != null">
-        associatedname,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cuid != null">
-        #{cuid,jdbcType=INTEGER},
-      </if>
-      <if test="cuname != null">
-        #{cuname,jdbcType=VARCHAR},
-      </if>
-      <if test="associatedname != null">
-        #{associatedname,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample" resultType="java.lang.Integer">
-    select count(*) from custompackge
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update custompackge
-    <set>
-      <if test="record.cuid != null">
-        cuid = #{record.cuid,jdbcType=INTEGER},
-      </if>
-      <if test="record.cuname != null">
-        cuname = #{record.cuname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.associatedname != null">
-        associatedname = #{record.associatedname,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update custompackge
-    set cuid = #{record.cuid,jdbcType=INTEGER},
-      cuname = #{record.cuname,jdbcType=VARCHAR},
-      associatedname = #{record.associatedname,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.CustomPackge">
-    update custompackge
-    <set>
-      <if test="cuname != null">
-        cuname = #{cuname,jdbcType=VARCHAR},
-      </if>
-      <if test="associatedname != null">
-        associatedname = #{associatedname,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where cuid = #{cuid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.CustomPackge">
-    update custompackge
-    set cuname = #{cuname,jdbcType=VARCHAR},
-      associatedname = #{associatedname,jdbcType=VARCHAR}
-    where cuid = #{cuid,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.CustomPackge">
-    <id column="cuid" jdbcType="INTEGER" property="cuid" />
-    <result column="cuname" jdbcType="VARCHAR" property="cuname" />
-    <result column="associatedname" jdbcType="VARCHAR" property="associatedname" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    cuid, cuname, associatedname
-  </sql>
-  <select id="selectByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from custompackge
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from custompackge
-    where cuid = #{cuid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from custompackge
-    where cuid = #{cuid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample">
-    delete from custompackge
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.xt.xingtong.entity.CustomPackge">
-    insert into custompackge (cuid, cuname, associatedname
-      )
-    values (#{cuid,jdbcType=INTEGER}, #{cuname,jdbcType=VARCHAR}, #{associatedname,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.CustomPackge">
-    insert into custompackge
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="cuid != null">
-        cuid,
-      </if>
-      <if test="cuname != null">
-        cuname,
-      </if>
-      <if test="associatedname != null">
-        associatedname,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="cuid != null">
-        #{cuid,jdbcType=INTEGER},
-      </if>
-      <if test="cuname != null">
-        #{cuname,jdbcType=VARCHAR},
-      </if>
-      <if test="associatedname != null">
-        #{associatedname,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.xt.xingtong.entity.CustomPackgeExample" resultType="java.lang.Integer">
-    select count(*) from custompackge
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update custompackge
-    <set>
-      <if test="record.cuid != null">
-        cuid = #{record.cuid,jdbcType=INTEGER},
-      </if>
-      <if test="record.cuname != null">
-        cuname = #{record.cuname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.associatedname != null">
-        associatedname = #{record.associatedname,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update custompackge
-    set cuid = #{record.cuid,jdbcType=INTEGER},
-      cuname = #{record.cuname,jdbcType=VARCHAR},
-      associatedname = #{record.associatedname,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.CustomPackge">
-    update custompackge
-    <set>
-      <if test="cuname != null">
-        cuname = #{cuname,jdbcType=VARCHAR},
-      </if>
-      <if test="associatedname != null">
-        associatedname = #{associatedname,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where cuid = #{cuid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.CustomPackge">
-    update custompackge
-    set cuname = #{cuname,jdbcType=VARCHAR},
-      associatedname = #{associatedname,jdbcType=VARCHAR}
-    where cuid = #{cuid,jdbcType=INTEGER}
-  </update>
+
+	<delete id="deleteCustomPackgeById" parameterType="java.lang.Integer">
+		delete from custompackge
+		where cuid = #{cuid,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="addCustomPackge" parameterType="com.xt.xingtong.entity.CustomPackge">
+		insert into custompackge ( cuname, associatedname
+		)
+		values ( #{cuname,jdbcType=VARCHAR}, #{associatedname,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.CustomPackge">
+		update custompackge
+		set cuname = #{cuname,jdbcType=VARCHAR},
+		associatedname = #{associatedname,jdbcType=VARCHAR}
+		where cuid = #{cuid,jdbcType=INTEGER}
+	</update>
+
+	<!-- 查询名称 -->
+	<select id="existName" resultType="com.xt.xingtong.entity.CustomPackge">
+		select
+		cuname FROM
+		custompackge where cuname= #{cuname}
+	</select>
+
+
+	<!-- 分页 -->
+	<select id="selectCustomPackge" parameterType="com.xt.xingtong.info.CustomPackgeinfo"
+		resultType="com.xt.xingtong.entity.CustomPackge">
+		select * FROM custompackge
+		<where>
+			<if test="cuid!=null">
+				AND cuid=#{cuid}
+			</if>
+			<if test="cuname!=null and cuname!=''">
+				AND cuname LIKE "%"#{cuname}"%"
+			</if>
+
+			<if test="associatedname!=null and associatedname!=''">
+				AND associatedname =#{associatedname}
+			</if>
+		</where>
+		<if test="orderBy!=null and orderBy!=''">
+			ORDER BY ${orderBy} DESC
+		</if>
+		LIMIT #{startIndex},#{limit}
+	</select>
+	<select id="selectCustomPackgeCount" parameterType="com.xt.xingtong.info.CustomPackgeinfo"
+		resultType="int">
+		select COUNT(*) FROM custompackge
+		<where>
+			<if test="cuid!=null">
+				AND cuid=#{cuid}
+			</if>
+			<if test="cuname!=null and cuname!=''">
+				AND cuname LIKE "%"#{cuname}"%"
+			</if>
+			<if test="associatedname!=null and associatedname!=''">
+				AND associatedname = #{associatedname}
+			</if>
+		</where>
+		<if test="orderBy!=null and orderBy!=''">
+			ORDER BY ${orderBy} DESC
+		</if>
+	</select>
+
 </mapper>

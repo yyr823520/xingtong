@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.ComputerMapper">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Computer">
+    <id column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="computername" jdbcType="VARCHAR" property="computername" />
+    <result column="telephone" jdbcType="CHAR" property="telephone" />
+    <result column="openingbank" jdbcType="VARCHAR" property="openingbank" />
+    <result column="dutyparagraph" jdbcType="VARCHAR" property="dutyparagraph" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="busregnumber" jdbcType="VARCHAR" property="busregnumber" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="accountnumber" jdbcType="VARCHAR" property="accountnumber" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    cid, computername, telephone, openingbank, dutyparagraph, address, busregnumber, 
+    fax, accountnumber, email, remark
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ComputerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from computer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from computer
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from computer
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ComputerExample">
+    delete from computer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Computer">
+    insert into computer (cid, computername, telephone, 
+      openingbank, dutyparagraph, address, 
+      busregnumber, fax, accountnumber, 
+      email, remark)
+    values (#{cid,jdbcType=INTEGER}, #{computername,jdbcType=VARCHAR}, #{telephone,jdbcType=CHAR}, 
+      #{openingbank,jdbcType=VARCHAR}, #{dutyparagraph,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{busregnumber,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{accountnumber,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Computer">
+    insert into computer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="computername != null">
+        computername,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="openingbank != null">
+        openingbank,
+      </if>
+      <if test="dutyparagraph != null">
+        dutyparagraph,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="busregnumber != null">
+        busregnumber,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="accountnumber != null">
+        accountnumber,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="computername != null">
+        #{computername,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="openingbank != null">
+        #{openingbank,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyparagraph != null">
+        #{dutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="busregnumber != null">
+        #{busregnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="accountnumber != null">
+        #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ComputerExample" resultType="java.lang.Integer">
+    select count(*) from computer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update computer
+    <set>
+      <if test="record.cid != null">
+        cid = #{record.cid,jdbcType=INTEGER},
+      </if>
+      <if test="record.computername != null">
+        computername = #{record.computername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null">
+        telephone = #{record.telephone,jdbcType=CHAR},
+      </if>
+      <if test="record.openingbank != null">
+        openingbank = #{record.openingbank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dutyparagraph != null">
+        dutyparagraph = #{record.dutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busregnumber != null">
+        busregnumber = #{record.busregnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fax != null">
+        fax = #{record.fax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountnumber != null">
+        accountnumber = #{record.accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update computer
+    set cid = #{record.cid,jdbcType=INTEGER},
+      computername = #{record.computername,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=CHAR},
+      openingbank = #{record.openingbank,jdbcType=VARCHAR},
+      dutyparagraph = #{record.dutyparagraph,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      busregnumber = #{record.busregnumber,jdbcType=VARCHAR},
+      fax = #{record.fax,jdbcType=VARCHAR},
+      accountnumber = #{record.accountnumber,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Computer">
+    update computer
+    <set>
+      <if test="computername != null">
+        computername = #{computername,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="openingbank != null">
+        openingbank = #{openingbank,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyparagraph != null">
+        dutyparagraph = #{dutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="busregnumber != null">
+        busregnumber = #{busregnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="accountnumber != null">
+        accountnumber = #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Computer">
+    update computer
+    set computername = #{computername,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=CHAR},
+      openingbank = #{openingbank,jdbcType=VARCHAR},
+      dutyparagraph = #{dutyparagraph,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      busregnumber = #{busregnumber,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      accountnumber = #{accountnumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.Computer">
+    <id column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="computername" jdbcType="VARCHAR" property="computername" />
+    <result column="telephone" jdbcType="CHAR" property="telephone" />
+    <result column="openingbank" jdbcType="VARCHAR" property="openingbank" />
+    <result column="dutyparagraph" jdbcType="VARCHAR" property="dutyparagraph" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="busregnumber" jdbcType="VARCHAR" property="busregnumber" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="accountnumber" jdbcType="VARCHAR" property="accountnumber" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    cid, computername, telephone, openingbank, dutyparagraph, address, busregnumber, 
+    fax, accountnumber, email, remark
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.ComputerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from computer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from computer
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from computer
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.ComputerExample">
+    delete from computer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.Computer">
+    insert into computer (cid, computername, telephone, 
+      openingbank, dutyparagraph, address, 
+      busregnumber, fax, accountnumber, 
+      email, remark)
+    values (#{cid,jdbcType=INTEGER}, #{computername,jdbcType=VARCHAR}, #{telephone,jdbcType=CHAR}, 
+      #{openingbank,jdbcType=VARCHAR}, #{dutyparagraph,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{busregnumber,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{accountnumber,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.Computer">
+    insert into computer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="computername != null">
+        computername,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="openingbank != null">
+        openingbank,
+      </if>
+      <if test="dutyparagraph != null">
+        dutyparagraph,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="busregnumber != null">
+        busregnumber,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="accountnumber != null">
+        accountnumber,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="computername != null">
+        #{computername,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="openingbank != null">
+        #{openingbank,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyparagraph != null">
+        #{dutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="busregnumber != null">
+        #{busregnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="accountnumber != null">
+        #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.ComputerExample" resultType="java.lang.Integer">
+    select count(*) from computer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update computer
+    <set>
+      <if test="record.cid != null">
+        cid = #{record.cid,jdbcType=INTEGER},
+      </if>
+      <if test="record.computername != null">
+        computername = #{record.computername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null">
+        telephone = #{record.telephone,jdbcType=CHAR},
+      </if>
+      <if test="record.openingbank != null">
+        openingbank = #{record.openingbank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dutyparagraph != null">
+        dutyparagraph = #{record.dutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busregnumber != null">
+        busregnumber = #{record.busregnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fax != null">
+        fax = #{record.fax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountnumber != null">
+        accountnumber = #{record.accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update computer
+    set cid = #{record.cid,jdbcType=INTEGER},
+      computername = #{record.computername,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=CHAR},
+      openingbank = #{record.openingbank,jdbcType=VARCHAR},
+      dutyparagraph = #{record.dutyparagraph,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      busregnumber = #{record.busregnumber,jdbcType=VARCHAR},
+      fax = #{record.fax,jdbcType=VARCHAR},
+      accountnumber = #{record.accountnumber,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.Computer">
+    update computer
+    <set>
+      <if test="computername != null">
+        computername = #{computername,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="openingbank != null">
+        openingbank = #{openingbank,jdbcType=VARCHAR},
+      </if>
+      <if test="dutyparagraph != null">
+        dutyparagraph = #{dutyparagraph,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="busregnumber != null">
+        busregnumber = #{busregnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="accountnumber != null">
+        accountnumber = #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.Computer">
+    update computer
+    set computername = #{computername,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=CHAR},
+      openingbank = #{openingbank,jdbcType=VARCHAR},
+      dutyparagraph = #{dutyparagraph,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      busregnumber = #{busregnumber,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      accountnumber = #{accountnumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>

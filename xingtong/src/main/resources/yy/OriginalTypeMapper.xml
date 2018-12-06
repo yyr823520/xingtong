@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xt.xingtong.interf.OriginalTypeMapper">
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.OriginalType">
+    <id column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="otypename" jdbcType="VARCHAR" property="otypename" />
+    <result column="otype" jdbcType="VARCHAR" property="otype" />
+    <result column="oenglishname" jdbcType="VARCHAR" property="oenglishname" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oid, otypename, otype, oenglishname
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from originaltype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from originaltype
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from originaltype
+    where oid = #{oid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample">
+    delete from originaltype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.OriginalType">
+    insert into originaltype (oid, otypename, otype, 
+      oenglishname)
+    values (#{oid,jdbcType=INTEGER}, #{otypename,jdbcType=VARCHAR}, #{otype,jdbcType=VARCHAR}, 
+      #{oenglishname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.OriginalType">
+    insert into originaltype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="otypename != null">
+        otypename,
+      </if>
+      <if test="otype != null">
+        otype,
+      </if>
+      <if test="oenglishname != null">
+        oenglishname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="otypename != null">
+        #{otypename,jdbcType=VARCHAR},
+      </if>
+      <if test="otype != null">
+        #{otype,jdbcType=VARCHAR},
+      </if>
+      <if test="oenglishname != null">
+        #{oenglishname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample" resultType="java.lang.Integer">
+    select count(*) from originaltype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update originaltype
+    <set>
+      <if test="record.oid != null">
+        oid = #{record.oid,jdbcType=INTEGER},
+      </if>
+      <if test="record.otypename != null">
+        otypename = #{record.otypename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otype != null">
+        otype = #{record.otype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oenglishname != null">
+        oenglishname = #{record.oenglishname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update originaltype
+    set oid = #{record.oid,jdbcType=INTEGER},
+      otypename = #{record.otypename,jdbcType=VARCHAR},
+      otype = #{record.otype,jdbcType=VARCHAR},
+      oenglishname = #{record.oenglishname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.OriginalType">
+    update originaltype
+    <set>
+      <if test="otypename != null">
+        otypename = #{otypename,jdbcType=VARCHAR},
+      </if>
+      <if test="otype != null">
+        otype = #{otype,jdbcType=VARCHAR},
+      </if>
+      <if test="oenglishname != null">
+        oenglishname = #{oenglishname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.OriginalType">
+    update originaltype
+    set otypename = #{otypename,jdbcType=VARCHAR},
+      otype = #{otype,jdbcType=VARCHAR},
+      oenglishname = #{oenglishname,jdbcType=VARCHAR}
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xt.xingtong.entity.OriginalType">
+    <id column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="otypename" jdbcType="VARCHAR" property="otypename" />
+    <result column="otype" jdbcType="VARCHAR" property="otype" />
+    <result column="oenglishname" jdbcType="VARCHAR" property="oenglishname" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oid, otypename, otype, oenglishname
+  </sql>
+  <select id="selectByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from originaltype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from originaltype
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from originaltype
+    where oid = #{oid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample">
+    delete from originaltype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xt.xingtong.entity.OriginalType">
+    insert into originaltype (oid, otypename, otype, 
+      oenglishname)
+    values (#{oid,jdbcType=INTEGER}, #{otypename,jdbcType=VARCHAR}, #{otype,jdbcType=VARCHAR}, 
+      #{oenglishname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xt.xingtong.entity.OriginalType">
+    insert into originaltype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="otypename != null">
+        otypename,
+      </if>
+      <if test="otype != null">
+        otype,
+      </if>
+      <if test="oenglishname != null">
+        oenglishname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="otypename != null">
+        #{otypename,jdbcType=VARCHAR},
+      </if>
+      <if test="otype != null">
+        #{otype,jdbcType=VARCHAR},
+      </if>
+      <if test="oenglishname != null">
+        #{oenglishname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xt.xingtong.entity.OriginalTypeExample" resultType="java.lang.Integer">
+    select count(*) from originaltype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update originaltype
+    <set>
+      <if test="record.oid != null">
+        oid = #{record.oid,jdbcType=INTEGER},
+      </if>
+      <if test="record.otypename != null">
+        otypename = #{record.otypename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.otype != null">
+        otype = #{record.otype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oenglishname != null">
+        oenglishname = #{record.oenglishname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update originaltype
+    set oid = #{record.oid,jdbcType=INTEGER},
+      otypename = #{record.otypename,jdbcType=VARCHAR},
+      otype = #{record.otype,jdbcType=VARCHAR},
+      oenglishname = #{record.oenglishname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xt.xingtong.entity.OriginalType">
+    update originaltype
+    <set>
+      <if test="otypename != null">
+        otypename = #{otypename,jdbcType=VARCHAR},
+      </if>
+      <if test="otype != null">
+        otype = #{otype,jdbcType=VARCHAR},
+      </if>
+      <if test="oenglishname != null">
+        oenglishname = #{oenglishname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xt.xingtong.entity.OriginalType">
+    update originaltype
+    set otypename = #{otypename,jdbcType=VARCHAR},
+      otype = #{otype,jdbcType=VARCHAR},
+      oenglishname = #{oenglishname,jdbcType=VARCHAR}
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+</mapper>
