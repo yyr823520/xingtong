@@ -8,7 +8,8 @@ package com.xt.xingtong.exception;
  */
 
 public class UnLoginException extends Exception {
-	
+	 
+
 	private static final long serialVersionUID = 1L;
 
 	public UnLoginException(){
