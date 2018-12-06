@@ -17,7 +17,11 @@ import com.xt.xingtong.tool.MapTool;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-
+/**
+ * 收货方
+ * @author HP
+ *
+ */
 @RestController
 @RequestMapping("/consignee")
 public class ConsigneeContorller {
