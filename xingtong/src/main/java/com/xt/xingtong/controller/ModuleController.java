@@ -23,7 +23,6 @@ public class ModuleController {
 	 */
 	@PostMapping("/getModuleTree")
 	public  Object getResourcesPagination(int userId) {
-	
 		return  moduleService.getModuleTree(userId);
 	}
 	
