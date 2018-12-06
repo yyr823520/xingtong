@@ -16,12 +16,13 @@ public class ModuleController {
 	@Autowired
 	private ModuleService moduleService;
 	/**
-	 * 前台首页tree显示
+	 * 前台首页tree显示jjjfgj
 	 * @return
 	 */
 	@PostMapping("/getModuleTree")
 	public  Object getResourcesPagination(int userId) {
 		return  moduleService.getModuleTree(userId);
 	}
+	
 
 }
