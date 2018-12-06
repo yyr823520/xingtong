@@ -7,14 +7,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xt.xingtong.service.ModuleService;
 
+/**
+ * jgjdjgjdjgj
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping("/module")
-@ResponseBody
 public class ModuleController {
 	@Autowired
 	private ModuleService moduleService;
 	/**
-	 * 前台首页tree显示
+	 * 前台首页tree显示jjjfgj
 	 * @return
 	 */
 	@PostMapping("/getModuleTree")
@@ -22,5 +26,6 @@ public class ModuleController {
 	
 		return  moduleService.getModuleTree(userId);
 	}
+	
 
 }
