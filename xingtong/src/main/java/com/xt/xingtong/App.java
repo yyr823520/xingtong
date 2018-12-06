@@ -9,10 +9,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * Hello worldjjjjojjfbkvdflsljj!
+ * Hello world!qqqqq
  *
  */
-
 @SpringBootApplication
 @MapperScan("com.xt.xingtong.interf")//扫描dao接口
 @EnableSwagger2
