@@ -11,7 +11,7 @@ import com.xt.xingtong.interf.ConsigneeMapper;
 import com.xt.xingtong.service.ConsigneeService;
 
 @Service
-public class ConsigneeServiceImpl implements ConsigneeService {
+public class ConsigneeServiceImpl  implements ConsigneeService {
 	@Autowired
 	private ConsigneeMapper mapper;
 
