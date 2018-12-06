@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 /**
- *gengxin
+ *gengxinjjjjjjjfhfhfhhhfggffgffgfhfjffjk
  */
 public class AppTest 
     extends TestCase
